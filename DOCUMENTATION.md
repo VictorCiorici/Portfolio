@@ -445,11 +445,11 @@ CTA "VIEW TECHNICAL STACK" on `index.html` → `tech-stack.html`
 
 ```
 Fixed position → top: 0, z-index: 50
-Background → surface-container at 60% opacity
+Background → surface-container at 60% opacity (100% Viewport Width)
 Backdrop blur → xl (24px)
 Bottom border → outline-variant at 30% opacity
 Shadow → primary color at 5% opacity
-Max width → 1440px, centered
+Content Constraint → 1440px, centered inside the full-width nav
 ```
 
 ---

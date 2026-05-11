@@ -112,21 +112,23 @@
 </head>
 <body class="bg-background text-on-background min-h-screen flex flex-col font-body-md text-body-md grid-bg selection:bg-primary-container selection:text-on-primary-container">
 <!-- TopNavBar -->
-<nav class="bg-surface-container/60 dark:bg-surface-container/60 backdrop-blur-xl docked full-width top-0 border-b border-outline-variant/30 shadow-sm shadow-primary/5 fixed left-0 w-full z-50 flex justify-between items-center px-margin-desktop py-4 max-w-[1440px] mx-auto">
-<a href="index.html" class="font-headline-sm text-primary dark:text-primary tracking-tighter font-bold no-underline">TECH_CORE // DEV_PORTFOLIO</a>
-<div class="hidden md:flex items-center gap-lg">
-<a class="text-on-surface-variant dark:text-on-surface-variant font-medium hover:text-primary transition-colors font-label-caps text-label-caps" href="manifesto.html">MANIFESTO</a>
-<a class="text-on-surface-variant dark:text-on-surface-variant font-medium hover:text-primary transition-colors font-label-caps text-label-caps" href="projects.html">PROJECTS</a>
-<a class="text-on-surface-variant dark:text-on-surface-variant font-medium hover:text-primary transition-colors font-label-caps text-label-caps" href="tech-stack.html">TECH_STACK</a>
-<a class="text-on-surface-variant dark:text-on-surface-variant font-medium hover:text-primary transition-colors font-label-caps text-label-caps" href="contact.html">CONTACT</a>
-</div>
-<div class="flex items-center gap-md">
-<button class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary-fixed-dim transition-colors hidden md:block">RESUME.PDF</button>
-<div class="flex gap-sm">
-<span class="material-symbols-outlined text-on-surface-variant hover:text-primary-fixed-dim cursor-pointer transition-colors" data-icon="terminal">terminal</span>
-<span class="material-symbols-outlined text-on-surface-variant hover:text-primary-fixed-dim cursor-pointer transition-colors" data-icon="settings_input_component">settings_input_component</span>
-</div>
-</div>
+<nav class="bg-surface-container/60 backdrop-blur-xl fixed top-0 left-0 w-full z-50 border-b border-outline-variant/30 shadow-sm shadow-primary/5">
+    <div class="max-w-[1440px] mx-auto px-margin-desktop py-4 flex justify-between items-center">
+        <a href="index.html" class="font-headline-sm text-primary tracking-tighter font-bold no-underline">TECH_CORE // DEV_PORTFOLIO</a>
+        <div class="hidden md:flex items-center gap-lg">
+            <a class="text-on-surface-variant font-medium hover:text-primary transition-colors font-label-caps text-label-caps" href="manifesto.html">MANIFESTO</a>
+            <a class="text-on-surface-variant font-medium hover:text-primary transition-colors font-label-caps text-label-caps" href="projects.html">PROJECTS</a>
+            <a class="text-on-surface-variant font-medium hover:text-primary transition-colors font-label-caps text-label-caps" href="tech-stack.html">TECH_STACK</a>
+            <a class="text-on-surface-variant font-medium hover:text-primary transition-colors font-label-caps text-label-caps" href="contact.html">CONTACT</a>
+        </div>
+        <div class="flex items-center gap-md">
+            <button class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary-fixed-dim transition-colors hidden md:block">RESUME.PDF</button>
+            <div class="flex gap-sm">
+                <span class="material-symbols-outlined text-on-surface-variant hover:text-primary-fixed-dim cursor-pointer transition-colors">terminal</span>
+                <span class="material-symbols-outlined text-on-surface-variant hover:text-primary-fixed-dim cursor-pointer transition-colors">settings_input_component</span>
+            </div>
+        </div>
+    </div>
 </nav>
 <!-- Main Content -->
 <main class="flex-grow pt-[80px] max-w-[1440px] mx-auto w-full px-margin-mobile md:px-margin-desktop pb-xl relative">
