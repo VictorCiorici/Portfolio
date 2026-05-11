@@ -54,9 +54,13 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-md">
-          <button className="text-label-caps text-on-surface-variant hover:text-primary-fixed-dim transition-colors hidden md:block">
+          <a 
+            href="/resume.pdf" 
+            download 
+            className="text-label-caps text-on-surface-variant hover:text-primary-fixed-dim transition-colors hidden md:block no-underline"
+          >
             RESUME.PDF
-          </button>
+          </a>
           <div className="flex gap-sm">
             <Terminal className="w-5 h-5 text-on-surface-variant hover:text-primary-fixed-dim cursor-pointer transition-colors" />
             <Settings className="w-5 h-5 text-on-surface-variant hover:text-primary-fixed-dim cursor-pointer transition-colors" />

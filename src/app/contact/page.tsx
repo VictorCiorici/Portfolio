@@ -26,11 +26,12 @@ export default function Contact() {
           >
             <div className="glass-panel p-lg rounded-xl">
               <h2 className="text-label-caps text-on-tertiary-container mb-lg">TRANSMIT_DATA_PACKET</h2>
-              <form className="space-y-md">
+              <form className="space-y-md" action="mailto:victor.ciorici@gmail.com" method="post" encType="text/plain">
                 <div>
                   <label className="block text-code-sm text-on-surface-variant mb-xs uppercase">SENDER_ID (NAME)</label>
                   <input 
                     type="text" 
+                    name="name"
                     placeholder="ENTER IDENTITY..."
                     className="w-full bg-surface-container-high border border-outline-variant/30 rounded px-md py-sm text-on-surface focus:outline-none focus:border-primary-fixed-dim focus:tech-glow transition-all placeholder:text-outline/30"
                   />
@@ -39,6 +40,7 @@ export default function Contact() {
                   <label className="block text-code-sm text-on-surface-variant mb-xs uppercase">RETURN_ROUTE (EMAIL)</label>
                   <input 
                     type="email" 
+                    name="email"
                     placeholder="USER@DOMAIN.COM"
                     className="w-full bg-surface-container-high border border-outline-variant/30 rounded px-md py-sm text-on-surface focus:outline-none focus:border-primary-fixed-dim focus:tech-glow transition-all placeholder:text-outline/30"
                   />
@@ -46,12 +48,13 @@ export default function Contact() {
                 <div>
                   <label className="block text-code-sm text-on-surface-variant mb-xs uppercase">PAYLOAD_DATA (MESSAGE)</label>
                   <textarea 
+                    name="message"
                     rows={4}
                     placeholder="TRANSMIT MESSAGE CONTENT..."
                     className="w-full bg-surface-container-high border border-outline-variant/30 rounded px-md py-sm text-on-surface focus:outline-none focus:border-primary-fixed-dim focus:tech-glow transition-all placeholder:text-outline/30 resize-none"
                   />
                 </div>
-                <button className="w-full bg-primary-container text-on-primary-container font-label-caps py-md rounded tech-edge hover:bg-primary-fixed transition-all flex items-center justify-center gap-sm group">
+                <button type="submit" className="w-full bg-primary-container text-on-primary-container font-label-caps py-md rounded tech-edge hover:bg-primary-fixed transition-all flex items-center justify-center gap-sm group">
                   TRANSMIT_PACKET
                   <Send className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                 </button>
@@ -60,14 +63,20 @@ export default function Contact() {
 
             <div className="grid grid-cols-3 gap-md">
               {[
-                { name: "GITHUB", icon: Globe },
-                { name: "LINKEDIN", icon: Briefcase },
-                { name: "TWITTER", icon: MessageSquare },
+                { name: "LINKEDIN", icon: Briefcase, href: "https://www.linkedin.com/in/victor-c-478a7849" },
+                { name: "GITHUB", icon: Globe, href: "https://github.com/VictorCiorici" },
+                { name: "EMAIL", icon: MessageSquare, href: "mailto:victor.ciorici@gmail.com" },
               ].map((social) => (
-                <button key={social.name} className="glass-panel p-md rounded-xl flex flex-col items-center gap-sm hover:text-primary-fixed-dim transition-colors group">
+                <a 
+                  key={social.name} 
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="glass-panel p-md rounded-xl flex flex-col items-center gap-sm hover:text-primary-fixed-dim transition-colors group no-underline"
+                >
                   <social.icon className="w-6 h-6 opacity-60 group-hover:opacity-100 transition-opacity" />
                   <span className="text-[10px] font-label-caps">{social.name}</span>
-                </button>
+                </a>
               ))}
             </div>
           </motion.div>
@@ -80,29 +89,35 @@ export default function Contact() {
             className="lg:col-span-7"
           >
             <div className="glass-panel p-lg rounded-xl h-full relative overflow-hidden flex flex-col">
-              {/* Subtle background pattern */}
               <div className="absolute inset-0 opacity-5 pointer-events-none grid-bg" />
               
               <div className="relative z-10">
                 <div className="flex justify-between items-start mb-xl">
                   <div>
-                    <h2 className="text-headline-md text-on-surface mb-xs uppercase tracking-tight">RESUME_OVERVIEW</h2>
+                    <h2 className="text-headline-md text-on-surface mb-xs uppercase tracking-tight">VICTOR_CIORICI_CV</h2>
                     <div className="flex items-center gap-xs">
                       <div className="w-2 h-2 rounded-full bg-primary-fixed-dim animate-pulse" />
-                      <span className="text-label-caps text-primary-fixed-dim text-[10px]">CURRENT_STATE: OPEN_FOR_INQUIRIES</span>
+                      <span className="text-label-caps text-primary-fixed-dim text-[10px]">CURRENT_STATE: SENIOR_UNITY_DEVELOPER</span>
                     </div>
                   </div>
-                  <button className="flex items-center gap-xs px-md py-sm border border-primary-fixed-dim text-primary-fixed-dim rounded font-label-caps hover:bg-primary-fixed-dim hover:text-on-primary transition-all">
+                  <a 
+                    href="/resume.pdf" 
+                    download
+                    className="flex items-center gap-xs px-md py-sm border border-primary-fixed-dim text-primary-fixed-dim rounded font-label-caps hover:bg-primary-fixed-dim hover:text-on-primary transition-all no-underline"
+                  >
                     <Download className="w-4 h-4" />
                     DOWNLOAD.PDF
-                  </button>
+                  </a>
                 </div>
 
                 <div className="space-y-xl">
                   <div>
                     <h3 className="text-label-caps text-on-surface opacity-60 mb-md border-b border-outline-variant/30 pb-xs">CORE_COMPETENCIES</h3>
                     <div className="flex flex-wrap gap-sm">
-                      {["UNITY_ENGINE", "C#_OPTIMIZATION", "DOTS_ECS", "SHADERS", "XR_FOUNDATION", "NETWORKING", "GRAPHICS_PIPELINE", "TOOLING"].map(skill => (
+                      {[
+                        "UNITY_ENGINE", "C#", "DOTS_ECS", "SHADERS", "PHOTON_FUSION", 
+                        "MULTIPLAYER", "VR_AR", "GRAPHICS_PIPELINE", "TOOLING", "OPTIMIZATION"
+                      ].map(skill => (
                         <span key={skill} className="px-3 py-1 bg-surface-container-highest/50 border border-outline-variant/20 rounded text-code-sm text-on-surface-variant font-medium">
                           {skill}
                         </span>
@@ -115,10 +130,11 @@ export default function Contact() {
                       <h3 className="text-label-caps text-on-surface opacity-60 mb-md border-b border-outline-variant/30 pb-xs">SYSTEM_SPECS</h3>
                       <ul className="space-y-sm">
                         {[
-                          "12+ Years Commercial Experience",
-                          "Expert C# & C++ Bridge",
-                          "Full-cycle Production Artist",
-                          "Multi-platform Optimization",
+                          "12+ Years Professional Experience",
+                          "Expert in Unity & C# Architecture",
+                          "Multiplayer Systems (Photon Fusion)",
+                          "VR/AR Specialist (Oculus/Quest)",
+                          "Performance Profiling & Refactoring",
                         ].map(item => (
                           <li key={item} className="flex items-center gap-sm text-body-md text-on-surface-variant">
                             <CheckCircle2 className="w-4 h-4 text-primary-fixed-dim shrink-0" />
@@ -131,12 +147,12 @@ export default function Contact() {
                       <h3 className="text-label-caps text-on-surface opacity-60 mb-md border-b border-outline-variant/30 pb-xs">AVAILABILITY</h3>
                       <div className="space-y-md">
                         <div className="glass-panel p-md rounded bg-primary-container/5 border-primary-fixed-dim/20">
-                          <div className="text-label-caps text-primary-fixed-dim mb-1">REMOTE_WORK</div>
-                          <div className="text-headline-sm text-on-surface uppercase">YES // GLOBAL</div>
+                          <div className="text-label-caps text-primary-fixed-dim mb-1">CURRENT_ENGAGEMENT</div>
+                          <div className="text-headline-sm text-on-surface uppercase">LIMIT_BREAK // REMOTE</div>
                         </div>
                         <div className="glass-panel p-md rounded bg-surface-container-high/50">
-                          <div className="text-label-caps text-on-surface-variant mb-1">TIMEZONE_SYNC</div>
-                          <div className="text-headline-sm text-on-surface uppercase">GMT+2 [±8H]</div>
+                          <div className="text-label-caps text-on-surface-variant mb-1">LOCATION_DATA</div>
+                          <div className="text-headline-sm text-on-surface uppercase">STRASENI, MD [GMT+2]</div>
                         </div>
                       </div>
                     </div>

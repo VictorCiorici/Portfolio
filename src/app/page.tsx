@@ -83,9 +83,16 @@ public partial struct OptimizeRenderSystem : ISystem
             <span className="text-primary-fixed-dim">INTERACTIVE WORLDS</span>
           </h1>
           
-          <p className="text-body-lg text-on-surface-variant max-w-2xl mb-xl border-l-2 border-outline-variant pl-md">
-            Senior Unity Engineer specializing in high-performance rendering, DOTS, and cross-platform optimization. Bridging the gap between creative vision and technical execution.
-          </p>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="text-body-lg text-on-surface-variant max-w-2xl leading-relaxed mb-xl border-l-2 border-outline-variant pl-md"
+          >
+            Senior Unity Developer with 12+ years of expertise in the full development lifecycle—from 
+            concept and architecture to high-performance implementation. Specializing in gameplay systems, 
+            multiplayer architecture, and cross-platform optimization for PC, Mobile, and VR/AR.
+          </motion.p>
           
           <div className="flex flex-col sm:flex-row gap-md">
             <Link 
