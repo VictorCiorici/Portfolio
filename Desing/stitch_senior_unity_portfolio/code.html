@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TECH_CORE // DEV_PORTFOLIO - PROJECTS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#bcc7de",
+                        "on-surface": "#dae2fd",
+                        "on-secondary-container": "#a7b6cc",
+                        "on-primary-fixed-variant": "#004f54",
+                        "on-tertiary": "#263143",
+                        "primary": "#e1fdff",
+                        "secondary": "#b9c8de",
+                        "surface-tint": "#00dbe7",
+                        "surface-container-low": "#131b2e",
+                        "inverse-surface": "#dae2fd",
+                        "secondary-container": "#39485a",
+                        "surface-container-lowest": "#060e20",
+                        "error-container": "#93000a",
+                        "primary-container": "#00f2ff",
+                        "on-secondary-fixed-variant": "#39485a",
+                        "tertiary-container": "#d0dbf3",
+                        "background": "#0b1326",
+                        "secondary-fixed-dim": "#b9c8de",
+                        "on-secondary-fixed": "#0d1c2d",
+                        "on-tertiary-container": "#556074",
+                        "on-error": "#690005",
+                        "surface-bright": "#31394d",
+                        "tertiary-fixed": "#d8e3fb",
+                        "on-primary": "#00363a",
+                        "on-surface-variant": "#b9cacb",
+                        "on-tertiary-fixed": "#111c2d",
+                        "primary-fixed-dim": "#00dbe7",
+                        "on-secondary": "#233143",
+                        "outline-variant": "#3a494b",
+                        "on-primary-container": "#006a71",
+                        "surface-container-highest": "#2d3449",
+                        "tertiary": "#f6f7ff",
+                        "surface-container": "#171f33",
+                        "secondary-fixed": "#d4e4fa",
+                        "surface-dim": "#0b1326",
+                        "on-background": "#dae2fd",
+                        "error": "#ffb4ab",
+                        "inverse-primary": "#00696f",
+                        "surface-variant": "#2d3449",
+                        "outline": "#849495",
+                        "inverse-on-surface": "#283044",
+                        "primary-fixed": "#74f5ff",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#3c475a",
+                        "surface-container-high": "#222a3d",
+                        "surface": "#0b1326",
+                        "on-primary-fixed": "#002022"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "xs": "4px",
+                        "unit": "4px",
+                        "gutter": "16px",
+                        "lg": "24px",
+                        "margin-mobile": "16px",
+                        "xl": "40px",
+                        "md": "16px",
+                        "margin-desktop": "32px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["JetBrains Mono"],
+                        "headline-sm": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["JetBrains Mono"],
+                        "code-sm": ["JetBrains Mono"],
+                        "label-caps": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-sm": ["18px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "code-sm": ["12px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "label-caps": ["11px", { "lineHeight": "1", "letterSpacing": "0.08em", "fontWeight": "700" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            backdrop-filter: blur(20px);
+            background-color: rgba(45, 52, 73, 0.6); /* surface-variant at 60% opacity */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .inner-edge {
+            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+        }
+        .outer-glow-hover:hover {
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.1);
+            border-color: rgba(0, 242, 255, 0.5);
+        }
+        .electric-cyan-accent {
+            color: #00dbe7;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col font-body-md antialiased selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-desktop py-4 max-w-[1440px] mx-auto bg-surface-container/60 dark:bg-surface-container/60 backdrop-blur-xl border-b border-outline-variant/30 shadow-sm shadow-primary/5">
+<div class="font-headline-sm text-primary dark:text-primary tracking-tighter font-bold">
+            TECH_CORE // DEV_PORTFOLIO
+        </div>
+<nav class="hidden md:flex items-center gap-lg">
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-on-surface-variant font-medium hover:text-primary transition-colors hover:bg-white/5 transition-all duration-300 px-3 py-2 rounded" href="#">MANIFESTO</a>
+<a class="font-label-caps text-label-caps text-primary-fixed-dim font-bold border-b-2 border-primary-fixed-dim pb-1 px-3 py-2" href="#">PROJECTS</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-on-surface-variant font-medium hover:text-primary transition-colors hover:bg-white/5 transition-all duration-300 px-3 py-2 rounded" href="#">TECH_STACK</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-on-surface-variant font-medium hover:text-primary transition-colors hover:bg-white/5 transition-all duration-300 px-3 py-2 rounded" href="#">CONTACT</a>
+</nav>
+<div class="flex items-center gap-sm">
+<button class="hidden md:flex items-center justify-center font-label-caps text-label-caps bg-transparent border border-outline text-primary-fixed-dim px-4 py-2 hover:border-primary-fixed-dim transition-colors scale-95 active:scale-90 transition-transform">
+                RESUME.PDF
+            </button>
+<button class="p-2 text-primary-fixed-dim dark:text-primary-fixed-dim hover:bg-white/5 transition-all duration-300 scale-95 active:scale-90 transition-transform rounded flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">terminal</span>
+</button>
+<button class="p-2 text-primary-fixed-dim dark:text-primary-fixed-dim hover:bg-white/5 transition-all duration-300 scale-95 active:scale-90 transition-transform rounded flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings_input_component</span>
+</button>
+<!-- Mobile Menu Toggle (Simplified) -->
+<button class="md:hidden p-2 text-on-surface flex items-center justify-center">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-[100px] pb-xl px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto w-full flex flex-col gap-xl">
+<!-- Header & Filters Section -->
+<section class="flex flex-col gap-lg">
+<header>
+<h1 class="font-display-lg text-display-lg text-on-surface tracking-tighter">FIELD_DATA // <span class="electric-cyan-accent">PROJECTS</span></h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-xs max-w-2xl">A comprehensive index of deployed technical solutions, game architectures, and pipeline tools.</p>
+</header>
+<!-- Filters -->
+<div class="flex flex-wrap items-center gap-sm mt-sm">
+<button class="px-4 py-2 font-label-caps text-label-caps bg-surface-bright text-on-surface border border-primary-fixed-dim/50 inner-edge hover:bg-surface-container-highest transition-colors rounded shadow-[0_0_10px_rgba(0,242,255,0.1)]">
+                    ALL_VECTORS
+                </button>
+<button class="px-4 py-2 font-label-caps text-label-caps bg-transparent text-on-surface-variant border border-outline-variant hover:border-primary-fixed-dim/50 hover:text-primary-fixed-dim transition-colors rounded">
+                    PC/CONSOLE
+                </button>
+<button class="px-4 py-2 font-label-caps text-label-caps bg-transparent text-on-surface-variant border border-outline-variant hover:border-primary-fixed-dim/50 hover:text-primary-fixed-dim transition-colors rounded">
+                    VR/AR
+                </button>
+<button class="px-4 py-2 font-label-caps text-label-caps bg-transparent text-on-surface-variant border border-outline-variant hover:border-primary-fixed-dim/50 hover:text-primary-fixed-dim transition-colors rounded">
+                    TOOLS/PLUGINS
+                </button>
+</div>
+</section>
+<!-- Projects Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Project Card 1 -->
+<article class="glass-panel inner-edge rounded-lg overflow-hidden group outer-glow-hover transition-all duration-300 flex flex-col cursor-pointer">
+<div class="h-48 w-full bg-surface-container-lowest relative overflow-hidden">
+<img alt="Project Thumbnail" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity group-hover:scale-105 duration-500" data-alt="A highly detailed, cinematic rendering of a futuristic sci-fi space station interior. The lighting is dramatic and volumetric, highlighting complex technical machinery and glowing cyan control panels. The color palette features deep space blacks, slate grays, and electric cyan accents. The scene evokes a sense of high-end 3D game engine visualization and technical precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbUWFuPNmK_ZuSx-K390BwO5cERMZ7pvfFYosQxFNCqPO6Mfvzo6XhwLhuXE0anu1h5JsirlpjvCU-t13g6VAzJGnj9jJ_bgwQg7Fkr5cLGgINsd53XDRfrG9ywJlKGzC5su-C2mdA7gUc5vzMMEl73EYAUFVLn3zS9B5Ghjb6SZUw2y57p4upPOIDwpt93f7A_QZe4UoHJ7pTtRTAen38pQUM6clJb7yv0DjGUWpxXhuzlsZ1AKY7TSkLu_BD5sv-DzGJD6qVDeo"/>
+<div class="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-background via-transparent to-transparent opacity-80"></div>
+</div>
+<div class="p-md flex flex-col flex-grow gap-sm">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary-fixed-dim transition-colors">PROJECT_NOVA</h3>
+<p class="font-code-sm text-code-sm text-outline mt-xs">Role: Lead Gameplay Engineer</p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant flex-grow line-clamp-2">High-fidelity zero-gravity physics simulation and combat framework developed for next-gen consoles.</p>
+<div class="flex flex-wrap gap-xs mt-auto pt-sm border-t border-outline-variant/30">
+<span class="px-2 py-1 bg-surface-container-highest text-on-surface-variant font-label-caps text-[10px] rounded uppercase tracking-wider">HDRP</span>
+<span class="px-2 py-1 bg-surface-container-highest text-on-surface-variant font-label-caps text-[10px] rounded uppercase tracking-wider">C#</span>
+<span class="px-2 py-1 bg-surface-container-highest text-on-surface-variant font-label-caps text-[10px] rounded uppercase tracking-wider">Unity 2022 LTS</span>
+</div>
+</div>
+</article>
+<!-- Project Card 2 -->
+<article class="glass-panel inner-edge rounded-lg overflow-hidden group outer-glow-hover transition-all duration-300 flex flex-col cursor-pointer">
+<div class="h-48 w-full bg-surface-container-lowest relative overflow-hidden">
+<img alt="Project Thumbnail" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity group-hover:scale-105 duration-500" data-alt="A stylized, technical visualization of a complex network or data structure. Glowing lines connect floating nodes in a dark, atmospheric void. The nodes are illuminated with electric cyan and slate gray light, creating a sense of deep technical architecture. The aesthetic aligns with high-end developer tools and system visualization." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhctu8nSlT4CAxlxyMYgPwOb43gyxePK5sWKRFjrJwv3u6630rn4BocJs8V1_dAo_qLZ6NfFZ-_DRUrSrBSNR6xNf9J1uH_NoXMPN8lKOCJBbH_ZCC76OUFTeFVfD309Bt1c5rJaHEYi_Mzez_FD-UOXIoOPYLypCkdlVpIpujjUhxp0R451w-T4rCaar_lSki7L6k4tLZfJ0_YlTlXb_OH1Y38AbQIpJKpOaA-JtBx3A-BDwYt7xUf9ULNg993YNZ7zRN7J8ZVJw"/>
+<div class="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-background via-transparent to-transparent opacity-80"></div>
+</div>
+<div class="p-md flex flex-col flex-grow gap-sm">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary-fixed-dim transition-colors">NODE_WEAVER</h3>
+<p class="font-code-sm text-code-sm text-outline mt-xs">Role: Tools Architect</p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant flex-grow line-clamp-2">Custom visual scripting node editor built directly into the engine, optimizing designer workflow by 40%.</p>
+<div class="flex flex-wrap gap-xs mt-auto pt-sm border-t border-outline-variant/30">
+<span class="px-2 py-1 bg-surface-container-highest text-on-surface-variant font-label-caps text-[10px] rounded uppercase tracking-wider">Editor Scripting</span>
+<span class="px-2 py-1 bg-surface-container-highest text-on-surface-variant font-label-caps text-[10px] rounded uppercase tracking-wider">UIElements</span>
+<span class="px-2 py-1 bg-surface-container-highest text-on-surface-variant font-label-caps text-[10px] rounded uppercase tracking-wider">C++</span>
+</div>
+</div>
+</article>
+<!-- Project Card 3 -->
+<article class="glass-panel inner-edge rounded-lg overflow-hidden group outer-glow-hover transition-all duration-300 flex flex-col cursor-pointer">
+<div class="h-48 w-full bg-surface-container-lowest relative overflow-hidden">
+<img alt="Project Thumbnail" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity group-hover:scale-105 duration-500" data-alt="A point cloud rendering or wireframe overlay of a natural landscape, simulating a VR/AR scanning process. The terrain is dark and abstract, highlighted by crisp, electric cyan wireframe meshes and mathematical coordinate overlays. The mood is highly technical, precise, and immersive, fitting an advanced augmented reality pipeline." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAiDSZjOn5iFXl6SZrjJfoRQnFEyEzG2REiFrTGtURWx0sQ_gveZUweZ7_R89n3bGDfg15Yu1_E8NBQLtYF-qwAGq3sIB-Z6bGeWGgnQ3hg0azReZAZRRePAgu0LsjKB2eSLRrV91kiZsfXSohjY1-L5eso7R4oAvuev9KkCtazoI9ofr3OJA0p2a5x8E_RUuPUK9tBtKhOX2d-Ebd49xfrmITVEYkXkgETMOU78XFGTzIm67V4epBafxeilT3zc8I4Jzf2kxX0cA"/>
+<div class="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-background via-transparent to-transparent opacity-80"></div>
+</div>
+<div class="p-md flex flex-col flex-grow gap-sm">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary-fixed-dim transition-colors">AURA_AR</h3>
+<p class="font-code-sm text-code-sm text-outline mt-xs">Role: Graphics Programmer</p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant flex-grow line-clamp-2">Spatial mapping and real-time environmental occlusion shaders for high-end enterprise AR headsets.</p>
+<div class="flex flex-wrap gap-xs mt-auto pt-sm border-t border-outline-variant/30">
+<span class="px-2 py-1 bg-surface-container-highest text-on-surface-variant font-label-caps text-[10px] rounded uppercase tracking-wider">Compute Shaders</span>
+<span class="px-2 py-1 bg-surface-container-highest text-on-surface-variant font-label-caps text-[10px] rounded uppercase tracking-wider">HLSL</span>
+<span class="px-2 py-1 bg-surface-container-highest text-on-surface-variant font-label-caps text-[10px] rounded uppercase tracking-wider">OpenXR</span>
+</div>
+</div>
+</article>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-xl px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-md bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant/20">
+<div class="font-headline-sm text-headline-sm text-on-surface dark:text-on-surface tracking-tighter">
+            SYSTEM_ARCHITECT // [VER_12.0.4] // ALL RIGHTS RESERVED
+        </div>
+<nav class="flex flex-wrap justify-center gap-md">
+<a class="font-label-caps text-label-caps text-on-tertiary-container dark:text-on-tertiary-container hover:text-primary-fixed-dim transition-colors duration-200 opacity-80 hover:opacity-100" href="#">GITHUB</a>
+<a class="font-label-caps text-label-caps text-on-tertiary-container dark:text-on-tertiary-container hover:text-primary-fixed-dim transition-colors duration-200 opacity-80 hover:opacity-100" href="#">LINKEDIN</a>
+<a class="font-label-caps text-label-caps text-on-tertiary-container dark:text-on-tertiary-container hover:text-primary-fixed-dim transition-colors duration-200 opacity-80 hover:opacity-100" href="#">ARTSTATION</a>
+<a class="font-label-caps text-label-caps text-on-tertiary-container dark:text-on-tertiary-container hover:text-primary-fixed-dim transition-colors duration-200 opacity-80 hover:opacity-100" href="#">DOCUMENTATION</a>
+</nav>
+</footer>
+</body></html>

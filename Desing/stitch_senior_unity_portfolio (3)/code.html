@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Technical Skillset &amp; Experience</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed-dim": "#bcc7de",
+                      "on-surface": "#dae2fd",
+                      "on-secondary-container": "#a7b6cc",
+                      "on-primary-fixed-variant": "#004f54",
+                      "on-tertiary": "#263143",
+                      "primary": "#e1fdff",
+                      "secondary": "#b9c8de",
+                      "surface-tint": "#00dbe7",
+                      "surface-container-low": "#131b2e",
+                      "inverse-surface": "#dae2fd",
+                      "secondary-container": "#39485a",
+                      "surface-container-lowest": "#060e20",
+                      "error-container": "#93000a",
+                      "primary-container": "#00f2ff",
+                      "on-secondary-fixed-variant": "#39485a",
+                      "tertiary-container": "#d0dbf3",
+                      "background": "#0b1326",
+                      "secondary-fixed-dim": "#b9c8de",
+                      "on-secondary-fixed": "#0d1c2d",
+                      "on-tertiary-container": "#556074",
+                      "on-error": "#690005",
+                      "surface-bright": "#31394d",
+                      "tertiary-fixed": "#d8e3fb",
+                      "on-primary": "#00363a",
+                      "on-surface-variant": "#b9cacb",
+                      "on-tertiary-fixed": "#111c2d",
+                      "primary-fixed-dim": "#00dbe7",
+                      "on-secondary": "#233143",
+                      "outline-variant": "#3a494b",
+                      "on-primary-container": "#006a71",
+                      "surface-container-highest": "#2d3449",
+                      "tertiary": "#f6f7ff",
+                      "surface-container": "#171f33",
+                      "secondary-fixed": "#d4e4fa",
+                      "surface-dim": "#0b1326",
+                      "on-background": "#dae2fd",
+                      "error": "#ffb4ab",
+                      "inverse-primary": "#00696f",
+                      "surface-variant": "#2d3449",
+                      "outline": "#849495",
+                      "inverse-on-surface": "#283044",
+                      "primary-fixed": "#74f5ff",
+                      "on-error-container": "#ffdad6",
+                      "on-tertiary-fixed-variant": "#3c475a",
+                      "surface-container-high": "#222a3d",
+                      "surface": "#0b1326",
+                      "on-primary-fixed": "#002022"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "sm": "8px",
+                      "xs": "4px",
+                      "unit": "4px",
+                      "gutter": "16px",
+                      "lg": "24px",
+                      "margin-mobile": "16px",
+                      "xl": "40px",
+                      "md": "16px",
+                      "margin-desktop": "32px"
+              },
+              "fontFamily": {
+                      "headline-md": ["JetBrains Mono"],
+                      "headline-sm": ["JetBrains Mono"],
+                      "body-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "display-lg": ["JetBrains Mono"],
+                      "code-sm": ["JetBrains Mono"],
+                      "label-caps": ["JetBrains Mono"]
+              },
+              "fontSize": {
+                      "headline-md": ["24px", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                      "headline-sm": ["18px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                      "body-md": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                      "body-lg": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                      "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                      "code-sm": ["12px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                      "label-caps": ["11px", { "lineHeight": "1", "letterSpacing": "0.08em", "fontWeight": "700" }]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(23, 31, 51, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(58, 73, 75, 0.3);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glow-hover:hover {
+            box-shadow: 0px 0px 15px rgba(0, 242, 255, 0.1);
+            border-color: rgba(0, 219, 231, 0.4);
+        }
+        .grid-bg {
+            background-size: 32px 32px;
+            background-image: 
+                linear-gradient(to right, rgba(58, 73, 75, 0.1) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(58, 73, 75, 0.1) 1px, transparent 1px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md text-body-md antialiased min-h-screen flex flex-col grid-bg relative selection:bg-primary-fixed-dim selection:text-on-primary-fixed">
+<!-- TopNavBar Shared Component -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-desktop py-4 max-w-[1440px] mx-auto bg-surface-container/60 dark:bg-surface-container/60 backdrop-blur-xl border-b border-outline-variant/30 shadow-sm shadow-primary/5">
+<div class="font-headline-sm text-headline-sm text-primary dark:text-primary tracking-tighter font-bold">TECH_CORE // DEV_PORTFOLIO</div>
+<div class="hidden md:flex gap-lg items-center">
+<a class="text-on-surface-variant dark:text-on-surface-variant font-medium hover:text-primary transition-colors hover:bg-white/5 transition-all duration-300 scale-95 active:scale-90 font-label-caps text-label-caps px-2 py-1 rounded-DEFAULT" href="#">MANIFESTO</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-medium hover:text-primary transition-colors hover:bg-white/5 transition-all duration-300 scale-95 active:scale-90 font-label-caps text-label-caps px-2 py-1 rounded-DEFAULT" href="#">PROJECTS</a>
+<a class="text-primary-fixed-dim font-bold border-b-2 border-primary-fixed-dim pb-1 hover:bg-white/5 transition-all duration-300 scale-95 active:scale-90 font-label-caps text-label-caps px-2 py-1 rounded-DEFAULT" href="#">TECH_STACK</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-medium hover:text-primary transition-colors hover:bg-white/5 transition-all duration-300 scale-95 active:scale-90 font-label-caps text-label-caps px-2 py-1 rounded-DEFAULT" href="#">CONTACT</a>
+</div>
+<div class="flex items-center gap-md">
+<div class="flex gap-sm">
+<span class="material-symbols-outlined text-primary-fixed-dim dark:text-primary-fixed-dim hover:text-primary transition-colors cursor-pointer" data-weight="fill" style="font-variation-settings: 'FILL' 1;">terminal</span>
+<span class="material-symbols-outlined text-primary-fixed-dim dark:text-primary-fixed-dim hover:text-primary transition-colors cursor-pointer" data-weight="fill" style="font-variation-settings: 'FILL' 1;">settings_input_component</span>
+</div>
+<button class="hidden md:block font-label-caps text-label-caps border border-outline-variant hover:border-primary-fixed-dim text-primary-fixed-dim px-sm py-xs rounded-DEFAULT transition-all duration-300 hover:shadow-[0_0_15px_rgba(0,242,255,0.1)]">
+                RESUME.PDF
+            </button>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-[100px] pb-xl px-margin-mobile md:px-margin-desktop max-w-[1440px] w-full mx-auto flex flex-col gap-xl">
+<!-- Header Section -->
+<header class="w-full flex flex-col gap-sm">
+<h1 class="font-display-lg text-display-lg text-primary tracking-tighter">SYSTEM_CAPABILITIES</h1>
+<p class="font-code-sm text-code-sm text-primary-fixed-dim uppercase tracking-widest opacity-80 border-l-2 border-primary-fixed-dim pl-sm">Technical Skillset &amp; Professional Evolution</p>
+</header>
+<!-- Skillset Bento Grid -->
+<section class="grid grid-cols-12 gap-gutter w-full">
+<!-- ENGINE_MASTERY Card -->
+<div class="col-span-12 md:col-span-4 glass-panel rounded-DEFAULT p-lg flex flex-col gap-md group glow-hover transition-all duration-300 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-sm opacity-20 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[48px] text-primary-fixed-dim">memory</span>
+</div>
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary-fixed-dim">memory</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface uppercase tracking-tight">ENGINE_MASTERY</h2>
+</div>
+<div class="w-full h-px bg-outline-variant/30 my-xs"></div>
+<ul class="flex flex-col gap-sm z-10">
+<li class="flex flex-col gap-xs">
+<span class="font-code-sm text-code-sm text-primary-fixed-dim">Unity Engine</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Core architecture, deep engine API knowledge, custom physics solutions.</span>
+</li>
+<li class="flex flex-col gap-xs">
+<span class="font-code-sm text-code-sm text-primary-fixed-dim">C# Programming</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Advanced memory management, unmanaged code, zero-allocation patterns.</span>
+</li>
+<li class="flex flex-col gap-xs">
+<span class="font-code-sm text-code-sm text-primary-fixed-dim">DOTS &amp; ECS</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Data-Oriented Technology Stack for high-performance multithreaded simulation.</span>
+</li>
+</ul>
+<div class="flex flex-wrap gap-xs mt-auto pt-md z-10">
+<span class="bg-surface-bright text-on-surface font-label-caps text-label-caps px-2 py-1 rounded-DEFAULT">Burst Compiler</span>
+<span class="bg-surface-bright text-on-surface font-label-caps text-label-caps px-2 py-1 rounded-DEFAULT">Job System</span>
+</div>
+</div>
+<!-- GRAPHICS_PIPELINE Card -->
+<div class="col-span-12 md:col-span-4 glass-panel rounded-DEFAULT p-lg flex flex-col gap-md group glow-hover transition-all duration-300 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-sm opacity-20 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[48px] text-primary-fixed-dim">polyline</span>
+</div>
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary-fixed-dim">polyline</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface uppercase tracking-tight">GRAPHICS_PIPELINE</h2>
+</div>
+<div class="w-full h-px bg-outline-variant/30 my-xs"></div>
+<ul class="flex flex-col gap-sm z-10">
+<li class="flex flex-col gap-xs">
+<span class="font-code-sm text-code-sm text-primary-fixed-dim">HDRP &amp; URP</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Extending Scriptable Render Pipelines, custom renderer features and post-processing.</span>
+</li>
+<li class="flex flex-col gap-xs">
+<span class="font-code-sm text-code-sm text-primary-fixed-dim">Custom Shaders</span>
+<span class="font-body-md text-body-md text-on-surface-variant">HLSL, Shader Graph, complex vertex displacement and volumetric effects.</span>
+</li>
+<li class="flex flex-col gap-xs">
+<span class="font-code-sm text-code-sm text-primary-fixed-dim">Compute Shaders</span>
+<span class="font-body-md text-body-md text-on-surface-variant">GPU-accelerated algorithms, particle systems, and procedural generation.</span>
+</li>
+</ul>
+<div class="flex flex-wrap gap-xs mt-auto pt-md z-10">
+<span class="bg-surface-bright text-on-surface font-label-caps text-label-caps px-2 py-1 rounded-DEFAULT">HLSL</span>
+<span class="bg-surface-bright text-on-surface font-label-caps text-label-caps px-2 py-1 rounded-DEFAULT">Raytracing</span>
+</div>
+</div>
+<!-- ARCHITECTURE Card -->
+<div class="col-span-12 md:col-span-4 glass-panel rounded-DEFAULT p-lg flex flex-col gap-md group glow-hover transition-all duration-300 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-sm opacity-20 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[48px] text-primary-fixed-dim">account_tree</span>
+</div>
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary-fixed-dim">account_tree</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface uppercase tracking-tight">ARCHITECTURE</h2>
+</div>
+<div class="w-full h-px bg-outline-variant/30 my-xs"></div>
+<ul class="flex flex-col gap-sm z-10">
+<li class="flex flex-col gap-xs">
+<span class="font-code-sm text-code-sm text-primary-fixed-dim">Optimization</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Deep profiling, memory leak resolution, CPU/GPU bottleneck identification.</span>
+</li>
+<li class="flex flex-col gap-xs">
+<span class="font-code-sm text-code-sm text-primary-fixed-dim">Tooling</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Custom Editor Windows, UI Toolkit, workflow automation for design teams.</span>
+</li>
+<li class="flex flex-col gap-xs">
+<span class="font-code-sm text-code-sm text-primary-fixed-dim">CI/CD &amp; Version Control</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Jenkins, GitHub Actions, Perforce, Git, automated build pipelines.</span>
+</li>
+</ul>
+<div class="flex flex-wrap gap-xs mt-auto pt-md z-10">
+<span class="bg-surface-bright text-on-surface font-label-caps text-label-caps px-2 py-1 rounded-DEFAULT">Perforce</span>
+<span class="bg-surface-bright text-on-surface font-label-caps text-label-caps px-2 py-1 rounded-DEFAULT">Jenkins</span>
+</div>
+</div>
+</section>
+<!-- Experience Timeline -->
+<section class="grid grid-cols-12 gap-gutter w-full mt-lg">
+<div class="col-span-12 flex flex-col gap-lg">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary-fixed-dim">history</span>
+<h2 class="font-headline-md text-headline-md text-on-surface uppercase tracking-tight">PROFESSIONAL_EVOLUTION</h2>
+</div>
+<div class="relative pl-[32px] md:pl-[48px] flex flex-col gap-lg">
+<!-- Vertical Line -->
+<div class="absolute left-[11px] md:left-[15px] top-2 bottom-2 w-px bg-gradient-to-b from-primary-fixed-dim via-outline-variant to-transparent"></div>
+<!-- Timeline Node 1 -->
+<div class="relative">
+<div class="absolute left-[-32px] md:left-[-48px] top-1 w-[24px] h-[24px] rounded-full bg-surface border-2 border-primary-fixed-dim flex items-center justify-center shadow-[0_0_10px_rgba(0,242,255,0.2)]">
+<div class="w-[8px] h-[8px] rounded-full bg-primary-fixed-dim"></div>
+</div>
+<div class="glass-panel rounded-DEFAULT p-md flex flex-col gap-xs w-full md:w-2/3 glow-hover transition-all duration-300">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-sm text-headline-sm text-primary">Lead Technical Director</h3>
+<span class="font-code-sm text-code-sm text-on-surface-variant bg-surface-bright px-2 py-1 rounded-DEFAULT">2020 - PRESENT</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-sm">Architecting core engine extensions, developing custom render pipelines (SRP), and leading performance optimization for high-fidelity interactive simulations. Implemented extensive CI/CD pipelines reducing build times by 40%.</p>
+</div>
+</div>
+<!-- Timeline Node 2 -->
+<div class="relative">
+<div class="absolute left-[-32px] md:left-[-48px] top-1 w-[24px] h-[24px] rounded-full bg-surface border-2 border-outline-variant flex items-center justify-center">
+<div class="w-[8px] h-[8px] rounded-full bg-outline-variant"></div>
+</div>
+<div class="glass-panel rounded-DEFAULT p-md flex flex-col gap-xs w-full md:w-2/3 hover:border-outline transition-all duration-300">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Senior Unity Developer</h3>
+<span class="font-code-sm text-code-sm text-on-surface-variant bg-surface-bright px-2 py-1 rounded-DEFAULT">2016 - 2020</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-sm">Spearheaded transition from built-in pipeline to URP. Developed comprehensive suite of internal editor tools improving artist workflow efficiency. Resolved critical memory leaks preventing out-of-memory crashes on target hardware.</p>
+</div>
+</div>
+<!-- Timeline Node 3 -->
+<div class="relative">
+<div class="absolute left-[-32px] md:left-[-48px] top-1 w-[24px] h-[24px] rounded-full bg-surface border-2 border-outline-variant flex items-center justify-center">
+<div class="w-[8px] h-[8px] rounded-full bg-outline-variant"></div>
+</div>
+<div class="glass-panel rounded-DEFAULT p-md flex flex-col gap-xs w-full md:w-2/3 hover:border-outline transition-all duration-300">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Systems Engineer</h3>
+<span class="font-code-sm text-code-sm text-on-surface-variant bg-surface-bright px-2 py-1 rounded-DEFAULT">2012 - 2016</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-sm">Built robust gameplay systems and data-driven architectures. Specialized in UI implementation and complex state machine logic for cross-platform deployments.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Shared Component -->
+<footer class="w-full py-xl px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-md bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant/20 mt-auto">
+<div class="font-headline-sm text-headline-sm text-on-surface dark:text-on-surface">SYSTEM_ARCHITECT // [VER_12.0.4] // ALL RIGHTS RESERVED</div>
+<div class="flex flex-wrap justify-center gap-md font-label-caps text-label-caps">
+<a class="text-on-tertiary-container dark:text-on-tertiary-container hover:text-primary-fixed-dim transition-colors duration-200 opacity-80 hover:opacity-100" href="#">GITHUB</a>
+<a class="text-on-tertiary-container dark:text-on-tertiary-container hover:text-primary-fixed-dim transition-colors duration-200 opacity-80 hover:opacity-100" href="#">LINKEDIN</a>
+<a class="text-on-tertiary-container dark:text-on-tertiary-container hover:text-primary-fixed-dim transition-colors duration-200 opacity-80 hover:opacity-100" href="#">ARTSTATION</a>
+<a class="text-on-tertiary-container dark:text-on-tertiary-container hover:text-primary-fixed-dim transition-colors duration-200 opacity-80 hover:opacity-100" href="#">DOCUMENTATION</a>
+</div>
+</footer>
+</body></html>
