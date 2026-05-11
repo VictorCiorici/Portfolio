@@ -9,9 +9,9 @@ const bentoItems = [
     title: "ENGINE_MASTERY",
     icon: Layers,
     skills: [
-      { name: "Unity 2022/2023 LTS", desc: "Expert knowledge of Core, HDRP/URP." },
-      { name: "C# 10.0+", desc: "Advanced asynchronous programming and low-level optimization." },
-      { name: "DOTS / ECS", desc: "Building highly scalable data-oriented systems." }
+      { name: "Unity 3D / 2D", desc: "Expert knowledge of Core, HDRP, and URP pipelines." },
+      { name: "C# / .NET", desc: "Advanced software architecture and design patterns." },
+      { name: "DOTS / ECS", desc: "Building scalable data-oriented systems for massive simulations." }
     ],
     tags: ["CORE", "RUNTIME", "DOTS"]
   },
@@ -19,28 +19,43 @@ const bentoItems = [
     title: "GRAPHICS_PIPELINE",
     icon: Palette,
     skills: [
-      { name: "Shader Graph / HLSL", desc: "Custom PBR shaders and post-processing effects." },
-      { name: "Compute Shaders", desc: "GPU-accelerated simulation and procedural generation." },
-      { name: "VFX Graph", desc: "Complex particle systems and environmental effects." }
+      { name: "Shader Development", desc: "Custom HLSL shaders and PBR materials." },
+      { name: "Procedural Generation", desc: "Real-time generation of meshes, textures, and levels." },
+      { name: "Rendering Optimization", desc: "GPU-accelerated simulations and draw call reduction." }
     ],
-    tags: ["SHADERS", "GPU", "VFX"]
+    tags: ["SHADERS", "GPU", "OPTIMIZATION"]
   },
   {
-    title: "ARCHITECTURE",
+    title: "SYSTEM_ARCHITECTURE",
     icon: Terminal,
     skills: [
-      { name: "Tooling & Editor Exp", desc: "Creating custom inspectors and workflow utilities." },
-      { name: "CI/CD & DevOps", desc: "Automated build pipelines and unit testing suites." },
-      { name: "Native Plugins", desc: "C++/C# bridging for platform-specific functionality." }
+      { name: "Multiplayer Systems", desc: "Client/Server architecture using Photon Fusion." },
+      { name: "Tools Development", desc: "Custom level editors and workflow automation utilities." },
+      { name: "VR / AR Foundation", desc: "Immersive apps for Oculus, GearVR, and AR platforms." }
     ],
-    tags: ["TOOLS", "DEVOPS", "PLUGINS"]
+    tags: ["NETWORKING", "VR_AR", "TOOLS"]
+  },
+  {
+    title: "PLATFORMS_MASTERED",
+    icon: Monitor,
+    skills: [
+      { name: "PC (Steam)", desc: "Full lifecycle development for desktop releases." },
+      { name: "Mobile (iOS / Android)", desc: "Optimization for high-traffic mobile titles." },
+      { name: "WebGL / HTML5", desc: "Browser-based interactive experiences and simulations." }
+    ],
+    tags: ["PC", "MOBILE", "WEBGL"]
   }
 ];
 
 const timeline = [
-  { year: "2020 - PRESENT", role: "Senior Unity Architect", company: "Polyhedron Studios", active: true },
-  { year: "2016 - 2020", role: "Lead Gameplay Engineer", company: "Nexus VR Systems", active: false },
-  { year: "2012 - 2016", role: "Unity Developer", company: "IndieForge Games", active: false },
+  { year: "2025 - PRESENT", role: "Senior Unity Developer", company: "Limit Break", active: true },
+  { year: "2024 - 2025", role: "Senior Unity Developer", company: "SKR Games", active: false },
+  { year: "2023 - 2024", role: "Senior Unity Developer", company: "Playgendary", active: false },
+  { year: "2022 - 2023", role: "Lead Unity Developer", company: "GOAT Games Entertainment", active: false },
+  { year: "2019 - 2022", role: "Lead Unity Developer", company: "Iron Will", active: false },
+  { year: "2017 - 2019", role: "Senior Unity Developer", company: "Redox Entertainment", active: false },
+  { year: "2013 - 2017", role: "Unity Developer", company: "01Devs", active: false },
+  { year: "2013", role: "Junior Developer", company: "ITProlab", active: false },
 ];
 
 export default function TechStack() {
@@ -59,7 +74,7 @@ export default function TechStack() {
         </motion.div>
 
         {/* Bento Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-lg mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-lg mb-20">
           {bentoItems.map((item, i) => (
             <motion.div
               key={item.title}
@@ -110,7 +125,7 @@ export default function TechStack() {
             <div className="space-y-xl">
               {timeline.map((job, i) => (
                 <motion.div 
-                  key={job.year}
+                  key={`${job.company}-${job.year}`}
                   initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
