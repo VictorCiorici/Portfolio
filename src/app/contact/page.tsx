@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
-import { Send, Globe, Briefcase, MessageSquare, Download, CheckCircle2 } from "lucide-react";
+import { Send, Download, CheckCircle2 } from "lucide-react";
+import { profile } from "@/data/portfolio";
 
 export default function Contact() {
   return (
@@ -26,7 +27,7 @@ export default function Contact() {
           >
             <div className="glass-panel p-lg rounded-xl">
               <h2 className="text-label-caps text-on-tertiary-container mb-lg">TRANSMIT_DATA_PACKET</h2>
-              <form className="space-y-md" action="mailto:victor.ciorici@gmail.com" method="post" encType="text/plain">
+              <form className="space-y-md" action={`mailto:${profile.email}`} method="post" encType="text/plain">
                 <div>
                   <label className="block text-code-sm text-on-surface-variant mb-xs uppercase">SENDER_ID (NAME)</label>
                   <input 
@@ -62,11 +63,7 @@ export default function Contact() {
             </div>
 
             <div className="grid grid-cols-3 gap-md">
-              {[
-                { name: "LINKEDIN", icon: Briefcase, href: "https://www.linkedin.com/in/victor-c-478a7849" },
-                { name: "GITHUB", icon: Globe, href: "https://github.com/VictorCiorici" },
-                { name: "EMAIL", icon: MessageSquare, href: "mailto:victor.ciorici@gmail.com" },
-              ].map((social) => (
+              {profile.socials.map((social) => (
                 <a 
                   key={social.name} 
                   href={social.href}
@@ -93,15 +90,24 @@ export default function Contact() {
               
               <div className="relative z-10">
                 <div className="flex justify-between items-start mb-xl">
-                  <div>
-                    <h2 className="text-headline-md text-on-surface mb-xs uppercase tracking-tight">VICTOR_CIORICI_CV</h2>
-                    <div className="flex items-center gap-xs">
-                      <div className="w-2 h-2 rounded-full bg-primary-fixed-dim animate-pulse" />
-                      <span className="text-label-caps text-primary-fixed-dim text-[10px]">CURRENT_STATE: SENIOR_UNITY_DEVELOPER</span>
+                  <div className="flex items-center gap-lg">
+                    {profile.avatar && (
+                      <div className="w-16 h-16 rounded-lg overflow-hidden border border-outline-variant/30 shrink-0">
+                        <img src={profile.avatar} alt={profile.name} className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" />
+                      </div>
+                    )}
+                    <div>
+                      <h2 className="text-headline-md text-on-surface mb-xs uppercase tracking-tight">
+                        {profile.name.toUpperCase().replace(' ', '_')}_CV
+                      </h2>
+                      <div className="flex items-center gap-xs">
+                        <div className="w-2 h-2 rounded-full bg-primary-fixed-dim animate-pulse" />
+                        <span className="text-label-caps text-primary-fixed-dim text-[10px]">CURRENT_STATE: {profile.role.toUpperCase().replace(' ', '_')}</span>
+                      </div>
                     </div>
                   </div>
                   <a 
-                    href="/resume.pdf" 
+                    href={profile.resumePath} 
                     download
                     className="flex items-center gap-xs px-md py-sm border border-primary-fixed-dim text-primary-fixed-dim rounded font-label-caps hover:bg-primary-fixed-dim hover:text-on-primary transition-all no-underline"
                   >
@@ -152,7 +158,7 @@ export default function Contact() {
                         </div>
                         <div className="glass-panel p-md rounded bg-surface-container-high/50">
                           <div className="text-label-caps text-on-surface-variant mb-1">LOCATION_DATA</div>
-                          <div className="text-headline-sm text-on-surface uppercase">STRASENI, MD [GMT+2]</div>
+                          <div className="text-headline-sm text-on-surface uppercase">{profile.location}</div>
                         </div>
                       </div>
                     </div>

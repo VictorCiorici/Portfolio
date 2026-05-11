@@ -3,124 +3,82 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import PageLayout from "@/components/PageLayout";
-import { ExternalLink } from "lucide-react";
-
-const projects = [
-  {
-    id: "neon-synthesis",
-    name: "PROJECT_NEON_SYNTHESIS",
-    role: "Lead Gameplay Engineer",
-    description: "High-performance cybernetic simulation with DOTS-based entity management and custom SRP rendering.",
-    tags: ["HDRP", "C#", "DOTS"],
-    image: "https://lh3.googleusercontent.com/aida-public/AK-Wp2b-X-v-..." // Simplified for now
-  },
-  {
-    id: "node-weaver",
-    name: "PROJECT_NODE_WEAVER",
-    role: "Technical Architect",
-    description: "Node-based visual scripting engine for procedural world generation in Unity.",
-    tags: ["TOOLS", "C#", "EDITOR_EXT"],
-    image: "https://lh3.googleusercontent.com/aida-public/AK-Wp2b-X-v-..."
-  },
-  {
-    id: "aura-ar",
-    name: "PROJECT_AURA_AR",
-    role: "XR Speciallist",
-    description: "Location-based AR experience with advanced occlusion and real-time lighting estimation.",
-    tags: ["AR_FOUNDATION", "URP", "MOBILE"],
-    image: "https://lh3.googleusercontent.com/aida-public/AK-Wp2b-X-v-..."
-  },
-];
-
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-};
-
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0 }
-};
+import { ArrowUpRight } from "lucide-react";
+import { projects } from "@/data/portfolio";
 
 export default function Projects() {
   return (
     <PageLayout>
       <section className="py-xl">
-        <motion.h1 
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          className="text-display-lg text-on-surface mb-lg"
-        >
-          FIELD_DATA // <span className="text-primary-fixed-dim">PROJECTS</span>
-        </motion.h1>
-
-        {/* Filter Tabs - Placeholder for now */}
-        <div className="flex gap-sm mb-xl overflow-x-auto pb-2">
-          {["ALL_VECTORS", "PC/CONSOLE", "VR/AR", "TOOLS/PLUGINS"].map((tab, i) => (
-            <button 
-              key={tab}
-              className={`px-md py-xs rounded-default text-label-caps whitespace-nowrap transition-all ${
-                i === 0 ? "bg-primary-container text-on-primary-container tech-glow" : "bg-surface-container-high text-on-surface-variant hover:text-primary"
-              }`}
-            >
-              {tab}
-            </button>
-          ))}
-        </div>
-
         <motion.div 
-          variants={container}
-          initial="hidden"
-          animate="show"
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-xl"
         >
-          {projects.map((project) => (
-            <motion.div 
+          <h1 className="text-display-lg text-on-surface mb-xs uppercase">PROJECT_LOGS</h1>
+          <div className="text-label-caps text-primary-fixed-dim border-l-2 border-primary-fixed-dim pl-md">
+            MISSION_CRITICAL SYSTEMS & INTERACTIVE PRODUCTIONS
+          </div>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-xl">
+          {projects.map((project, i) => (
+            <motion.div
               key={project.id}
-              variants={item}
-              className="glass-panel rounded-xl overflow-hidden group hover:tech-glow transition-all"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.1 }}
+              viewport={{ once: true }}
+              className="group relative"
             >
-              <div className="h-48 bg-surface-container-highest relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-60 z-10" />
-                <motion.div 
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.4 }}
-                  className="w-full h-full bg-cover bg-center opacity-80"
-                  style={{ backgroundImage: `url(${project.image})` }}
-                />
-              </div>
-              <div className="p-lg">
-                <Link 
-                  href={`/projects/${project.id}`}
-                  className="text-headline-sm text-on-surface group-hover:text-primary-fixed-dim transition-colors mb-xs block no-underline"
-                >
-                  {project.name}
-                </Link>
-                <div className="text-code-sm text-outline mb-md uppercase tracking-wider">
-                  Role: {project.role}
+              <Link href={`/projects/${project.id}`} className="block no-underline">
+                <div className="relative aspect-video overflow-hidden rounded-xl border border-outline-variant/30 glass-panel">
+                  {/* Image with overlay */}
+                  <div 
+                    className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                    style={{ backgroundImage: `url(${project.image})` }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
+                  
+                  {/* Category Tag */}
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 bg-primary-container text-on-primary-container text-[10px] font-label-caps rounded-sm tech-edge">
+                      {project.category}
+                    </span>
+                  </div>
+
+                  {/* Corner Accent */}
+                  <div className="absolute bottom-0 right-0 p-lg opacity-0 group-hover:opacity-100 transition-all translate-y-4 group-hover:translate-y-0">
+                    <div className="w-10 h-10 bg-primary-fixed-dim rounded-full flex items-center justify-center text-on-primary shadow-lg tech-glow">
+                      <ArrowUpRight className="w-6 h-6" />
+                    </div>
+                  </div>
                 </div>
-                <p className="text-body-md text-on-surface-variant mb-lg line-clamp-2">
-                  {project.description}
-                </p>
-                <div className="pt-md border-t border-outline-variant/30 flex justify-between items-center">
-                  <div className="flex gap-xs">
+
+                <div className="mt-lg">
+                  <div className="flex gap-2 mb-sm">
                     {project.tags.map(tag => (
-                      <span key={tag} className="px-2 py-0.5 bg-surface-container-highest text-on-surface-variant text-[10px] font-label-caps rounded">
+                      <span key={tag} className="text-[9px] font-label-caps text-outline border border-outline/20 px-2 py-0.5 rounded">
                         {tag}
                       </span>
                     ))}
                   </div>
-                  <ExternalLink className="w-4 h-4 text-outline group-hover:text-primary-fixed-dim transition-colors" />
+                  <h3 className="text-headline-md text-on-surface group-hover:text-primary-fixed-dim transition-colors uppercase tracking-tight">
+                    {project.title}
+                  </h3>
+                  <div className="mt-md grid grid-cols-3 gap-sm border-t border-outline-variant/20 pt-md">
+                    {project.metrics.map(metric => (
+                      <div key={metric.label}>
+                        <div className="text-[9px] text-outline uppercase">{metric.label}</div>
+                        <div className="text-label-caps text-on-surface text-[10px]">{metric.value}</div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              </Link>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </section>
     </PageLayout>
   );

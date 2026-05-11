@@ -2,61 +2,7 @@
 
 import { motion } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
-import { Layers, Palette, Terminal, Cpu, Monitor, Zap } from "lucide-react";
-
-const bentoItems = [
-  {
-    title: "ENGINE_MASTERY",
-    icon: Layers,
-    skills: [
-      { name: "Unity 3D / 2D", desc: "Expert knowledge of Core, HDRP, and URP pipelines." },
-      { name: "C# / .NET", desc: "Advanced software architecture and design patterns." },
-      { name: "DOTS / ECS", desc: "Building scalable data-oriented systems for massive simulations." }
-    ],
-    tags: ["CORE", "RUNTIME", "DOTS"]
-  },
-  {
-    title: "GRAPHICS_PIPELINE",
-    icon: Palette,
-    skills: [
-      { name: "Shader Development", desc: "Custom HLSL shaders and PBR materials." },
-      { name: "Procedural Generation", desc: "Real-time generation of meshes, textures, and levels." },
-      { name: "Rendering Optimization", desc: "GPU-accelerated simulations and draw call reduction." }
-    ],
-    tags: ["SHADERS", "GPU", "OPTIMIZATION"]
-  },
-  {
-    title: "SYSTEM_ARCHITECTURE",
-    icon: Terminal,
-    skills: [
-      { name: "Multiplayer Systems", desc: "Client/Server architecture using Photon Fusion." },
-      { name: "Tools Development", desc: "Custom level editors and workflow automation utilities." },
-      { name: "VR / AR Foundation", desc: "Immersive apps for Oculus, GearVR, and AR platforms." }
-    ],
-    tags: ["NETWORKING", "VR_AR", "TOOLS"]
-  },
-  {
-    title: "PLATFORMS_MASTERED",
-    icon: Monitor,
-    skills: [
-      { name: "PC (Steam)", desc: "Full lifecycle development for desktop releases." },
-      { name: "Mobile (iOS / Android)", desc: "Optimization for high-traffic mobile titles." },
-      { name: "WebGL / HTML5", desc: "Browser-based interactive experiences and simulations." }
-    ],
-    tags: ["PC", "MOBILE", "WEBGL"]
-  }
-];
-
-const timeline = [
-  { year: "2025 - PRESENT", role: "Senior Unity Developer", company: "Limit Break", active: true },
-  { year: "2024 - 2025", role: "Senior Unity Developer", company: "SKR Games", active: false },
-  { year: "2023 - 2024", role: "Senior Unity Developer", company: "Playgendary", active: false },
-  { year: "2022 - 2023", role: "Lead Unity Developer", company: "GOAT Games Entertainment", active: false },
-  { year: "2019 - 2022", role: "Lead Unity Developer", company: "Iron Will", active: false },
-  { year: "2017 - 2019", role: "Senior Unity Developer", company: "Redox Entertainment", active: false },
-  { year: "2013 - 2017", role: "Unity Developer", company: "01Devs", active: false },
-  { year: "2013", role: "Junior Developer", company: "ITProlab", active: false },
-];
+import { bentoSkills, careerTimeline } from "@/data/portfolio";
 
 export default function TechStack() {
   return (
@@ -75,7 +21,7 @@ export default function TechStack() {
 
         {/* Bento Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-lg mb-20">
-          {bentoItems.map((item, i) => (
+          {bentoSkills.map((item, i) => (
             <motion.div
               key={item.title}
               initial={{ opacity: 0, scale: 0.95 }}
@@ -123,7 +69,7 @@ export default function TechStack() {
             <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary-fixed-dim via-outline-variant/30 to-transparent md:-translate-x-1/2" />
             
             <div className="space-y-xl">
-              {timeline.map((job, i) => (
+              {careerTimeline.map((job, i) => (
                 <motion.div 
                   key={`${job.company}-${job.year}`}
                   initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}

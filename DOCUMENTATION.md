@@ -537,8 +537,24 @@ npx -y serve -l 8080
 ```
 
 ### Deploying to Production
+### **6. Customization & Content Management**
+The entire site is designed to be easily customized by modifying a single data file. This separates the **Technical Architecture** (Next.js/React) from the **Professional Content** (Resume, Projects, Skills).
 
-Since the site is fully static HTML with CDN dependencies, it can be deployed to any static hosting:
+#### **Central Data Store**
+All site content is located in:
+`[src/data/portfolio.ts](file:///d:/Projects/Portfolio/src/data/portfolio.ts)`
+
+#### **How to Update:**
+1.  **Personal Info**: Modify the `profile` object (name, role, summary, email, etc.).
+2.  **Career History**: Add or edit entries in the `careerTimeline` array.
+3.  **Projects**: Add new projects to the `projects` array. Each project requires an `id`, `title`, `category`, `image` URL, and a list of `challenges` and `metrics`.
+4.  **Skills**: Update the `bentoSkills` array to change your technical dashboard.
+5.  **Resume**: Replace the PDF in `public/resume.pdf` or update the `resumePath` in the `profile` object.
+
+---
+
+### **7. Deployment**
+The site is ready for deployment on **Vercel** or **Netlify**.
 
 | Platform | Command / Method |
 |----------|-----------------|

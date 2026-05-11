@@ -2,137 +2,131 @@
 
 import { use } from "react";
 import { motion } from "framer-motion";
-import PageLayout from "@/components/PageLayout";
-import { PlayCircle, Code, AlertTriangle, CheckCircle2, ArrowLeft } from "lucide-react";
 import Link from "next/link";
-
-const projectData = {
-  "neon-synthesis": {
-    name: "PROJECT_NEON_SYNTHESIS",
-    role: "Lead Gameplay Engineer",
-    description: "A high-performance cybernetic simulation built to push the limits of Unity's Data-Oriented Technology Stack (DOTS). This project explores the intersection of massive-scale entity management and high-fidelity HDRP rendering.",
-    tags: ["HDRP", "C#", "DOTS", "COMPUTE_SHADERS"],
-    metrics: [
-      { value: "60FPS", label: "TARGET" },
-      { value: "-40%", label: "DRAW_CALLS" },
-      { value: "2ms", label: "GEN_TIME" },
-      { value: "4K", label: "TEXTURES" }
-    ],
-    challenges: [
-      { title: "Memory Management", desc: "Optimizing the memory footprint for over 100,000 active entities using custom Burst-compiled jobs." },
-      { title: "LOD Blending", desc: "Implementing a custom GPU-based LOD system to handle transition artifacts in high-density environments." },
-      { title: "Determinism", desc: "Ensuring frame-perfect determinism across networked clients for physics-critical interactions." }
-    ]
-  }
-};
+import PageLayout from "@/components/PageLayout";
+import { ArrowLeft, CheckCircle2, Cpu, Zap, Box } from "lucide-react";
+import { projects } from "@/data/portfolio";
+import { notFound } from "next/navigation";
 
 export default function ProjectDetail({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = use(params);
-  const project = projectData[id as keyof typeof projectData] || projectData["neon-synthesis"];
+  const resolvedParams = use(params);
+  const project = projects.find(p => p.id === resolvedParams.id);
+
+  if (!project) {
+    notFound();
+  }
 
   return (
     <PageLayout>
       <section className="py-xl">
-        <Link href="/projects" className="inline-flex items-center gap-xs text-label-caps text-outline hover:text-primary-fixed-dim transition-colors mb-lg group no-underline">
+        <Link 
+          href="/projects" 
+          className="inline-flex items-center gap-sm text-label-caps text-outline hover:text-primary-fixed-dim transition-colors mb-xl no-underline group"
+        >
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-          RETURN_TO_GALLERY
+          BACK_TO_PROJECT_LOGS
         </Link>
 
-        {/* Hero Banner */}
-        <div className="relative h-[400px] rounded-xl overflow-hidden mb-xl glass-panel group">
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent z-10" />
-          <div className="absolute inset-0 bg-[url('https://lh3.googleusercontent.com/aida-public/AK-Wp2b-X-v-')] bg-cover bg-center opacity-40 group-hover:scale-105 transition-transform duration-1000" />
-          
-          <div className="absolute bottom-0 left-0 p-xl z-20 max-w-3xl">
-            <div className="flex gap-sm mb-md">
-              {project.tags.map(tag => (
-                <span key={tag} className="px-2 py-0.5 bg-primary-container/20 border border-primary-container/30 text-primary-fixed-dim text-[10px] font-label-caps rounded">
-                  {tag}
-                </span>
-              ))}
-            </div>
-            <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-display-lg text-on-surface mb-md tech-glow"
-              style={{ textShadow: "0 0 15px rgba(0, 242, 255, 0.3)" }}
-            >
-              {project.name}
-            </motion.h1>
-            <div className="flex flex-wrap gap-md">
-              <button className="bg-primary-container text-on-primary-container font-label-caps px-lg py-sm rounded tech-edge tech-glow hover:bg-primary-fixed transition-all flex items-center gap-sm">
-                <PlayCircle className="w-5 h-5" />
-                WATCH_TRAILER
-              </button>
-              <button className="bg-transparent border border-outline/30 text-on-surface font-label-caps px-lg py-sm rounded hover:bg-surface-container-high transition-all flex items-center gap-sm">
-                <Code className="w-5 h-5" />
-                VIEW_CODE
-              </button>
-            </div>
-          </div>
-        </div>
-
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-xl">
-          {/* Main Content */}
-          <div className="lg:col-span-8 space-y-xl">
-            <div>
-              <h2 className="text-label-caps text-on-tertiary-container mb-lg border-b border-outline-variant/30 pb-xs">TECHNICAL_BRIEF</h2>
-              <p className="text-body-lg text-on-surface-variant leading-relaxed mb-xl">
-                {project.description}
-              </p>
-              
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-md">
-                {project.metrics.map(metric => (
-                  <div key={metric.label} className="glass-panel p-lg rounded-xl flex flex-col items-center justify-center text-center">
-                    <div className="text-headline-md text-primary-fixed-dim">{metric.value}</div>
-                    <div className="text-label-caps text-on-surface-variant text-[10px]">{metric.label}</div>
-                  </div>
+          {/* Main Info */}
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="lg:col-span-7"
+          >
+            <div className="mb-xl">
+              <span className="text-label-caps text-primary-fixed-dim mb-xs block tracking-widest">{project.category}</span>
+              <h1 className="text-display-md text-on-surface uppercase mb-md">{project.title}</h1>
+              <div className="flex gap-sm">
+                {project.tags.map(tag => (
+                  <span key={tag} className="px-3 py-1 bg-surface-container-high border border-outline-variant/30 rounded-sm text-code-sm text-on-surface-variant font-medium">
+                    {tag}
+                  </span>
                 ))}
               </div>
             </div>
 
-            <div>
-              <h2 className="text-label-caps text-on-tertiary-container mb-lg border-b border-outline-variant/30 pb-xs">VISUAL_SAMPLES</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-lg">
-                <div className="aspect-video glass-panel rounded-xl overflow-hidden relative group">
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-20 bg-background/60 backdrop-blur-sm">
-                    <div className="text-label-caps text-primary-fixed-dim">COMPUTE_NODE_GRAPH</div>
-                  </div>
-                  <div className="w-full h-full bg-surface-container-highest opacity-40 grid-bg" />
-                </div>
-                <div className="aspect-video glass-panel rounded-xl overflow-hidden relative group">
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-20 bg-background/60 backdrop-blur-sm">
-                    <div className="text-label-caps text-primary-fixed-dim">WIREFRAME_TOPOLOGY</div>
-                  </div>
-                  <div className="w-full h-full bg-surface-container-highest opacity-40 grid-bg" />
+            <div className="glass-panel p-lg rounded-xl mb-xl relative overflow-hidden group">
+              <div 
+                className="absolute inset-0 bg-cover bg-center opacity-40 grayscale group-hover:grayscale-0 transition-all duration-700"
+                style={{ backgroundImage: `url(${project.image})` }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent" />
+              <div className="relative z-10 aspect-video flex items-center justify-center">
+                <div className="text-label-caps text-on-surface opacity-40 border border-on-surface/20 px-xl py-lg rounded tech-edge backdrop-blur-md">
+                  RENDER_VIEWPORT_ACTIVE
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* Sidebar */}
-          <div className="lg:col-span-4">
-            <div className="glass-panel p-lg rounded-xl sticky top-[100px]">
-              <h2 className="text-label-caps text-on-tertiary-container mb-lg border-b border-outline-variant/30 pb-xs">KEY_CHALLENGES</h2>
+            <div className="space-y-xl">
+              <div>
+                <h2 className="text-headline-sm text-on-surface mb-md flex items-center gap-sm">
+                  <Cpu className="w-5 h-5 text-primary-fixed-dim" />
+                  TECHNICAL_CHALLENGES
+                </h2>
+                <div className="grid grid-cols-1 gap-md">
+                  {project.challenges.map((challenge, i) => (
+                    <div key={i} className="flex gap-md p-md glass-panel rounded-lg border-l-2 border-l-primary-fixed-dim">
+                      <div className="text-code-sm text-primary-fixed-dim font-bold">{String(i + 1).padStart(2, '0')}</div>
+                      <p className="text-body-md text-on-surface-variant">{challenge}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Sidebar Info */}
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="lg:col-span-5 space-y-lg"
+          >
+            <div className="glass-panel p-lg rounded-xl">
+              <h2 className="text-label-caps text-on-tertiary-container mb-lg border-b border-outline-variant/30 pb-xs">SYSTEM_METRICS</h2>
               <div className="space-y-lg">
-                {project.challenges.map((challenge, i) => (
-                  <div key={challenge.title} className="flex gap-md">
-                    <div className="mt-1">
-                      {i === 0 ? <AlertTriangle className="w-5 h-5 text-error" /> : <CheckCircle2 className="w-5 h-5 text-primary-fixed-dim" />}
-                    </div>
-                    <div>
-                      <h3 className="text-label-caps text-on-surface mb-xs">{challenge.title}</h3>
-                      <p className="text-code-sm text-on-surface-variant">{challenge.desc}</p>
+                {project.metrics.map(metric => (
+                  <div key={metric.label}>
+                    <div className="text-[10px] text-outline uppercase mb-1">{metric.label}</div>
+                    <div className="text-headline-sm text-on-surface uppercase tracking-tight">{metric.value}</div>
+                    <div className="h-1 w-full bg-surface-container-highest mt-2 rounded-full overflow-hidden">
+                      <motion.div 
+                        initial={{ width: 0 }}
+                        animate={{ width: "100%" }}
+                        transition={{ duration: 1.5, delay: 0.5 }}
+                        className="h-full bg-primary-fixed-dim"
+                      />
                     </div>
                   </div>
                 ))}
               </div>
-              
-              <div className="mt-xl p-md bg-surface-container-highest/30 border border-outline-variant/30 rounded italic text-code-sm text-outline">
-                "This project represents the current peak of our HDRP + DOTS optimization workflow."
+            </div>
+
+            <div className="glass-panel p-lg rounded-xl">
+              <h2 className="text-label-caps text-on-tertiary-container mb-lg border-b border-outline-variant/30 pb-xs">PRODUCTION_STACK</h2>
+              <div className="grid grid-cols-2 gap-md">
+                {[
+                  { icon: Zap, label: "BURST_COMPILER" },
+                  { icon: Box, label: "ECS_ENGINE" },
+                  { icon: Cpu, label: "SYSTEM_GRAPH" },
+                  { icon: CheckCircle2, label: "PRODUCTION_READY" }
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-sm p-sm bg-surface-container-high/50 rounded border border-outline-variant/20">
+                    <item.icon className="w-4 h-4 text-primary-fixed-dim" />
+                    <span className="text-[10px] font-label-caps text-on-surface-variant">{item.label}</span>
+                  </div>
+                ))}
               </div>
             </div>
-          </div>
+
+            <div className="glass-panel p-lg rounded-xl border-primary-fixed-dim/20">
+              <h2 className="text-label-caps text-primary-fixed-dim mb-md">MISSION_OBJECTIVE</h2>
+              <p className="text-body-sm text-on-surface-variant leading-relaxed">
+                Project status is verified as production-stable. Architecture adheres to high-performance data-oriented standards. Code is optimized for multi-threaded execution and minimal memory allocation.
+              </p>
+            </div>
+          </motion.div>
         </div>
       </section>
     </PageLayout>

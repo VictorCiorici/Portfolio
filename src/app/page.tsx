@@ -3,21 +3,8 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import PageLayout from "@/components/PageLayout";
-import { ArrowRight, Code2, Layers, Cpu, Box, Terminal, Zap } from "lucide-react";
-
-const stats = [
-  { value: "30+", label: "SHIPPED TITLES" },
-  { value: "60fps", label: "MINIMUM TARGET" },
-  { value: "8", label: "PLATFORMS MASTERED" },
-];
-
-const technologies = [
-  { name: "UNITY_CORE", icon: Layers },
-  { name: "DOTS_ECS", icon: Cpu },
-  { name: "XR_TOOLKIT", icon: Box },
-  { name: "C#_7.0+", icon: Terminal },
-  { name: "BURST_COMPILER", icon: Zap },
-];
+import { ArrowRight, Code2 } from "lucide-react";
+import { profile, stats, coreTechnologies } from "@/data/portfolio";
 
 export default function Home() {
   return (
@@ -89,9 +76,7 @@ public partial struct OptimizeRenderSystem : ISystem
             transition={{ delay: 0.3 }}
             className="text-body-lg text-on-surface-variant max-w-2xl leading-relaxed mb-xl border-l-2 border-outline-variant pl-md"
           >
-            Senior Unity Developer with 12+ years of expertise in the full development lifecycle—from 
-            concept and architecture to high-performance implementation. Specializing in gameplay systems, 
-            multiplayer architecture, and cross-platform optimization for PC, Mobile, and VR/AR.
+            {profile.summary}
           </motion.p>
           
           <div className="flex flex-col sm:flex-row gap-md">
@@ -113,45 +98,40 @@ public partial struct OptimizeRenderSystem : ISystem
         </motion.div>
       </section>
 
-      {/* Stats Section */}
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-md mb-xl">
-        {stats.map((stat, i) => (
-          <motion.div
-            key={stat.label}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
-            className="glass-panel p-lg rounded-xl hover:tech-glow transition-all group"
-          >
-            <div className="text-headline-md text-primary-fixed-dim mb-xs group-hover:scale-110 transition-transform origin-left">
-              {stat.value}
-            </div>
-            <div className="text-label-caps text-on-surface-variant">
-              {stat.label}
-            </div>
-          </motion.div>
-        ))}
+      {/* Stats Quick Grid */}
+      <section className="py-xl border-t border-outline-variant/30">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-lg">
+          {stats.map((stat, i) => (
+            <motion.div 
+              key={stat.label}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.1 }}
+              viewport={{ once: true }}
+              className="glass-panel p-lg rounded-xl flex flex-col items-center text-center group hover:tech-glow transition-all"
+            >
+              <div className="text-display-md text-primary-fixed-dim mb-xs group-hover:scale-110 transition-transform">
+                {stat.value}
+              </div>
+              <div className="text-label-caps text-on-surface-variant tracking-[0.2em]">
+                {stat.label}
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </section>
 
       {/* Tech Logo Bar */}
-      <motion.section 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 0.6 }}
-        className="py-xl border-t border-b border-outline-variant/20 mb-xl flex flex-col items-center"
-      >
-        <div className="text-label-caps text-on-tertiary-container mb-lg opacity-60">
-          TECHNOLOGIES DEPLOYED IN PRODUCTION
-        </div>
-        <div className="flex flex-wrap justify-center gap-xl">
-          {technologies.map((tech) => (
-            <div key={tech.name} className="flex items-center gap-xs text-on-surface opacity-60 hover:opacity-100 transition-opacity cursor-default">
-              <tech.icon className="w-8 h-8" />
-              <span className="text-headline-sm">{tech.name}</span>
+      <section className="py-lg border-t border-outline-variant/30 overflow-hidden">
+        <div className="flex items-center gap-xl animate-marquee grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all">
+          {[...coreTechnologies, ...coreTechnologies].map((tech, i) => (
+            <div key={`${tech.name}-${i}`} className="flex items-center gap-sm shrink-0">
+              <tech.icon className="w-6 h-6 text-on-surface" />
+              <span className="text-label-caps text-on-surface font-semibold tracking-widest">{tech.name}</span>
             </div>
           ))}
         </div>
-      </motion.section>
+      </section>
     </PageLayout>
   );
 }
