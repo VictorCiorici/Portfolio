@@ -55,49 +55,6 @@ export default function TechStack() {
           ))}
         </div>
 
-        {/* Timeline */}
-        <div className="max-w-4xl mx-auto">
-          <motion.h2 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="text-label-caps text-on-tertiary-container mb-xl text-center"
-          >
-            PROFESSIONAL_EVOLUTION
-          </motion.h2>
-          <div className="relative pl-8 md:pl-0">
-            {/* Vertical Line */}
-            <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary-fixed-dim via-outline-variant/30 to-transparent md:-translate-x-1/2" />
-            
-            <div className="space-y-xl">
-              {careerTimeline.map((job, i) => (
-                <motion.div 
-                  key={`${job.company}-${job.year}`}
-                  initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  className={`relative flex flex-col md:flex-row items-start md:items-center ${i % 2 === 0 ? "md:flex-row-reverse" : ""}`}
-                >
-                  {/* Timeline Dot */}
-                  <div className={`absolute left-4 md:left-1/2 w-3 h-3 rounded-full border-2 border-background z-10 md:-translate-x-1/2 transition-colors ${
-                    job.active ? "bg-primary-fixed-dim shadow-[0_0_10px_rgba(0,242,255,0.8)]" : "bg-outline-variant"
-                  }`} />
-                  
-                  {/* Content Card */}
-                  <div className={`w-full md:w-[45%] ${i % 2 === 0 ? "md:pl-12" : "md:pr-12"}`}>
-                    <div className="glass-panel p-lg rounded-xl hover:tech-glow transition-all">
-                      <div className="text-code-sm text-primary-fixed-dim mb-1">{job.year}</div>
-                      <h3 className="text-headline-sm text-on-surface mb-xs uppercase">{job.role}</h3>
-                      <div className="text-label-caps text-on-surface-variant opacity-70">{job.company}</div>
-                    </div>
-                  </div>
-                  
-                  {/* Empty Spacer for desktop */}
-                  <div className="hidden md:block w-[45%]" />
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
       </section>
     </PageLayout>
   );

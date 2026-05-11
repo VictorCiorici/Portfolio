@@ -8,6 +8,7 @@ import { profile } from "@/data/portfolio";
 
 const navLinks = [
   { name: "MANIFESTO", href: "/manifesto" },
+  { name: "EVOLUTION", href: "/evolution" },
   { name: "PROJECTS", href: "/projects" },
   { name: "TECH_STACK", href: "/tech-stack" },
   { name: "CONTACT", href: "/contact" },

@@ -546,7 +546,7 @@ All site content is located in:
 
 #### **How to Update:**
 1.  **Personal Info**: Modify the `profile` object (name, role, summary, email, etc.).
-2.  **Career History**: Add or edit entries in the `careerTimeline` array.
+2.  **Career History (Evolution)**: Add or edit entries in the `careerTimeline` array. These appear on the dedicated **Evolution** page.
 3.  **Projects**: Add new projects to the `projects` array. Each project requires an `id`, `title`, `category`, `image` URL, and a list of `challenges` and `metrics`.
 4.  **Skills**: Update the `bentoSkills` array to change your technical dashboard.
 5.  **Resume**: Replace the PDF in `public/resume.pdf` or update the `resumePath` in the `profile` object.
