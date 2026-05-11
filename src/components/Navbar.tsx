@@ -39,10 +39,14 @@ export default function Navbar() {
           {/* Nav Links */}
           <div className="hidden md:flex items-center gap-xl">
             {navLinks.map((link) => (
-              <Link 
-                key={link.name} 
+              <Link
+                key={link.name}
                 href={link.href}
-                className="relative text-label-caps text-on-surface-variant hover:text-primary-fixed-dim transition-colors no-underline group"
+                className={`relative text-label-caps tracking-[0.2em] transition-all duration-300 py-2 group ${
+                  pathname === link.href
+                    ? "text-primary-fixed-dim"
+                    : "text-on-surface-variant hover:text-on-surface"
+                }`}
               >
                 {link.name}
                 {pathname === link.href && (
