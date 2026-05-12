@@ -36,7 +36,7 @@ export default function ProjectsClient({ projects }: ProjectsClientProps) {
                 {/* Image with overlay */}
                 <div 
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                  style={{ backgroundImage: `url(${project.image})` }}
+                  style={{ backgroundImage: `url(/Portfolio${project.image})` }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
                 

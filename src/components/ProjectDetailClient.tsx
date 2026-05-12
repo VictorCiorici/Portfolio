@@ -51,7 +51,7 @@ export default function ProjectDetailClient({ id }: ProjectDetailClientProps) {
             <div className="glass-panel p-lg rounded-xl mb-xl relative overflow-hidden group">
               <div 
                 className="absolute inset-0 bg-cover bg-center opacity-40 grayscale group-hover:grayscale-0 transition-all duration-700"
-                style={{ backgroundImage: `url(${project.image})` }}
+                style={{ backgroundImage: `url(/Portfolio${project.image})` }}
               />
               <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent" />
               <div className="relative z-10 aspect-video flex items-center justify-center">

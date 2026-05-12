@@ -1,6 +1,6 @@
 # Senior Unity Developer // Technical Portfolio
 
-A premium, data-driven technical portfolio built with **Next.js 16**, **React 19**, and **Tailwind CSS 4**. Designed for high-performance visual storytelling, communicating 12+ years of expertise in Game Architecture, DOTS/ECS, and Immersive Tech.
+A premium, data-driven technical portfolio built with **Next.js 16**, **React 19**, and **Tailwind CSS 4**. Designed for high-performance visual storytelling.
 
 ## 🚀 Quick Start
 

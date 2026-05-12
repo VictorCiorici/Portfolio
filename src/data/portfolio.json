@@ -325,7 +325,7 @@
       "id": "moba-strike",
       "title": "MOBA Strike",
       "category": "Multiplayer MOBA",
-      "image": "/Portfolio/projects/moba-strike.png",
+      "image": "/projects/moba-strike.png",
       "tags": [
         "Unity",
         "Photon Fusion",
@@ -355,7 +355,7 @@
       "id": "zombie-slasher",
       "title": "Zombie Slasher: RPG",
       "category": "Mobile Survival RPG",
-      "image": "/Portfolio/projects/zombie-slasher.png",
+      "image": "/projects/zombie-slasher.png",
       "tags": [
         "Mobile",
         "Optimization",
@@ -385,7 +385,7 @@
       "id": "diy-projects",
       "title": "DIY Projects: Art Puzzle",
       "category": "Hyper-Casual Puzzle",
-      "image": "/Portfolio/projects/diy-projects.png",
+      "image": "/projects/diy-projects.png",
       "tags": [
         "Hyper-Casual",
         "Systems",
@@ -415,7 +415,7 @@
       "id": "space-maze-xr",
       "title": "Space Maze XR",
       "category": "Immersive VR",
-      "image": "/Portfolio/projects/space-maze.png",
+      "image": "/projects/space-maze.png",
       "tags": [
         "VR",
         "XR",
@@ -445,7 +445,7 @@
       "id": "cows-vs-vikings",
       "title": "Cows Vs Vikings",
       "category": "Strategy / Defense",
-      "image": "/Portfolio/projects/cows-vs-vikings.png",
+      "image": "/projects/cows-vs-vikings.png",
       "tags": [
         "PC",
         "Mobile",
