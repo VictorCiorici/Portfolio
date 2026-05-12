@@ -10,6 +10,11 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+# Future-proofing: Opt-in to Node.js 24 for JavaScript actions 
+# as Node.js 20 is scheduled for deprecation in late 2026.
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 permissions:
   contents: read
   pages: write
@@ -29,11 +34,11 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "24" # Upgraded from 20 to 24 for future-proofing
           cache: "npm"
 
       - name: Setup Pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v5 # Upgraded to v5 if available, or stays v4 with Node 24 opt-in
         with:
           static_site_generator: next
 
