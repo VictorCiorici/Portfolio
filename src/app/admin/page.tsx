@@ -50,7 +50,7 @@ export default function AdminPanel() {
 
   const fetchData = async () => {
     try {
-      const res = await fetch("/api/admin");
+      const res = await fetch("/Portfolio/api/admin");
       const json = await res.json();
       setData(json);
     } catch (err) {
@@ -70,7 +70,7 @@ export default function AdminPanel() {
     setSaving(true);
     setStatus(null);
     try {
-      const res = await fetch("/api/admin", {
+      const res = await fetch("/Portfolio/api/admin", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
@@ -95,7 +95,7 @@ export default function AdminPanel() {
     formData.append("type", type);
 
     try {
-      const res = await fetch("/api/admin/upload", {
+      const res = await fetch("/Portfolio/api/admin/upload", {
         method: "POST",
         body: formData
       });
@@ -123,10 +123,22 @@ export default function AdminPanel() {
     }
   };
 
-  if (loading) return (
+  if (loading && isDev) return (
     <PageLayout>
       <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="text-label-caps text-primary-fixed-dim animate-pulse">Initializing Admin...</div>
+        <div className="text-label-caps text-primary-fixed-dim animate-pulse uppercase tracking-[0.2em]">Initializing Admin Command Center...</div>
+      </div>
+    </PageLayout>
+  );
+
+  if (!isDev) return (
+    <PageLayout>
+      <div className="flex flex-col items-center justify-center min-h-[60vh] gap-lg">
+        <ShieldAlert className="w-16 h-16 text-error opacity-50" />
+        <div className="text-display-sm text-on-surface uppercase text-center">Security Access Denied</div>
+        <div className="text-label-caps text-on-surface-variant max-w-md text-center opacity-70">
+          The Admin Command Center is restricted to local development environments to prevent unauthorized filesystem writes.
+        </div>
       </div>
     </PageLayout>
   );
@@ -248,7 +260,7 @@ export default function AdminPanel() {
                   <label className="block text-code-sm text-outline mb-xs uppercase">Avatar Upload</label>
                   <div className="flex items-center gap-xl">
                     <img 
-                      src={data.profile.avatar} 
+                      src={data.profile.avatar.startsWith('http') ? data.profile.avatar : `/Portfolio${data.profile.avatar}`} 
                       alt="Avatar" 
                       className="w-24 h-24 rounded-full border-2 border-primary-fixed-dim object-cover"
                     />
@@ -644,7 +656,7 @@ export default function AdminPanel() {
                             <div className="flex gap-md">
                               <div className="w-24 h-16 bg-surface-container-high rounded border border-outline-variant/30 overflow-hidden shrink-0">
                                 {p.image ? (
-                                  <img src={p.image} className="w-full h-full object-cover" />
+                                  <img src={p.image.startsWith('http') ? p.image : `/Portfolio${p.image}`} className="w-full h-full object-cover" />
                                 ) : (
                                   <div className="w-full h-full flex items-center justify-center opacity-20"><Layers className="w-6 h-6" /></div>
                                 )}

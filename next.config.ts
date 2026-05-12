@@ -6,8 +6,9 @@ import type { NextConfig } from "next";
  */
 
 const nextConfig: NextConfig = {
-  // Enable static export for GitHub Pages compatibility
-  output: "export",
+  // Enable static export for GitHub Pages compatibility in production only
+  // This allows API routes to work during local development.
+  output: process.env.NODE_ENV === "production" ? "export" : undefined,
 
   // GitHub Pages usually hosts on https://<username>.github.io/<repo-name>/
   // We need to set the basePath to the repository name to ensure links work correctly.

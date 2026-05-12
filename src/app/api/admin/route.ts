@@ -3,7 +3,7 @@ import fs from "fs/promises";
 import path from "path";
 import { revalidatePath } from "next/cache";
 
-export const dynamic = "force-dynamic";
+// export const dynamic = "force-dynamic";
 
 /**
  * @file api/admin/route.ts

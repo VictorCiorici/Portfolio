@@ -186,12 +186,12 @@
       "role": "Senior Unity Developer",
       "company": "Limit Break",
       "active": false,
-      "description": "Developing UI systems and gameplay features for PC games using Unity.",
+      "description": "Led UI architecture and gameplay feature development for Puzzle Panic, ensuring high-fidelity visual consistency and modular system design.",
       "achievements": [
-        "Implemented modular UI components ensuring a responsive and polished player experience.",
-        "Developed core gameplay mechanics and tools for rapid feature iteration.",
-        "Collaborated with artists and designers to maintain visual consistency across UI assets.",
-        "Maintained high code quality through rigorous standards and code reviews."
+        "Implemented modular UI components for Puzzle Panic ensuring a responsive and polished player experience.",
+        "Developed core gameplay mechanics and internal tools for rapid feature iteration.",
+        "Collaborated with artists to maintain visual consistency across all UI assets.",
+        "Maintained high code quality through rigorous standards and peer code reviews."
       ]
     },
     {
@@ -199,12 +199,12 @@
       "role": "Senior Unity Developer",
       "company": "SKR Games",
       "active": false,
-      "description": "Developed and maintained gameplay systems for mobile games using Unity and C#.",
+      "description": "Architected and optimized gameplay systems for Zombie Slasher: Survival RPG, focusing on mobile performance and scalable RPG mechanics.",
       "achievements": [
-        "Implemented core gameplay mechanics, UI systems, and gameplay features.",
-        "Optimized game performance through profiling and refactoring for various mobile devices.",
-        "Integrated third-party SDKs including analytics and platform services.",
-        "Investigated and resolved complex bugs while maintaining stable builds."
+        "Developed core gameplay mechanics, UI systems, and feature sets for Zombie Slasher.",
+        "Optimized game performance through deep profiling and refactoring for a wide range of mobile devices.",
+        "Integrated critical third-party SDKs including analytics and platform-specific services.",
+        "Investigated and resolved complex concurrency and memory bugs."
       ]
     },
     {
@@ -212,7 +212,7 @@
       "role": "Founder & Principal Software Engineer",
       "company": "Conquer Virtue",
       "active": false,
-      "description": "",
+      "description": "Consulting on high-performance Unity architectures and custom tool development.",
       "achievements": []
     },
     {
@@ -220,12 +220,12 @@
       "role": "Senior Unity Developer",
       "company": "Playgendary",
       "active": false,
-      "description": "Core gameplay engineering for high-traffic mobile titles.",
+      "description": "Core gameplay engineering for DIY Projects - Art Puzzle Game, optimizing for millions of active users.",
       "achievements": [
-        "Improved game performance through profiling and optimization of system bottlenecks.",
-        "Collaborated with artists and animators to integrate and optimize visual assets.",
-        "Contributed to live game updates, feature development, and bug fixes.",
-        "Reduced development time by improving code quality and refactoring systems."
+        "Significantly improved game performance through profiling and optimization of critical bottlenecks.",
+        "Collaborated with artists and animators to integrate high-quality visual assets into the DIY Projects pipeline.",
+        "Contributed to live game updates, feature development, and rapid bug resolution.",
+        "Reduced development overhead by improving system modularity and refactoring legacy code."
       ]
     },
     {
@@ -233,12 +233,12 @@
       "role": "Lead Unity Developer",
       "company": "GOAT Games Entertainment",
       "active": false,
-      "description": "Leading development of PC games for Steam using Unity.",
+      "description": "Leading technical direction for a high-performance PC MOBA prototype using Photon Fusion.",
       "achievements": [
-        "Established coding standards to maintain consistent code quality.",
-        "Mentored junior developers and supported team collaboration.",
-        "Diagnosed and resolved complex technical issues while maintaining performance.",
-        "Reported development progress and technical updates to stakeholders."
+        "Established company-wide coding standards to maintain long-term technical debt control.",
+        "Mentored junior developers and fostered a culture of technical excellence.",
+        "Diagnosed and resolved complex architectural issues while maintaining target performance.",
+        "Architected networked gameplay systems with deterministic state synchronization."
       ]
     },
     {
@@ -246,12 +246,12 @@
       "role": "Lead Unity Developer",
       "company": "Iron Will",
       "active": false,
-      "description": "Developing AR/VR applications and multiplayer prototypes.",
+      "description": "Developing large-scale multiplayer prototypes and immersive AR/VR applications.",
       "achievements": [
-        "Participated in development of a MOBA prototype until MVP stage.",
-        "Implemented multiplayer systems using Photon Fusion.",
-        "Designed scalable architecture for complex gameplay systems.",
-        "Implemented performance-critical systems for real-time applications."
+        "Participated in development of a MOBA prototype until the MVP stage.",
+        "Implemented robust multiplayer systems using Photon Fusion and server-authoritative logic.",
+        "Designed scalable architecture for complex interactive gameplay systems.",
+        "Implemented performance-critical XR systems for real-time applications."
       ]
     },
     {
@@ -259,12 +259,12 @@
       "role": "Senior Unity Developer",
       "company": "Redox Entertainment",
       "active": false,
-      "description": "Specialized in XR development and cross-platform optimization.",
+      "description": "Specialized in XR development for Space Maze: Beyond Infinity and custom VR industrial simulations.",
       "achievements": [
-        "Implemented VR and AR solutions for platforms including GearVR and Oculus Rift.",
-        "Optimized performance for VR and WebGL deployments.",
-        "Developed internal tools and technical tools to support development workflows.",
-        "Implemented integrations with external APIs and custom shaders."
+        "Implemented VR and AR solutions for Space Maze and virtual tourism experiences (Moldavian Wines VR).",
+        "Optimized performance for GearVR and Oculus Rift deployments hitting stable 90FPS.",
+        "Developed custom internal tools and shaders to streamline the XR content pipeline.",
+        "Implemented integrations with external data APIs and custom HLSL shaders."
       ]
     },
     {
@@ -272,12 +272,12 @@
       "role": "Unity Developer",
       "company": "01Devs",
       "active": false,
-      "description": "Full-stack game development from concept to launch on PC and Mobile.",
+      "description": "Full-stack game development for Cows Vs Vikings and other multi-platform titles.",
       "achievements": [
-        "Developed multiple Unity games from concept to deployment.",
-        "Built custom level editors and development tools.",
-        "Implemented systems for achievements, leaderboards, and encrypted save data.",
-        "Developed real-time procedural generation systems for meshes, textures, and levels."
+        "Developed Cows Vs Vikings from conceptual prototype to final deployment.",
+        "Built comprehensive level editors and procedural generation tools.",
+        "Implemented encrypted save systems, global leaderboards, and achievement frameworks.",
+        "Developed real-time procedural generation systems for dynamic environments."
       ]
     },
     {
@@ -289,7 +289,7 @@
       "achievements": [
         "Contributed to development of a large enterprise project using Silverlight.",
         "Worked with large MySQL databases to improve performance and reliability.",
-        "Implemented a search engine solution that significantly reduced database query time.",
+        "Implemented a search engine solution that significantly reduced database query latency.",
         "Developed bug fixes and system improvements for future releases."
       ]
     }
@@ -322,10 +322,10 @@
   },
   "projects": [
     {
-      "id": "moba-prototype",
+      "id": "moba-strike",
       "title": "MOBA Strike",
       "category": "Multiplayer MOBA",
-      "image": "https://images.unsplash.com/photo-1614728263952-84ea256f9679?auto=format&fit=crop&q=80&w=1200",
+      "image": "/Portfolio/projects/moba-strike.png",
       "tags": [
         "Unity",
         "Photon Fusion",
@@ -346,69 +346,129 @@
         }
       ],
       "challenges": [
-        "Implementing deterministic lockstep-style networking in a fast-paced MOBA environment.",
-        "Designing scalable architecture for complex gameplay systems and hero abilities.",
-        "Optimizing performance-critical systems for real-time competitive play."
+        "Implementing deterministic lockstep-style networking in a fast-paced competitive environment.",
+        "Designing a modular hero ability system with server-authoritative verification.",
+        "Optimizing networked physics for low-latency player interactions."
       ]
     },
     {
-      "id": "xr-void-runner",
-      "title": "Void Runner XR",
-      "category": "Immersive VR/AR",
-      "image": "https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?auto=format&fit=crop&q=80&w=1200",
+      "id": "zombie-slasher",
+      "title": "Zombie Slasher: RPG",
+      "category": "Mobile Survival RPG",
+      "image": "/Portfolio/projects/zombie-slasher.png",
       "tags": [
-        "VR",
-        "AR",
-        "Quest/Rift"
+        "Mobile",
+        "Optimization",
+        "RPG"
       ],
       "metrics": [
         {
-          "label": "Performance",
-          "value": "90fps Stable"
+          "label": "Retention",
+          "value": "High Traffic"
         },
         {
           "label": "Platforms",
-          "value": "Quest / Rift"
+          "value": "iOS / Android"
         },
         {
-          "label": "Tech",
-          "value": "Custom Shaders"
+          "label": "Perf",
+          "value": "Stable 60fps"
         }
       ],
       "challenges": [
-        "Maintaining high-fidelity PBR rendering while hitting 90FPS on mobile XR hardware.",
-        "Developing cross-platform XR solutions for GearVR, Oculus Rift, and Quest.",
-        "Optimizing WebGL and VR deployments for minimal latency and maximum immersion."
+        "Developing scalable RPG attribute and inventory systems for high-traffic mobile play.",
+        "Profiling and refactoring core gameplay loops to ensure stability across low-end devices.",
+        "Integrating analytics and monetization SDKs without compromising performance."
       ]
     },
     {
-      "id": "nexus-editor-tools",
-      "title": "Nexus Workflow Tools",
-      "category": "Editor & Pipeline",
-      "image": "https://images.unsplash.com/photo-1587620962725-abab7fe55159?auto=format&fit=crop&q=80&w=1200",
+      "id": "diy-projects",
+      "title": "DIY Projects: Art Puzzle",
+      "category": "Hyper-Casual Puzzle",
+      "image": "/Portfolio/projects/diy-projects.png",
       "tags": [
-        "C#",
-        "Tools",
-        "Procedural"
+        "Hyper-Casual",
+        "Systems",
+        "Mobile"
       ],
       "metrics": [
         {
-          "label": "Efficiency",
-          "value": "Reduced Iteration"
+          "label": "Scale",
+          "value": "Millions of Users"
         },
         {
-          "label": "Systems",
-          "value": "Procedural Gen"
+          "label": "Animation",
+          "value": "Procedural"
         },
         {
-          "label": "Utility",
-          "value": "Custom Editors"
+          "label": "Pipeline",
+          "value": "Visual Asset Gen"
         }
       ],
       "challenges": [
-        "Architecting custom level editors and development tools to streamline designer workflows.",
-        "Implementing real-time procedural generation for meshes, textures, and environments.",
-        "Integrating complex third-party SDKs (Facebook, Analytics, IAP) into a unified pipeline."
+        "Optimizing art asset pipelines to support a massive variety of puzzle configurations.",
+        "Refactoring legacy gameplay code to improve system modularity and iteration speed.",
+        "Implementing high-performance procedural animations for tactile puzzle interactions."
+      ]
+    },
+    {
+      "id": "space-maze-xr",
+      "title": "Space Maze XR",
+      "category": "Immersive VR",
+      "image": "/Portfolio/projects/space-maze.png",
+      "tags": [
+        "VR",
+        "XR",
+        "Custom Shaders"
+      ],
+      "metrics": [
+        {
+          "label": "Frame Rate",
+          "value": "90fps Stable"
+        },
+        {
+          "label": "Tech",
+          "value": "HLSL Shaders"
+        },
+        {
+          "label": "Immersion",
+          "value": "6DOF"
+        }
+      ],
+      "challenges": [
+        "Achieving stable 90FPS on mobile VR hardware using custom optimized shaders.",
+        "Designing intuitive VR interaction systems for complex space navigation.",
+        "Implementing a custom rendering pipeline optimized for dual-eye rendering."
+      ]
+    },
+    {
+      "id": "cows-vs-vikings",
+      "title": "Cows Vs Vikings",
+      "category": "Strategy / Defense",
+      "image": "/Portfolio/projects/cows-vs-vikings.png",
+      "tags": [
+        "PC",
+        "Mobile",
+        "Editor Tools"
+      ],
+      "metrics": [
+        {
+          "label": "Workflow",
+          "value": "Custom Editors"
+        },
+        {
+          "label": "Gen",
+          "value": "Procedural Levels"
+        },
+        {
+          "label": "Security",
+          "value": "Encrypted Saves"
+        }
+      ],
+      "challenges": [
+        "Developing a custom level editor and procedural generation systems from scratch.",
+        "Implementing a secure save data system with cross-platform synchronization.",
+        "Architecting a flexible AI state machine for diverse unit behaviors."
       ]
     }
   ]
