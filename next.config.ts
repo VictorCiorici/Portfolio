@@ -6,7 +6,12 @@ import type { NextConfig } from "next";
  */
 
 const nextConfig: NextConfig = {
+  // Enable static export for GitHub Pages compatibility
+  output: "export",
+
+  // Disable image optimization as GitHub Pages doesn't support the Next.js image API
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",
@@ -18,6 +23,9 @@ const nextConfig: NextConfig = {
       }
     ],
   },
+
+  // Ensure trailing slashes for cleaner static URLs and to avoid 404s on refresh
+  trailingSlash: true,
 };
 
 export default nextConfig;

@@ -4,8 +4,6 @@ import { getFreshPortfolioData } from "@/data/server-data";
 import portfolioData from "@/data/portfolio.json";
 import TechStackClient from "@/components/TechStackClient";
 
-export const dynamic = "force-dynamic";
-
 export default async function TechStack() {
   const data = getFreshPortfolioData(portfolioData, processData);
   
