@@ -21,6 +21,8 @@ export default function ContactClient({ data }: ContactClientProps) {
   const activeJob = careerTimeline.find((job: any) => job.active);
   const [timestamp, setTimestamp] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     // Set timestamp after mount to avoid hydration mismatch
@@ -37,20 +39,35 @@ export default function ContactClient({ data }: ContactClientProps) {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitting(true);
+    setError("");
     
     const formData = new FormData(e.currentTarget);
-    const name = formData.get("name");
-    const email = formData.get("email");
-    const message = formData.get("message");
+    const name = formData.get("name")?.toString().trim();
+    const email = formData.get("email")?.toString().trim();
+    const message = formData.get("message")?.toString().trim();
+    
+    if (!name || !email || !message) {
+      setError("Please fill in all fields.");
+      return;
+    }
+
+    setIsSubmitting(true);
     
     const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
     const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
     
-    // Use location.assign to trigger mailto without navigating away or opening blank tabs
-    window.location.assign(`mailto:${profile.email}?subject=${subject}&body=${body}`);
+    // Create a temporary link and click it to trigger mailto
+    // This is more robust than window.location.assign in some environments
+    const mailtoLink = document.createElement("a");
+    mailtoLink.href = `mailto:${profile.email}?subject=${subject}&body=${body}`;
+    mailtoLink.click();
     
-    setTimeout(() => setIsSubmitting(false), 2000);
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setIsSuccess(true);
+      // Reset success state after a while
+      setTimeout(() => setIsSuccess(false), 5000);
+    }, 1000);
   };
 
   return (
@@ -92,14 +109,39 @@ export default function ContactClient({ data }: ContactClientProps) {
                 className="w-full bg-surface-container-high border border-outline-variant/30 rounded px-md py-sm text-on-surface focus:outline-none focus:border-primary-fixed-dim focus:tech-glow transition-all placeholder:text-outline/30 resize-none"
               />
             </div>
+            {error && (
+              <motion.div 
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="text-error text-[11px] font-medium uppercase tracking-wider"
+              >
+                {error}
+              </motion.div>
+            )}
+
             <button 
               type="submit" 
-              disabled={isSubmitting}
-              className="w-full bg-primary-container text-on-primary-container font-label-caps py-md rounded tech-edge hover:bg-primary-fixed transition-all flex items-center justify-center gap-sm group disabled:opacity-50 disabled:cursor-not-allowed"
+              disabled={isSubmitting || isSuccess}
+              className={`w-full font-label-caps py-md rounded tech-edge transition-all flex items-center justify-center gap-sm group disabled:cursor-not-allowed ${
+                isSuccess 
+                  ? "bg-primary-fixed text-on-primary" 
+                  : "bg-primary-container text-on-primary-container hover:bg-primary-fixed"
+              }`}
             >
-              {isSubmitting ? "Preparing..." : "Send Message"}
-              {!isSubmitting && <Send className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />}
+              {isSubmitting ? "Opening Mail Client..." : isSuccess ? "Mail Client Triggered!" : "Send Message"}
+              {!isSubmitting && !isSuccess && <Send className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />}
+              {isSuccess && <CheckCircle2 className="w-4 h-4" />}
             </button>
+
+            {isSuccess && (
+              <motion.p 
+                initial={{ opacity: 0, y: 5 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-[11px] text-center text-on-surface-variant opacity-80"
+              >
+                Your mail client should have opened with a pre-filled message.
+              </motion.p>
+            )}
           </form>
         </div>
 
@@ -107,18 +149,39 @@ export default function ContactClient({ data }: ContactClientProps) {
           {profile.socials.map((social: any) => {
             const Icon = getIcon(social.iconName);
             const isEmail = social.name.toUpperCase() === "EMAIL";
+            
+            const handleClick = (e: React.MouseEvent) => {
+              if (isEmail) {
+                // For email, we trigger the mailto but also copy to clipboard
+                // to ensure the user has the address if the mail client fails.
+                navigator.clipboard.writeText(profile.email);
+                setIsSuccess(true);
+                setTimeout(() => setIsSuccess(false), 3000);
+              }
+            };
+
             const linkProps = isEmail 
-              ? { href: social.href } 
+              ? { href: social.href, onClick: handleClick } 
               : { href: social.href, target: "_blank", rel: "noopener noreferrer" };
 
             return (
               <a 
                 key={social.name} 
                 {...linkProps}
-                className="glass-panel p-md rounded-xl flex flex-col items-center gap-sm hover:text-primary-fixed-dim transition-colors group no-underline"
+                title={isEmail ? "Click to open mail client & copy address" : `Visit ${social.name}`}
+                className="glass-panel p-md rounded-xl flex flex-col items-center gap-sm hover:text-primary-fixed-dim transition-colors group no-underline relative overflow-hidden"
               >
                 <Icon className="w-6 h-6 opacity-60 group-hover:opacity-100 transition-opacity" />
                 <span className="text-[10px] font-label-caps">{social.name}</span>
+                {isEmail && isSuccess && (
+                  <motion.div 
+                    initial={{ y: 20 }}
+                    animate={{ y: 0 }}
+                    className="absolute inset-0 bg-primary-fixed text-on-primary flex items-center justify-center text-[8px] font-bold uppercase"
+                  >
+                    Copied!
+                  </motion.div>
+                )}
               </a>
             );
           })}
