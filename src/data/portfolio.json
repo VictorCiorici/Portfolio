@@ -25,7 +25,7 @@
   },
   "profile": {
     "name": "Victor Ciorici",
-    "role": "Lead/Senior Unity Developer",
+    "role": "Lead / Senior Unity Developer",
     "location": "Chisinau, Moldova",
     "email": "victor.ciorici@gmail.com",
     "phone": "+373 69496288",
@@ -206,6 +206,14 @@
         "Integrated third-party SDKs including analytics and platform services.",
         "Investigated and resolved complex bugs while maintaining stable builds."
       ]
+    },
+    {
+      "year": "2024 - Present",
+      "role": "Founder & Principal Software Engineer",
+      "company": "Conquer Virtue",
+      "active": false,
+      "description": "",
+      "achievements": []
     },
     {
       "year": "2023 - 2024",
