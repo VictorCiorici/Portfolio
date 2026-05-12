@@ -9,6 +9,11 @@ const nextConfig: NextConfig = {
   // Enable static export for GitHub Pages compatibility
   output: "export",
 
+  // GitHub Pages usually hosts on https://<username>.github.io/<repo-name>/
+  // We need to set the basePath to the repository name to ensure links work correctly.
+  basePath: "/Portfolio",
+  assetPrefix: "/Portfolio",
+
   // Disable image optimization as GitHub Pages doesn't support the Next.js image API
   images: {
     unoptimized: true,

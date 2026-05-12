@@ -27,6 +27,14 @@ export default function ContactClient({ data }: ContactClientProps) {
     setTimestamp(`?v=${Date.now()}`);
   }, []);
 
+  const resumePath = (profile.resumePath || "/resume.pdf").startsWith("http")
+    ? profile.resumePath
+    : `/Portfolio${profile.resumePath || "/resume.pdf"}`;
+
+  const avatarPath = (profile.avatar || "/avatar.gif").startsWith("http")
+    ? profile.avatar
+    : `/Portfolio${profile.avatar || "/avatar.gif"}`;
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -132,7 +140,7 @@ export default function ContactClient({ data }: ContactClientProps) {
               <div className="flex items-center gap-lg">
                 {profile.avatar && (
                   <div className="w-16 h-16 rounded-lg overflow-hidden border border-outline-variant/30 shrink-0">
-                    <img src={profile.avatar} alt={profile.name} className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" />
+                    <img src={avatarPath} alt={profile.name} className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" />
                   </div>
                 )}
                 <div>
@@ -146,7 +154,7 @@ export default function ContactClient({ data }: ContactClientProps) {
                 </div>
               </div>
               <a 
-                href={`${profile.resumePath}${timestamp}`} 
+                href={`${resumePath}${timestamp}`} 
                 download={`Resume_${profile.name.replace(' ', '_')}.pdf`}
                 className="flex items-center gap-xs px-md py-sm border border-primary-fixed-dim text-primary-fixed-dim rounded font-label-caps hover:bg-primary-fixed-dim hover:text-on-primary transition-all no-underline"
               >

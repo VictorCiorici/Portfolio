@@ -22,8 +22,14 @@ export default function Navbar({ profileData }: NavbarProps) {
   const pathname = usePathname();
   
   // Use profileData from props if available, otherwise fallback (for safety)
-  const resumePath = profileData?.resumePath || "/resume.pdf";
-  const avatar = profileData?.avatar || "/avatar.gif";
+  const resumePath = (profileData?.resumePath || "/resume.pdf").startsWith("http") 
+    ? profileData?.resumePath 
+    : `/Portfolio${profileData?.resumePath || "/resume.pdf"}`;
+    
+  const avatar = (profileData?.avatar || "/avatar.gif").startsWith("http")
+    ? profileData?.avatar
+    : `/Portfolio${profileData?.avatar || "/avatar.gif"}`;
+
   const name = profileData?.name || "Victor Ciorici";
   const role = profileData?.role || "Senior Unity Developer";
 
