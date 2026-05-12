@@ -136,10 +136,20 @@ export default function Navbar({ profileData }: NavbarProps) {
             initial={{ opacity: 0, x: "100%" }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
-            transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed inset-0 z-[55] bg-background/95 backdrop-blur-xl md:hidden"
+            transition={{ type: "spring", damping: 30, stiffness: 300 }}
+            className="fixed inset-0 z-[55] bg-[#0a0c10] md:hidden flex flex-col items-center justify-center w-screen h-screen overflow-hidden"
           >
-            <div className="flex flex-col items-center justify-center h-full gap-xl">
+            {/* Grid Pattern for Technical Feel */}
+            <div className="absolute inset-0 opacity-5 pointer-events-none" 
+                 style={{ backgroundImage: 'linear-gradient(#00f2ff 1px, transparent 1px), linear-gradient(90deg, #00f2ff 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+            
+            {/* Design Accents */}
+            <div className="absolute inset-0 opacity-20 pointer-events-none">
+              <div className="absolute top-0 right-0 w-80 h-80 bg-primary-fixed-dim blur-[120px] rounded-full" />
+              <div className="absolute bottom-0 left-0 w-80 h-80 bg-surface-tint blur-[120px] rounded-full" />
+            </div>
+
+            <div className="relative z-10 flex flex-col items-center justify-center w-full px-xl gap-xl">
               {navLinks.map((link, i) => (
                 <motion.div
                   key={link.name}
@@ -149,8 +159,8 @@ export default function Navbar({ profileData }: NavbarProps) {
                 >
                   <Link
                     href={link.href}
-                    className={`text-display-sm uppercase tracking-[0.2em] no-underline ${
-                      pathname === link.href ? "text-primary-fixed-dim" : "text-on-surface-variant"
+                    className={`text-display-md uppercase tracking-[0.2em] no-underline transition-colors ${
+                      pathname === `/Portfolio${link.href}` || pathname === link.href ? "text-primary-fixed-dim" : "text-on-surface hover:text-primary-fixed-dim"
                     }`}
                   >
                     {link.name}
