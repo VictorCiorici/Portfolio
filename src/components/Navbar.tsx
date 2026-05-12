@@ -26,7 +26,9 @@ export default function Navbar({ profileData }: NavbarProps) {
   const name = profileData?.name || "Victor Ciorici";
 
   const [timestamp, setTimestamp] = useState("");
+  
   useEffect(() => {
+    // Set timestamp after mount to avoid hydration mismatch
     setTimestamp(`?v=${Date.now()}`);
   }, []);
 

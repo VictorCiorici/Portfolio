@@ -1,5 +1,7 @@
 import * as Icons from "lucide-react";
 import portfolioData from "./portfolio.json";
+import fs from "fs";
+import path from "path";
 
 // Helper to map icon names to components (safe for both client and server)
 export const getIcon = (name: string) => {
@@ -22,13 +24,12 @@ export function getPortfolioData() {
   // If we're on the server, try to read the file directly
   if (typeof window === "undefined") {
     try {
-      const fs = require("fs");
-      const path = require("path");
       const filePath = path.join(process.cwd(), "src/data/portfolio.json");
-      const fileContent = fs.readFileSync(filePath, "utf-8");
-      const data = JSON.parse(fileContent);
-
-      return processData(data);
+      if (fs.existsSync(filePath)) {
+        const fileContent = fs.readFileSync(filePath, "utf-8");
+        const data = JSON.parse(fileContent);
+        return processData(data);
+      }
     } catch (error) {
       console.warn("Failed to read portfolio.json from disk, falling back to bundled data.");
     }
@@ -66,10 +67,11 @@ function processData(data: any) {
 }
 
 // Keep legacy exports for client components (now serializable)
-export const profile = processData(portfolioData).profile;
-export const stats = processData(portfolioData).stats;
-export const coreTechnologies = processData(portfolioData).coreTechnologies;
-export const bentoSkills = processData(portfolioData).bentoSkills;
-export const careerTimeline = processData(portfolioData).careerTimeline;
-export const manifesto = processData(portfolioData).manifesto;
-export const projects = processData(portfolioData).projects;
+const processed = processData(portfolioData);
+export const profile = processed.profile;
+export const stats = processed.stats;
+export const coreTechnologies = processed.coreTechnologies;
+export const bentoSkills = processed.bentoSkills;
+export const careerTimeline = processed.careerTimeline;
+export const manifesto = processed.manifesto;
+export const projects = processed.projects;

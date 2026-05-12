@@ -15,14 +15,11 @@ import {
   Layers,
   History,
   MessageSquare,
-  Settings,
   Database,
   Upload,
   FileText,
-  User,
   AtSign,
-  Phone,
-  Link as LinkIcon
+  Phone
 } from "lucide-react";
 import PageLayout from "@/components/PageLayout";
 
@@ -38,16 +35,6 @@ export default function AdminPanel() {
 
   // Security check: Only allow in development
   const isDev = process.env.NODE_ENV === "development";
-  
-  useEffect(() => {
-    if (isDev) {
-      fetchData();
-    }
-  }, [isDev]);
-
-  if (!isDev) {
-    return notFound();
-  }
 
   const fetchData = async () => {
     try {
@@ -60,6 +47,12 @@ export default function AdminPanel() {
       setLoading(false);
     }
   };
+  
+  useEffect(() => {
+    if (isDev) {
+      fetchData();
+    }
+  }, [isDev]);
 
   const handleSave = async () => {
     setSaving(true);

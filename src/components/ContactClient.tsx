@@ -6,7 +6,14 @@ import { Send, Download, CheckCircle2 } from "lucide-react";
 import { getIcon } from "@/data/portfolio";
 
 interface ContactClientProps {
-  data: any;
+  data: {
+    profile: any;
+    careerTimeline: any[];
+    contactSpecs: {
+      coreCompetencies: string[];
+      professionalSpecs: string[];
+    };
+  };
 }
 
 export default function ContactClient({ data }: ContactClientProps) {
@@ -16,6 +23,7 @@ export default function ContactClient({ data }: ContactClientProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
+    // Set timestamp after mount to avoid hydration mismatch
     setTimestamp(`?v=${Date.now()}`);
   }, []);
 
