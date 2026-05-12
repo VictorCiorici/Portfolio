@@ -38,10 +38,10 @@ export default function ProjectDetailClient({ id }: ProjectDetailClientProps) {
           >
             <div className="mb-xl">
               <span className="text-label-caps text-primary-fixed-dim mb-xs block tracking-widest">{project.category}</span>
-              <h1 className="text-display-md text-on-surface uppercase mb-md">{project.title}</h1>
-              <div className="flex gap-sm">
+              <h1 className="text-display-sm sm:text-display-md text-on-surface uppercase mb-md">{project.title}</h1>
+              <div className="flex flex-wrap gap-sm">
                 {project.tags.map(tag => (
-                  <span key={tag} className="px-3 py-1 bg-surface-container-high border border-outline-variant/30 rounded-sm text-code-sm text-on-surface-variant font-medium">
+                  <span key={tag} className="px-3 py-1 bg-surface-container-high border border-outline-variant/30 rounded-sm text-code-sm text-on-surface-variant font-medium whitespace-nowrap">
                     {tag}
                   </span>
                 ))}

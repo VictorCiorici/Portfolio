@@ -15,7 +15,7 @@ export default function ManifestoClient({ manifesto }: ManifestoClientProps) {
           animate={{ opacity: 1, x: 0 }}
           className="mb-xl"
         >
-          <h1 className="text-display-lg text-on-surface mb-md">{manifesto.headline}</h1>
+          <h1 className="text-display-sm sm:text-display-md md:text-display-lg text-on-surface mb-md">{manifesto.headline}</h1>
           <p className="text-body-lg text-on-surface-variant leading-relaxed">
             {manifesto.intro}
           </p>

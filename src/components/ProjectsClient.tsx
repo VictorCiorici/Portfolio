@@ -16,7 +16,7 @@ export default function ProjectsClient({ projects }: ProjectsClientProps) {
         animate={{ opacity: 1, y: 0 }}
         className="mb-xl"
       >
-        <h1 className="text-display-lg text-on-surface mb-xs uppercase">Project Portfolio</h1>
+        <h1 className="text-display-sm sm:text-display-md md:text-display-lg text-on-surface mb-xs uppercase">Project Portfolio</h1>
         <div className="text-label-caps text-primary-fixed-dim border-l-2 border-primary-fixed-dim pl-md">
           Critical Systems & Interactive Productions
         </div>
@@ -66,11 +66,11 @@ export default function ProjectsClient({ projects }: ProjectsClientProps) {
                 <h3 className="text-headline-md text-on-surface group-hover:text-primary-fixed-dim transition-colors uppercase tracking-tight">
                   {project.title}
                 </h3>
-                <div className="mt-md grid grid-cols-3 gap-sm border-t border-outline-variant/20 pt-md">
+                <div className="mt-md grid grid-cols-2 sm:grid-cols-3 gap-sm border-t border-outline-variant/20 pt-md">
                   {project.metrics.map((metric: any) => (
-                    <div key={metric.label}>
-                      <div className="text-[9px] text-outline uppercase">{metric.label}</div>
-                      <div className="text-label-caps text-on-surface text-[10px]">{metric.value}</div>
+                    <div key={metric.label} className="min-w-0">
+                      <div className="text-[8px] sm:text-[9px] text-outline uppercase truncate">{metric.label}</div>
+                      <div className="text-label-caps text-on-surface text-[9px] sm:text-[10px] truncate">{metric.value}</div>
                     </div>
                   ))}
                 </div>

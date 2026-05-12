@@ -70,7 +70,7 @@ public partial struct OptimizeRenderSystem : ISystem
             <span className="text-label-caps text-primary-fixed-dim">{hero.status}</span>
           </div>
           
-          <h1 className="text-display-lg text-on-surface mb-md">
+          <h1 className="text-display-sm sm:text-display-md md:text-display-lg text-on-surface mb-md">
             {hero.headline} <br/>
             <span className="text-primary-fixed-dim">{hero.subheadline}</span>
           </h1>
@@ -79,7 +79,7 @@ public partial struct OptimizeRenderSystem : ISystem
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="text-body-lg text-on-surface-variant max-w-2xl leading-relaxed mb-xl border-l-2 border-outline-variant pl-md"
+            className="text-body-md md:text-body-lg text-on-surface-variant max-w-2xl leading-relaxed mb-xl border-l-2 border-outline-variant pl-md"
           >
             {profile.summary}
           </motion.p>

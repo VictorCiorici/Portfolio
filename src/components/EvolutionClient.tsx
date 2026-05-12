@@ -24,7 +24,7 @@ export default function EvolutionClient({ data }: EvolutionClientProps) {
         animate={{ opacity: 1, y: 0 }}
         className="mb-xl"
       >
-        <h1 className="text-display-lg text-on-surface mb-xs uppercase">Professional Evolution</h1>
+        <h1 className="text-display-sm sm:text-display-md md:text-display-lg text-on-surface mb-xs uppercase">Professional Evolution</h1>
         <div className="text-label-caps text-primary-fixed-dim border-l-2 border-primary-fixed-dim pl-md">
           Career History & Professional Milestones
         </div>
