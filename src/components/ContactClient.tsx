@@ -22,6 +22,7 @@ export default function ContactClient({ data }: ContactClientProps) {
   const [timestamp, setTimestamp] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [showCopyFallback, setShowCopyFallback] = useState(false);
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -65,9 +66,24 @@ export default function ContactClient({ data }: ContactClientProps) {
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSuccess(true);
-      // Reset success state after a while
+      setShowCopyFallback(true);
+      // Reset success state after a while, but keep fallback visible for longer
       setTimeout(() => setIsSuccess(false), 5000);
     }, 1000);
+  };
+
+  const handleCopyToClipboard = () => {
+    const form = document.querySelector('form') as HTMLFormElement;
+    const formData = new FormData(form);
+    const name = formData.get("name");
+    const email = formData.get("email");
+    const message = formData.get("message");
+    
+    const fullText = `To: ${profile.email}\nSubject: Portfolio Contact from ${name}\n\nMessage:\n${message}\n\n(Sender Email: ${email})`;
+    
+    navigator.clipboard.writeText(fullText);
+    setIsSuccess(true);
+    setTimeout(() => setIsSuccess(false), 3000);
   };
 
   return (
@@ -134,13 +150,26 @@ export default function ContactClient({ data }: ContactClientProps) {
             </button>
 
             {isSuccess && (
-              <motion.p 
+              <motion.div 
                 initial={{ opacity: 0, y: 5 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-[11px] text-center text-on-surface-variant opacity-80"
+                className="space-y-sm text-center"
               >
-                Your mail client should have opened with a pre-filled message.
-              </motion.p>
+                <p className="text-[11px] text-on-surface-variant opacity-80">
+                  {showCopyFallback 
+                    ? "Your mail client should have opened. If not, you can copy the message below:" 
+                    : "Message copied to clipboard!"}
+                </p>
+                {showCopyFallback && (
+                  <button 
+                    type="button"
+                    onClick={handleCopyToClipboard}
+                    className="text-code-sm text-primary-fixed-dim hover:text-primary-fixed underline transition-colors"
+                  >
+                    Copy formatted message to clipboard
+                  </button>
+                )}
+              </motion.div>
             )}
           </form>
         </div>
