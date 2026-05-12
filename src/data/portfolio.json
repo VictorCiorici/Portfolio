@@ -1,11 +1,12 @@
 {
   "profile": {
     "name": "Victor Ciorici",
-    "role": "Senior Unity Developer",
-    "location": "Straseni, MD [GMT+2]",
+    "role": "Lead/Senior Unity Developer",
+    "location": "Chisinau, Moldova",
     "email": "victor.ciorici@gmail.com",
+    "phone": "+373 69496288",
     "summary": "Senior Unity Developer with 12+ years of expertise in the full development lifecycle—from concept and architecture to high-performance implementation. Specializing in gameplay systems, multiplayer architecture, and cross-platform optimization for PC, Mobile, and VR/AR.",
-    "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200",
+    "avatar": "/avatar.gif",
     "resumePath": "/resume.pdf",
     "socials": [
       {
@@ -146,6 +147,10 @@
         {
           "name": "WebGL / HTML5",
           "desc": "Browser-based interactive experiences and simulations."
+        },
+        {
+          "name": "VR/AR",
+          "desc": ""
         }
       ],
       "tags": [
@@ -157,52 +162,71 @@
   ],
   "careerTimeline": [
     {
-      "year": "2025 - PRESENT",
+      "year": "2025 - 2026",
       "role": "Senior Unity Developer",
       "company": "Limit Break",
-      "active": false
+      "active": true,
+      "description": "Leading development of high-performance mobile systems using Unity ECS This is a verified test description. and DOTS.",
+      "achievements": [
+        "Optimized memory usage by 40% for low-end mobile devices.",
+        "Architected scalable multiplayer backend using Photon Fusion."
+      ]
     },
     {
       "year": "2024 - 2025",
       "role": "Senior Unity Developer",
       "company": "SKR Games",
-      "active": false
+      "active": false,
+      "description": "Developed custom rendering pipelines and tools for mid-core mobile games.",
+      "achievements": []
     },
     {
       "year": "2023 - 2024",
       "role": "Senior Unity Developer",
       "company": "Playgendary",
-      "active": false
+      "active": false,
+      "description": "Core gameplay engineering for high-traffic mobile titles.",
+      "achievements": []
     },
     {
       "year": "2022 - 2023",
       "role": "Lead Unity Developer",
       "company": "GOAT Games Entertainment",
-      "active": false
+      "active": false,
+      "description": "Technical leadership and architectural oversight for the main Unity team.",
+      "achievements": []
     },
     {
       "year": "2019 - 2022",
       "role": "Lead Unity Developer",
       "company": "Iron Will",
-      "active": false
+      "active": false,
+      "description": "Led a team of 10+ developers in creating immersive simulation environments.",
+      "achievements": []
     },
     {
       "year": "2017 - 2019",
       "role": "Senior Unity Developer",
       "company": "Redox Entertainment",
-      "active": false
+      "active": false,
+      "description": "Specialized in XR development and cross-platform optimization.",
+      "achievements": []
     },
     {
       "year": "2013 - 2017",
       "role": "Unity Developer",
       "company": "01Devs",
-      "active": false
+      "active": false,
+      "description": "Full-stack game development from concept to launch on PC and Mobile.",
+      "achievements": []
     },
     {
       "year": "2013",
       "role": "Junior Developer",
       "company": "ITProlab",
-      "active": false
+      "active": false,
+      "description": "Assisting in the development of core systems and UI frameworks.",
+      "achievements": []
     }
   ],
   "manifesto": {

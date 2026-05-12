@@ -1,10 +1,10 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Download, Terminal, Settings } from "lucide-react";
-import { profile } from "@/data/portfolio";
 
 const navLinks = [
   { name: "MANIFESTO", href: "/manifesto" },
@@ -14,8 +14,21 @@ const navLinks = [
   { name: "CONTACT", href: "/contact" },
 ];
 
-export default function Navbar() {
+interface NavbarProps {
+  profileData?: any;
+}
+
+export default function Navbar({ profileData }: NavbarProps) {
   const pathname = usePathname();
+  
+  // Use profileData from props if available, otherwise fallback (for safety)
+  const resumePath = profileData?.resumePath || "/resume.pdf";
+  const name = profileData?.name || "Victor Ciorici";
+
+  const [timestamp, setTimestamp] = useState("");
+  useEffect(() => {
+    setTimestamp(`?v=${Date.now()}`);
+  }, []);
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-outline-variant/30">
@@ -64,18 +77,22 @@ export default function Navbar() {
           {/* Action Area */}
           <div className="flex items-center gap-lg">
             <a 
-              href={profile.resumePath} 
-              download
+              href={`${resumePath}${timestamp}`} 
+              download={`Resume_${name.replace(' ', '_')}.pdf`}
               className="hidden lg:flex items-center gap-xs text-label-caps text-on-surface border border-outline px-md py-sm rounded-sm hover:border-primary-fixed-dim hover:text-primary-fixed-dim transition-all no-underline group"
             >
-              RESUME.PDF
+              RESUME
               <Download className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
             </a>
             
-            <div className="flex items-center gap-xs">
-              <span className="text-primary-fixed-dim opacity-40 font-jetbrains animate-pulse">_</span>
-              <Settings className="w-5 h-5 text-outline hover:text-primary-fixed-dim transition-colors cursor-pointer rotate-0 hover:rotate-90 transition-transform duration-500" />
-            </div>
+            {process.env.NODE_ENV === "development" && (
+              <div className="flex items-center gap-xs">
+                <span className="text-primary-fixed-dim opacity-40 font-jetbrains animate-pulse">_</span>
+                <Link href="/admin">
+                  <Settings className="w-5 h-5 text-outline hover:text-primary-fixed-dim transition-colors cursor-pointer rotate-0 hover:rotate-90 transition-transform duration-500" />
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </div>

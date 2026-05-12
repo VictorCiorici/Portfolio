@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import { getPortfolioData } from "@/data/portfolio";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -23,8 +25,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Fetch fresh data for the Navbar
+  const { profile } = getPortfolioData();
+
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className="dark" suppressHydrationWarning>
       <head>
         <link
           rel="stylesheet"
@@ -32,10 +37,11 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} ${jetbrainsMono.variable} antialiased grid-bg`}
+        className={`${inter.variable} ${jetbrainsMono.variable} antialiased grid-bg min-h-screen flex flex-col`}
       >
-        <Navbar />
+        <Navbar profileData={profile} />
         {children}
+        <Footer />
       </body>
     </html>
   );

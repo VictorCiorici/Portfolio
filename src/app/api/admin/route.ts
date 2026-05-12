@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import fs from "fs/promises";
 import path from "path";
+import { revalidatePath } from "next/cache";
 
 export async function POST(request: Request) {
   try {
@@ -15,6 +16,14 @@ export async function POST(request: Request) {
     
     // Write the file with pretty printing
     await fs.writeFile(filePath, JSON.stringify(data, null, 2), "utf-8");
+
+    // Revalidate all pages to show new data
+    revalidatePath("/");
+    revalidatePath("/evolution");
+    revalidatePath("/projects");
+    revalidatePath("/contact");
+    revalidatePath("/manifesto");
+    revalidatePath("/tech-stack");
 
     return NextResponse.json({ success: true, message: "Portfolio data updated successfully" });
   } catch (error) {
