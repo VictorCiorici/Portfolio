@@ -16,7 +16,9 @@ A premium, dark-themed portfolio website for a **Senior Unity Developer** with 1
 The project is designed to be **data-driven**. Most of the professional content (profile, projects, skills, timeline) is stored in a central JSON file.
 
 - **Data Source**: `src/data/portfolio.json`
-- **Data Helper**: `src/data/portfolio.ts` provides a `getPortfolioData()` function that reads the JSON from disk (server-side) or uses the bundled version (client-side).
+- **Data Helper (Client-Safe)**: `src/data/portfolio.ts` provides `getPortfolioData()` (bundled JSON) and `processData()` for UI-ready objects. It is safe for all components.
+- **Data Helper (Server-Only)**: `src/data/server-data.ts` provides `getFreshPortfolioData()` which reads directly from disk. Use this ONLY in Server Components to ensure the latest data is rendered during development and SSR.
+- **Admin GUI**: The `/admin` page allows for live editing of the JSON store in development mode.
 - **Page Components**: Located in `src/app/`, these components use the data helper to fetch content and pass it to specialized client components in `src/components/`.
 
 ## Key Commands
@@ -44,7 +46,8 @@ The visual identity follows a strict set of tokens defined in `DOCUMENTATION.md`
 ### Content Management
 - **DO NOT** hardcode professional content in components.
 - **ALWAYS** update `src/data/portfolio.json` to change profile info, projects, skills, or career history.
-- Use the `getPortfolioData` helper in Server Components to ensure fresh data.
+- Use the **`getFreshPortfolioData`** helper in Server Components to ensure fresh data.
+- Use the **`getPortfolioData`** helper in Client Components or when dynamic disk-reading is not required.
 
 ### Styling & Icons
 - Use **Tailwind CSS 4** classes for styling.

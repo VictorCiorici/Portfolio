@@ -3,6 +3,9 @@
 ## Completed Tasks ✅
 
 ### Hydration & Browser Compatibility
+- [x] **Fix 'fs' Module Resolution Error:** Resolved build failure where Node.js `fs` module was being bundled into Client Components.
+  - *Solution:* Isolated server-side file system logic into `src/data/server-data.ts` and refactored `src/data/portfolio.ts` to be client-safe with serializable data.
+- [x] **Improve Type Safety:** Defined TypeScript interfaces for portfolio data and fixed implicit `any` errors during build.
 - [x] **Fix Hydration Mismatch:** Resolved issue where browser extensions (like Dark Reader) were injecting attributes into the DOM before hydration.
   - *Solution:* Added `suppressHydrationWarning` to the `html` tag in `src/app/layout.tsx`.
 - [x] **Fix Email Link Behavior:** Resolved "empty page" redirect in Chrome and "unresponsive link" in Edge for `mailto:` protocols.
@@ -16,7 +19,8 @@
 
 ### Documentation & Context
 - [x] **Generate GEMINI.md:** Created a comprehensive project context file for AI agents.
-- [ ] **Review DOCUMENTATION.md:** Ensure all technical specs match the current Next.js implementation.
+- [x] **Review DOCUMENTATION.md:** Synchronized technical specs with the Next.js 16 / Tailwind 4 implementation.
+- [x] **Revitalize README.md & AGENTS.md:** Updated project entry points with modern developer workflows.
 
 ### Content & Assets
 - [ ] **Self-host Images:** Replace Google-hosted images with local assets in `public/` to prevent expiration issues.

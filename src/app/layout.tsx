@@ -3,7 +3,9 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { getPortfolioData } from "@/data/portfolio";
+import { processData } from "@/data/portfolio";
+import { getFreshPortfolioData } from "@/data/server-data";
+import portfolioData from "@/data/portfolio.json";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -25,8 +27,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Fetch fresh data for the Navbar
-  const { profile } = getPortfolioData();
+  // Fetch fresh data for the Navbar from disk (Server Component)
+  const { profile } = getFreshPortfolioData(portfolioData, processData);
 
   return (
     <html lang="en" className="dark" suppressHydrationWarning>

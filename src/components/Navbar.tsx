@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Download, Terminal, Settings } from "lucide-react";
+import { Download, Terminal, Settings, Cpu } from "lucide-react";
 
 const navLinks = [
   { name: "Manifesto", href: "/manifesto" },
@@ -23,7 +23,9 @@ export default function Navbar({ profileData }: NavbarProps) {
   
   // Use profileData from props if available, otherwise fallback (for safety)
   const resumePath = profileData?.resumePath || "/resume.pdf";
+  const avatar = profileData?.avatar || "/avatar.gif";
   const name = profileData?.name || "Victor Ciorici";
+  const role = profileData?.role || "Senior Unity Developer";
 
   const [timestamp, setTimestamp] = useState("");
   
@@ -38,15 +40,22 @@ export default function Navbar({ profileData }: NavbarProps) {
         <div className="h-20 flex items-center justify-between">
           {/* Logo Section */}
           <Link href="/" className="flex items-center gap-sm group no-underline">
-            <div className="w-10 h-10 bg-primary-container/20 border border-primary-container/40 rounded-sm flex items-center justify-center group-hover:tech-glow transition-all">
-              <Terminal className="w-6 h-6 text-primary-fixed-dim" />
+            <div className="relative w-10 h-10 rounded-sm overflow-hidden border border-primary-container/40 group-hover:tech-glow transition-all">
+              <img 
+                src={avatar} 
+                alt={name}
+                className="w-full h-full object-cover"
+              />
             </div>
             <div className="flex flex-col">
-              <span className="text-label-caps text-on-surface font-bold tracking-[0.2em] group-hover:text-primary-fixed-dim transition-colors">
-                Tech Core
-              </span>
-              <span className="text-[10px] text-outline font-jetbrains">
-                // Portfolio
+              <div className="flex items-center gap-xs">
+                <span className="text-label-caps text-on-surface font-bold tracking-[0.1em] group-hover:text-primary-fixed-dim transition-colors uppercase">
+                  {name}
+                </span>
+                <Cpu className="w-3.5 h-3.5 text-primary-fixed-dim opacity-50 group-hover:opacity-100 transition-opacity" />
+              </div>
+              <span className="text-[10px] text-outline font-jetbrains uppercase">
+                // {role}
               </span>
             </div>
           </Link>

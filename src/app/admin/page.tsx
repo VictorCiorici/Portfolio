@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { notFound } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   Save, 
@@ -19,9 +18,21 @@ import {
   Upload,
   FileText,
   AtSign,
-  Phone
+  Phone,
+  Settings,
+  Cpu,
+  Zap,
+  Tag,
+  BarChart3,
+  Link as LinkIcon
 } from "lucide-react";
 import PageLayout from "@/components/PageLayout";
+
+/**
+ * @file admin/page.tsx
+ * @description The Admin Command Center. Provides a GUI for managing all portfolio data.
+ * Features real-time editing of the central JSON store and local asset uploads.
+ */
 
 export default function AdminPanel() {
   const [data, setData] = useState<any>(null);
@@ -32,6 +43,7 @@ export default function AdminPanel() {
   
   const resumeRef = useRef<HTMLInputElement>(null);
   const avatarRef = useRef<HTMLInputElement>(null);
+  const projectImgRefs = useRef<{ [key: string]: HTMLInputElement | null }>({});
 
   // Security check: Only allow in development
   const isDev = process.env.NODE_ENV === "development";
@@ -76,7 +88,7 @@ export default function AdminPanel() {
     }
   };
 
-  const handleUpload = async (file: File, type: 'resume' | 'avatar') => {
+  const handleUpload = async (file: File, type: 'resume' | 'avatar' | 'project', projectId?: string) => {
     setSaving(true);
     const formData = new FormData();
     formData.append("file", file);
@@ -91,8 +103,13 @@ export default function AdminPanel() {
       if (result.success) {
         if (type === 'resume') {
           setData({ ...data, profile: { ...data.profile, resumePath: result.path } });
-        } else {
+        } else if (type === 'avatar') {
           setData({ ...data, profile: { ...data.profile, avatar: result.path } });
+        } else if (type === 'project' && projectId) {
+          const newProjects = data.projects.map((p: any) => 
+            p.id === projectId ? { ...p, image: result.path } : p
+          );
+          setData({ ...data, projects: newProjects });
         }
         setStatus({ type: 'success', message: `${type.charAt(0).toUpperCase() + type.slice(1)} uploaded successfully.` });
       } else {
@@ -586,10 +603,11 @@ export default function AdminPanel() {
                 </div>
                 <div className="space-y-lg">
                   {data.projects.map((p: any, i: number) => (
-                    <div key={p.id} className="glass-panel p-lg rounded-xl border-l-2 border-l-primary-fixed-dim flex gap-xl relative group">
-                      <div className="flex-1 space-y-md">
-                        <div className="grid grid-cols-2 gap-md">
-                          <Input label="Title" value={p.title} onChange={v => {
+                    <div key={p.id} className="glass-panel p-xl rounded-xl border-l-2 border-l-primary-fixed-dim space-y-xl group">
+                      {/* Main Info Row */}
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-xl">
+                        <div className="space-y-lg">
+                          <Input label="Project Title" value={p.title} onChange={v => {
                             const newProjs = [...data.projects];
                             newProjs[i].title = v;
                             setData({...data, projects: newProjs});
@@ -599,22 +617,188 @@ export default function AdminPanel() {
                             newProjs[i].category = v;
                             setData({...data, projects: newProjs});
                           }} />
+                          
+                          <div className="space-y-sm">
+                            <label className="flex items-center gap-sm text-code-sm text-outline uppercase">
+                              <Tag className="w-4 h-4" /> System Tags (Comma Separated)
+                            </label>
+                            <input 
+                              type="text" 
+                              value={p.tags.join(", ")} 
+                              onChange={e => {
+                                const newProjs = [...data.projects];
+                                newProjs[i].tags = e.target.value.split(",").map(t => t.trim()).filter(Boolean);
+                                setData({...data, projects: newProjs});
+                              }}
+                              className="w-full bg-surface-container-high border border-outline-variant/30 rounded px-md py-sm text-on-surface focus:outline-none focus:border-primary-fixed-dim transition-all font-jetbrains text-sm"
+                              placeholder="Unity, C#, Shader Graph..."
+                            />
+                          </div>
                         </div>
-                        <Input label="Image URL" value={p.image} onChange={v => {
-                          const newProjs = [...data.projects];
-                          newProjs[i].image = v;
-                          setData({...data, projects: newProjs});
-                        }} />
+
+                        <div className="space-y-lg">
+                          <div className="space-y-sm">
+                            <label className="flex items-center gap-sm text-code-sm text-outline uppercase">
+                              <Upload className="w-4 h-4" /> Project Visual Asset
+                            </label>
+                            <div className="flex gap-md">
+                              <div className="w-24 h-16 bg-surface-container-high rounded border border-outline-variant/30 overflow-hidden shrink-0">
+                                {p.image ? (
+                                  <img src={p.image} className="w-full h-full object-cover" />
+                                ) : (
+                                  <div className="w-full h-full flex items-center justify-center opacity-20"><Layers className="w-6 h-6" /></div>
+                                )}
+                              </div>
+                              <div className="flex-1 space-y-xs">
+                                <input 
+                                  type="file" 
+                                  ref={el => { projectImgRefs.current[p.id] = el; }}
+                                  className="hidden" 
+                                  accept="image/*"
+                                  onChange={e => e.target.files?.[0] && handleUpload(e.target.files[0], 'project', p.id)}
+                                />
+                                <button 
+                                  onClick={() => projectImgRefs.current[p.id]?.click()}
+                                  className="w-full glass-panel px-md py-xs rounded flex items-center justify-center gap-sm text-[10px] font-label-caps hover:bg-primary-container/10 transition-all border border-outline-variant/30"
+                                >
+                                  Upload Asset
+                                </button>
+                                <input 
+                                  type="text" 
+                                  value={p.image} 
+                                  onChange={e => {
+                                    const newProjs = [...data.projects];
+                                    newProjs[i].image = e.target.value;
+                                    setData({...data, projects: newProjs});
+                                  }}
+                                  className="w-full bg-surface-container-high/50 border-b border-outline-variant/30 px-sm py-xs text-[10px] font-jetbrains text-outline"
+                                  placeholder="Or paste external URL..."
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <button 
-                        onClick={() => {
-                          const newProjs = data.projects.filter((_: any, idx: number) => idx !== i);
-                          setData({...data, projects: newProjs});
-                        }}
-                        className="text-error opacity-0 group-hover:opacity-100 transition-opacity p-md hover:bg-error/10 rounded"
-                      >
-                        <Trash2 className="w-5 h-5" />
-                      </button>
+
+                      {/* Metrics & Challenges */}
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-xl pt-lg border-t border-outline-variant/20">
+                        {/* Metrics */}
+                        <div className="space-y-md">
+                          <div className="flex justify-between items-center">
+                            <h3 className="text-label-caps text-primary-fixed-dim flex items-center gap-sm">
+                              <BarChart3 className="w-4 h-4" /> System Metrics
+                            </h3>
+                            <button 
+                              onClick={() => {
+                                const newProjs = [...data.projects];
+                                newProjs[i].metrics.push({ label: "NEW_METRIC", value: "0" });
+                                setData({...data, projects: newProjs});
+                              }}
+                              className="text-[8px] font-label-caps hover:bg-primary-container/10 px-md py-xs rounded border border-outline-variant/20"
+                            >
+                              Add Metric
+                            </button>
+                          </div>
+                          <div className="grid grid-cols-2 gap-md">
+                            {p.metrics.map((m: any, mi: number) => (
+                              <div key={mi} className="flex flex-col gap-xs p-sm bg-surface-container-high/40 rounded border border-outline-variant/20 group/metric">
+                                <div className="flex justify-between items-center">
+                                  <input 
+                                    value={m.label} 
+                                    onChange={e => {
+                                      const newProjs = [...data.projects];
+                                      newProjs[i].metrics[mi].label = e.target.value.toUpperCase();
+                                      setData({...data, projects: newProjs});
+                                    }}
+                                    className="bg-transparent border-none text-[8px] font-jetbrains text-outline uppercase focus:outline-none"
+                                  />
+                                  <button 
+                                    onClick={() => {
+                                      const newProjs = [...data.projects];
+                                      newProjs[i].metrics = newProjs[i].metrics.filter((_: any, idx: number) => idx !== mi);
+                                      setData({...data, projects: newProjs});
+                                    }}
+                                    className="text-error opacity-0 group-hover/metric:opacity-100 transition-opacity"
+                                  >
+                                    <Trash2 className="w-3 h-3" />
+                                  </button>
+                                </div>
+                                <input 
+                                  value={m.value} 
+                                  onChange={e => {
+                                    const newProjs = [...data.projects];
+                                    newProjs[i].metrics[mi].value = e.target.value;
+                                    setData({...data, projects: newProjs});
+                                  }}
+                                  className="bg-transparent border-none text-headline-sm font-jetbrains text-on-surface focus:outline-none"
+                                />
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Challenges */}
+                        <div className="space-y-md">
+                          <div className="flex justify-between items-center">
+                            <h3 className="text-label-caps text-primary-fixed-dim flex items-center gap-sm">
+                              <Zap className="w-4 h-4" /> Technical Challenges
+                            </h3>
+                            <button 
+                              onClick={() => {
+                                const newProjs = [...data.projects];
+                                newProjs[i].challenges.push("New technical challenge statement...");
+                                setData({...data, projects: newProjs});
+                              }}
+                              className="text-[8px] font-label-caps hover:bg-primary-container/10 px-md py-xs rounded border border-outline-variant/20"
+                            >
+                              Add Challenge
+                            </button>
+                          </div>
+                          <div className="space-y-sm">
+                            {p.challenges.map((c: string, ci: number) => (
+                              <div key={ci} className="flex gap-sm group/chal">
+                                <div className="mt-2.5 w-1 h-1 rounded-full bg-primary-fixed-dim shrink-0" />
+                                <textarea 
+                                  value={c} 
+                                  onChange={e => {
+                                    const newProjs = [...data.projects];
+                                    newProjs[i].challenges[ci] = e.target.value;
+                                    setData({...data, projects: newProjs});
+                                  }}
+                                  rows={1}
+                                  className="flex-1 bg-transparent border-b border-outline-variant/10 focus:border-primary-fixed-dim focus:outline-none py-1 text-xs font-jetbrains resize-none"
+                                  placeholder="Support hyperlinks like [Text](URL)"
+                                />
+                                <button 
+                                  onClick={() => {
+                                    const newProjs = [...data.projects];
+                                    newProjs[i].challenges = newProjs[i].challenges.filter((_: any, idx: number) => idx !== ci);
+                                    setData({...data, projects: newProjs});
+                                  }}
+                                  className="text-error opacity-0 group-hover/chal:opacity-100 p-xs"
+                                >
+                                  <Trash2 className="w-3 h-3" />
+                                </button>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="flex justify-between items-center pt-md border-t border-outline-variant/10">
+                        <span className="text-[10px] text-outline font-jetbrains">ID: {p.id}</span>
+                        <button 
+                          onClick={() => {
+                            if (confirm("Permanently delete this project?")) {
+                              const newProjs = data.projects.filter((_: any, idx: number) => idx !== i);
+                              setData({...data, projects: newProjs});
+                            }
+                          }}
+                          className="flex items-center gap-sm text-error hover:bg-error/10 px-md py-sm rounded-sm text-label-caps"
+                        >
+                          <Trash2 className="w-4 h-4" /> Delete Project
+                        </button>
+                      </div>
                     </div>
                   ))}
                 </div>

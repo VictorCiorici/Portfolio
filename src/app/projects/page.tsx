@@ -1,11 +1,13 @@
 import PageLayout from "@/components/PageLayout";
-import { getPortfolioData } from "@/data/portfolio";
+import { processData } from "@/data/portfolio";
+import { getFreshPortfolioData } from "@/data/server-data";
+import portfolioData from "@/data/portfolio.json";
 import ProjectsClient from "@/components/ProjectsClient";
 
 export const dynamic = "force-dynamic";
 
 export default async function Projects() {
-  const { projects } = getPortfolioData();
+  const { projects } = getFreshPortfolioData(portfolioData, processData);
   
   return (
     <PageLayout>

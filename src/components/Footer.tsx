@@ -1,8 +1,11 @@
-import { getPortfolioData } from "@/data/portfolio";
+import { processData } from "@/data/portfolio";
+import { getFreshPortfolioData } from "@/data/server-data";
+import portfolioData from "@/data/portfolio.json";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-  const { profile } = getPortfolioData();
+  const { profile } = getFreshPortfolioData(portfolioData, processData);
+  const { name, role } = profile;
   
   // Filter for specific social links and ensure email is mailto:
   const footerSocials = profile.socials.filter((s: any) => 
@@ -11,8 +14,8 @@ export default function Footer() {
 
   return (
     <footer className="w-full py-xl px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-md bg-surface-container-lowest border-t border-outline-variant/20">
-      <div className="text-headline-sm text-on-surface opacity-80">
-        Victor Ciorici // Senior Unity Developer // © {currentYear}
+      <div className="text-headline-sm text-on-surface opacity-80 uppercase">
+        {name} // {role} // © {currentYear}
       </div>
       <div className="flex gap-md">
         {footerSocials.map((social: any) => {

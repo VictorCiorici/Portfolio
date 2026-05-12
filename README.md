@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Senior Unity Developer // Technical Portfolio
 
-## Getting Started
+A premium, data-driven technical portfolio built with **Next.js 16**, **React 19**, and **Tailwind CSS 4**. Designed for high-performance visual storytelling, communicating 12+ years of expertise in Game Architecture, DOTS/ECS, and Immersive Tech.
 
-First, run the development server:
+## 🚀 Quick Start
 
+### 1. Development
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+Navigate to `http://localhost:3000` to view the site.
+
+### 2. Admin Command Center
+```bash
+# Access the dynamic content manager (Dev Mode only)
+http://localhost:3000/admin
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 3. Production Build
+```bash
+npm run build
+npm run start
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠️ Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Framework**: Next.js 16 (App Router)
+- **UI Logic**: React 19 + Framer Motion 12
+- **Styling**: Tailwind CSS 4 (Custom Design System)
+- **Data Architecture**: Centralized JSON-to-Client pipeline
+- **Build Tool**: Turbopack
 
-## Learn More
+## 🏗️ Core Philosophy: "Technical Glassmorphism"
 
-To learn more about Next.js, take a look at the following resources:
+The design system prioritizes:
+- **Clarity over Clutter**: Information-dense but highly readable layouts.
+- **Visual Competence**: An aesthetic inspired by engine consoles and IDEs.
+- **Dynamic Interaction**: Fluid, motion-rich transitions that reflect real-time interactivity.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📂 Project Structure & Guides
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **[DOCUMENTATION.md](./DOCUMENTATION.md)**: Comprehensive technical breakdown, design system tokens, and component patterns.
+- **[GEMINI.md](./GEMINI.md)**: Context and protocols for AI agents working on this codebase.
+- **[TODO.md](./TODO.md)**: Current roadmap, active issues, and completed features.
 
-## Deploy on Vercel
+## 👤 Author
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Victor Ciorici**  
+Senior Unity Developer // Chisinau, Moldova  
+[LinkedIn](https://www.linkedin.com/in/victor-c-478a7849) // [GitHub](https://github.com/VictorCiorici)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+*Built for the next generation of interactive engineering.*

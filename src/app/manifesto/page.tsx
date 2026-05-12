@@ -1,11 +1,13 @@
 import PageLayout from "@/components/PageLayout";
-import { getPortfolioData } from "@/data/portfolio";
+import { processData } from "@/data/portfolio";
+import { getFreshPortfolioData } from "@/data/server-data";
+import portfolioData from "@/data/portfolio.json";
 import ManifestoClient from "@/components/ManifestoClient";
 
 export const dynamic = "force-dynamic";
 
 export default async function Manifesto() {
-  const { manifesto } = getPortfolioData();
+  const { manifesto } = getFreshPortfolioData(portfolioData, processData);
   
   return (
     <PageLayout>

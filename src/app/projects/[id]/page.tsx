@@ -5,12 +5,12 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import PageLayout from "@/components/PageLayout";
 import { ArrowLeft, CheckCircle2, Cpu, Zap, Box } from "lucide-react";
-import { projects } from "@/data/portfolio";
+import { projects, type Project } from "@/data/portfolio";
 import { notFound } from "next/navigation";
 
 export default function ProjectDetail({ params }: { params: Promise<{ id: string }> }) {
   const resolvedParams = use(params);
-  const project = projects.find(p => p.id === resolvedParams.id);
+  const project = projects.find((p: Project) => p.id === resolvedParams.id);
 
   if (!project) {
     notFound();
@@ -69,7 +69,25 @@ export default function ProjectDetail({ params }: { params: Promise<{ id: string
                   {project.challenges.map((challenge, i) => (
                     <div key={i} className="flex gap-md p-md glass-panel rounded-lg border-l-2 border-l-primary-fixed-dim">
                       <div className="text-code-sm text-primary-fixed-dim font-bold">{String(i + 1).padStart(2, '0')}</div>
-                      <p className="text-body-md text-on-surface-variant">{challenge}</p>
+                      <p className="text-body-md text-on-surface-variant leading-relaxed">
+                        {challenge.split(/(\[.*?\]\(.*?\))/g).map((part, index) => {
+                          const match = part.match(/\[(.*?)\]\((.*?)\)/);
+                          if (match) {
+                            return (
+                              <a 
+                                key={index} 
+                                href={match[2]} 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="text-primary-fixed-dim hover:underline underline-offset-4"
+                              >
+                                {match[1]}
+                              </a>
+                            );
+                          }
+                          return part;
+                        })}
+                      </p>
                     </div>
                   ))}
                 </div>
