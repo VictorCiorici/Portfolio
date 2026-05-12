@@ -23,26 +23,53 @@ npm run build
 npm run start
 ```
 
-## 🛠️ Tech Stack
+## 🏗️ Architecture & Data Flow
 
-- **Framework**: Next.js 16 (App Router)
-- **UI Logic**: React 19 + Framer Motion 12
-- **Styling**: Tailwind CSS 4 (Custom Design System)
-- **Data Architecture**: Centralized JSON-to-Client pipeline
-- **Build Tool**: Turbopack
+The portfolio is built as a **Data-Driven SPA** with Server-Side Rendering (SSR). It follows a strict separation between professional data and UI presentation.
 
-## 🏗️ Core Philosophy: "Technical Glassmorphism"
+- **Source of Truth**: `src/data/portfolio.json` contains all professional history, projects, and site configuration.
+- **Client Data Helper**: `src/data/portfolio.ts` provides bundled JSON and normalization for UI components.
+- **Server Data Helper**: `src/data/server-data.ts` uses Node.js `fs` to read the latest JSON directly from disk (SSR/Dev only).
+- **Admin Panel**: A development-only GUI at `/admin` for real-time updates to the JSON store.
 
-The design system prioritizes:
-- **Clarity over Clutter**: Information-dense but highly readable layouts.
-- **Visual Competence**: An aesthetic inspired by engine consoles and IDEs.
-- **Dynamic Interaction**: Fluid, motion-rich transitions that reflect real-time interactivity.
+## ⚠️ Developer & AI Protocols
 
-## 📂 Project Structure & Guides
+This project uses a specialized **Next.js 16 + React 19** architecture. Follow these rules to avoid build failures:
 
-- **[DOCUMENTATION.md](./DOCUMENTATION.md)**: Comprehensive technical breakdown, design system tokens, and component patterns.
-- **[GEMINI.md](./GEMINI.md)**: Context and protocols for AI agents working on this codebase.
-- **[TODO.md](./TODO.md)**: Current roadmap, active issues, and completed features.
+1.  **Server/Client Separation**: NEVER import `fs` or `path` in `src/data/portfolio.ts` or any file imported by a Client Component.
+2.  **Data Fetching**:
+    - **Client Components**: Use `import { getPortfolioData } from "@/data/portfolio"`.
+    - **Server Components**: Use `import { getFreshPortfolioData } from "@/data/server-data"`.
+3.  **Hooks**: Use React 19's `use()` hook for handling Promises/Params in Client Components.
+4.  **Styling**: Use native Tailwind 4 syntax; avoid legacy Tailwind 3 workarounds.
+
+## 🎨 Design System: "Technical Glassmorphism"
+
+The visual identity is inspired by high-end IDEs and game engine tooling.
+
+- **Core Accent**: Electric Cyan (`#00f2ff`) for status indicators and primary actions.
+- **Surfaces**: Material 3 inspired container patterns with `backdrop-blur-md`.
+- **Typography**: 
+  - `JetBrains Mono`: Technical labels, IDs, and code-style metadata.
+  - `Inter`: Readable body text and descriptions.
+- **Visual Cues**: Pulsing status dots signify "System Optimal" or active states.
+
+## 🛠️ Content Management
+
+### Zero-Code Updates
+Use the Admin Panel at `http://localhost:3000/admin` to:
+- Edit Hero text and Profile info.
+- Manage Career Timeline and Project metrics.
+- Update Tech Stack categories and Skills.
+- Upload Resume and Avatar assets.
+
+### Manual Updates
+Directly edit `src/data/portfolio.json`. The UI will hot-reload automatically in development mode.
+
+## 🗺️ Roadmap
+- Mobile Hamburger Menu implementation.
+- Client-side Project Filtering.
+- Image self-hosting transition.
 
 ## 👤 Author
 
