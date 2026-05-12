@@ -7,11 +7,11 @@ import { usePathname } from "next/navigation";
 import { Download, Terminal, Settings } from "lucide-react";
 
 const navLinks = [
-  { name: "MANIFESTO", href: "/manifesto" },
-  { name: "EVOLUTION", href: "/evolution" },
-  { name: "PROJECTS", href: "/projects" },
-  { name: "TECH_STACK", href: "/tech-stack" },
-  { name: "CONTACT", href: "/contact" },
+  { name: "Manifesto", href: "/manifesto" },
+  { name: "Evolution", href: "/evolution" },
+  { name: "Projects", href: "/projects" },
+  { name: "Tech Stack", href: "/tech-stack" },
+  { name: "Contact", href: "/contact" },
 ];
 
 interface NavbarProps {
@@ -41,10 +41,10 @@ export default function Navbar({ profileData }: NavbarProps) {
             </div>
             <div className="flex flex-col">
               <span className="text-label-caps text-on-surface font-bold tracking-[0.2em] group-hover:text-primary-fixed-dim transition-colors">
-                TECH_CORE
+                Tech Core
               </span>
               <span className="text-[10px] text-outline font-jetbrains">
-                // DEV_PORTFOLIO
+                // Portfolio
               </span>
             </div>
           </Link>

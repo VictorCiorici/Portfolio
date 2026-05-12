@@ -17,9 +17,9 @@ export default function TechStackClient({ data }: TechStackClientProps) {
         animate={{ opacity: 1, y: 0 }}
         className="mb-xl"
       >
-        <h1 className="text-display-lg text-on-surface mb-xs uppercase">SYSTEM_CAPABILITIES</h1>
+        <h1 className="text-display-lg text-on-surface mb-xs uppercase">Technical Expertise</h1>
         <div className="text-label-caps text-primary-fixed-dim border-l-2 border-primary-fixed-dim pl-md">
-          TECHNICAL ARCHITECTURE & PRODUCTION_READY SKILLS
+          Technical Architecture & Production-Ready Skills
         </div>
       </motion.div>
 

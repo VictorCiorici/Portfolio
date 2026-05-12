@@ -40,6 +40,8 @@ export function getPortfolioData() {
 
 function processData(data: any) {
   return {
+    hero: data.hero,
+    contactSpecs: data.contactSpecs,
     profile: {
       ...data.profile,
       socials: data.profile.socials.map((s: any) => ({

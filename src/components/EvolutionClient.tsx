@@ -24,9 +24,9 @@ export default function EvolutionClient({ data }: EvolutionClientProps) {
         animate={{ opacity: 1, y: 0 }}
         className="mb-xl"
       >
-        <h1 className="text-display-lg text-on-surface mb-xs uppercase">PROFESSIONAL_EVOLUTION</h1>
+        <h1 className="text-display-lg text-on-surface mb-xs uppercase">Professional Evolution</h1>
         <div className="text-label-caps text-primary-fixed-dim border-l-2 border-primary-fixed-dim pl-md">
-          CHRONOLOGICAL CAREER LOG & ARCHITECTURAL MILESTONES
+          Career History & Professional Milestones
         </div>
       </motion.div>
 
@@ -44,7 +44,7 @@ export default function EvolutionClient({ data }: EvolutionClientProps) {
               <stat.icon className="w-6 h-6 text-primary-fixed-dim" />
             </div>
             <div>
-              <div className="text-[10px] font-label-caps text-outline mb-1">{stat.label.replace(' ', '_')}</div>
+              <div className="text-[10px] font-label-caps text-outline mb-1">{stat.label}</div>
               <div className="text-headline-md text-on-surface">{stat.value}</div>
             </div>
           </motion.div>
@@ -85,7 +85,7 @@ export default function EvolutionClient({ data }: EvolutionClientProps) {
                       <span className="text-code-sm text-primary-fixed-dim font-bold tracking-widest">{job.year}</span>
                       {job.active && (
                         <span className="px-2 py-0.5 bg-primary-fixed-dim text-on-primary text-[8px] font-label-caps rounded-sm animate-pulse">
-                          ACTIVE_STATION
+                          Current Role
                         </span>
                       )}
                     </div>
@@ -143,7 +143,7 @@ export default function EvolutionClient({ data }: EvolutionClientProps) {
       >
         <div className="inline-flex items-center gap-sm px-xl py-lg glass-panel rounded-full border-primary-fixed-dim/20">
           <GraduationCap className="w-5 h-5 text-primary-fixed-dim" />
-          <span className="text-label-caps text-on-surface">ACADEMIC_FOUNDATION_VERIFIED</span>
+          <span className="text-label-caps text-on-surface">Academic Foundation Verified</span>
         </div>
       </motion.div>
     </section>

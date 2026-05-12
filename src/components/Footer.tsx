@@ -12,7 +12,7 @@ export default function Footer() {
   return (
     <footer className="w-full py-xl px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-md bg-surface-container-lowest border-t border-outline-variant/20">
       <div className="text-headline-sm text-on-surface opacity-80">
-        SYSTEM_ARCHITECT // [VER_12.0.4] // {currentYear} ALL RIGHTS RESERVED
+        Victor Ciorici // Senior Unity Developer // © {currentYear}
       </div>
       <div className="flex gap-md">
         {footerSocials.map((social: any) => {

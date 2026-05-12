@@ -10,7 +10,7 @@ interface HomeClientProps {
 }
 
 export default function HomeClient({ data }: HomeClientProps) {
-  const { profile, stats, coreTechnologies } = data;
+  const { profile, stats, coreTechnologies, hero } = data;
 
   return (
     <>
@@ -67,12 +67,12 @@ public partial struct OptimizeRenderSystem : ISystem
         >
           <div className="inline-flex items-center gap-sm px-sm py-xs bg-surface-container-high border border-outline-variant rounded-default mb-lg tech-edge">
             <span className="w-2 h-2 rounded-full bg-primary-fixed-dim animate-pulse"></span>
-            <span className="text-label-caps text-primary-fixed-dim">SYSTEM STATUS: OPTIMAL // 12_YRS_EXP</span>
+            <span className="text-label-caps text-primary-fixed-dim">{hero.status}</span>
           </div>
           
           <h1 className="text-display-lg text-on-surface mb-md">
-            12 YEARS OF ARCHITECTING <br/>
-            <span className="text-primary-fixed-dim">INTERACTIVE WORLDS</span>
+            {hero.headline} <br/>
+            <span className="text-primary-fixed-dim">{hero.subheadline}</span>
           </h1>
           
           <motion.p 
@@ -89,14 +89,14 @@ public partial struct OptimizeRenderSystem : ISystem
               href="/projects" 
               className="bg-primary-container text-on-primary-container text-label-caps px-lg py-md rounded-default hover:bg-primary-fixed transition-all flex items-center justify-center gap-xs tech-edge tech-glow no-underline group"
             >
-              EXPLORE PROJECTS
+              Explore Projects
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link 
               href="/tech-stack" 
               className="bg-transparent border border-outline text-primary-fixed-dim text-label-caps px-lg py-md rounded-default hover:border-primary-fixed-dim hover:bg-surface-container-high transition-all flex items-center justify-center gap-xs no-underline"
             >
-              VIEW TECHNICAL STACK
+              Technical Stack
               <Code2 className="w-4 h-4" />
             </Link>
           </div>

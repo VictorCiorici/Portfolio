@@ -11,7 +11,7 @@ export default async function Contact() {
     <PageLayout>
       <section className="py-xl">
         <h1 className="text-display-lg text-on-surface mb-xl">
-          COMM_LINK // <span className="text-primary-fixed-dim">CONTACT</span>
+          Get in <span className="text-primary-fixed-dim">Touch</span>
         </h1>
 
         <ContactClient data={data} />

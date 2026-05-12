@@ -10,7 +10,7 @@ interface ContactClientProps {
 }
 
 export default function ContactClient({ data }: ContactClientProps) {
-  const { profile, careerTimeline } = data;
+  const { profile, careerTimeline, contactSpecs } = data;
   const activeJob = careerTimeline.find((job: any) => job.active);
   const [timestamp, setTimestamp] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -47,32 +47,32 @@ export default function ContactClient({ data }: ContactClientProps) {
         className="lg:col-span-5 space-y-lg"
       >
         <div className="glass-panel p-lg rounded-xl">
-          <h2 className="text-label-caps text-on-tertiary-container mb-lg">TRANSMIT_DATA_PACKET</h2>
+          <h2 className="text-label-caps text-on-tertiary-container mb-lg">Send Message</h2>
           <form className="space-y-md" onSubmit={handleSubmit}>
             <div>
-              <label className="block text-code-sm text-on-surface-variant mb-xs uppercase">SENDER_ID (NAME)</label>
+              <label className="block text-code-sm text-on-surface-variant mb-xs uppercase">Name</label>
               <input 
                 type="text" 
                 name="name"
-                placeholder="ENTER IDENTITY..."
+                placeholder="Enter your name..."
                 className="w-full bg-surface-container-high border border-outline-variant/30 rounded px-md py-sm text-on-surface focus:outline-none focus:border-primary-fixed-dim focus:tech-glow transition-all placeholder:text-outline/30"
               />
             </div>
             <div>
-              <label className="block text-code-sm text-on-surface-variant mb-xs uppercase">RETURN_ROUTE (EMAIL)</label>
+              <label className="block text-code-sm text-on-surface-variant mb-xs uppercase">Email</label>
               <input 
                 type="email" 
                 name="email"
-                placeholder="USER@DOMAIN.COM"
+                placeholder="your@email.com"
                 className="w-full bg-surface-container-high border border-outline-variant/30 rounded px-md py-sm text-on-surface focus:outline-none focus:border-primary-fixed-dim focus:tech-glow transition-all placeholder:text-outline/30"
               />
             </div>
             <div>
-              <label className="block text-code-sm text-on-surface-variant mb-xs uppercase">PAYLOAD_DATA (MESSAGE)</label>
+              <label className="block text-code-sm text-on-surface-variant mb-xs uppercase">Message</label>
               <textarea 
                 name="message"
                 rows={4}
-                placeholder="TRANSMIT MESSAGE CONTENT..."
+                placeholder="Write your message..."
                 className="w-full bg-surface-container-high border border-outline-variant/30 rounded px-md py-sm text-on-surface focus:outline-none focus:border-primary-fixed-dim focus:tech-glow transition-all placeholder:text-outline/30 resize-none"
               />
             </div>
@@ -81,7 +81,7 @@ export default function ContactClient({ data }: ContactClientProps) {
               disabled={isSubmitting}
               className="w-full bg-primary-container text-on-primary-container font-label-caps py-md rounded tech-edge hover:bg-primary-fixed transition-all flex items-center justify-center gap-sm group disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {isSubmitting ? "PREPARING_PACKET..." : "TRANSMIT_PACKET"}
+              {isSubmitting ? "Preparing..." : "Send Message"}
               {!isSubmitting && <Send className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />}
             </button>
           </form>
@@ -133,7 +133,7 @@ export default function ContactClient({ data }: ContactClientProps) {
                   </h2>
                   <div className="flex items-center gap-xs">
                     <div className="w-2 h-2 rounded-full bg-primary-fixed-dim animate-pulse" />
-                    <span className="text-label-caps text-primary-fixed-dim text-[10px]">CURRENT_STATE: {profile.role.toUpperCase().replace(' ', '_')}</span>
+                    <span className="text-label-caps text-primary-fixed-dim text-[10px]">Current Role: {profile.role}</span>
                   </div>
                 </div>
               </div>
@@ -143,18 +143,15 @@ export default function ContactClient({ data }: ContactClientProps) {
                 className="flex items-center gap-xs px-md py-sm border border-primary-fixed-dim text-primary-fixed-dim rounded font-label-caps hover:bg-primary-fixed-dim hover:text-on-primary transition-all no-underline"
               >
                 <Download className="w-4 h-4" />
-                DOWNLOAD RESUME
+                Download Resume
               </a>
             </div>
 
             <div className="space-y-xl">
               <div>
-                <h3 className="text-label-caps text-on-surface opacity-60 mb-md border-b border-outline-variant/30 pb-xs">CORE_COMPETENCIES</h3>
+                <h3 className="text-label-caps text-on-surface opacity-60 mb-md border-b border-outline-variant/30 pb-xs">Core Competencies</h3>
                 <div className="flex flex-wrap gap-sm">
-                  {[
-                    "UNITY_ENGINE", "C#", "DOTS_ECS", "SHADERS", "PHOTON_FUSION", 
-                    "MULTIPLAYER", "VR_AR", "GRAPHICS_PIPELINE", "TOOLING", "OPTIMIZATION"
-                  ].map(skill => (
+                  {contactSpecs.coreCompetencies.map((skill: string) => (
                     <span key={skill} className="px-3 py-1 bg-surface-container-highest/50 border border-outline-variant/20 rounded text-code-sm text-on-surface-variant font-medium">
                       {skill}
                     </span>
@@ -164,15 +161,9 @@ export default function ContactClient({ data }: ContactClientProps) {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-lg">
                 <div>
-                  <h3 className="text-label-caps text-on-surface opacity-60 mb-md border-b border-outline-variant/30 pb-xs">SYSTEM_SPECS</h3>
+                  <h3 className="text-label-caps text-on-surface opacity-60 mb-md border-b border-outline-variant/30 pb-xs">Professional Specs</h3>
                   <ul className="space-y-sm">
-                    {[
-                      "12+ Years Professional Experience",
-                      "Expert in Unity & C# Architecture",
-                      "Multiplayer Systems (Photon Fusion)",
-                      "VR/AR Specialist (Oculus/Quest)",
-                      "Performance Profiling & Refactoring",
-                    ].map(item => (
+                    {contactSpecs.professionalSpecs.map((item: string) => (
                       <li key={item} className="flex items-center gap-sm text-body-md text-on-surface-variant">
                         <CheckCircle2 className="w-4 h-4 text-primary-fixed-dim shrink-0" />
                         {item}
@@ -181,21 +172,21 @@ export default function ContactClient({ data }: ContactClientProps) {
                   </ul>
                 </div>
                 <div>
-                  <h3 className="text-label-caps text-on-surface opacity-60 mb-md border-b border-outline-variant/30 pb-xs">AVAILABILITY</h3>
+                  <h3 className="text-label-caps text-on-surface opacity-60 mb-md border-b border-outline-variant/30 pb-xs">Availability</h3>
                   <div className="space-y-md">
                     <div className="glass-panel p-md rounded bg-primary-container/5 border-primary-fixed-dim/20">
-                      <div className="text-label-caps text-primary-fixed-dim mb-1">CURRENT_ENGAGEMENT</div>
+                      <div className="text-label-caps text-primary-fixed-dim mb-1">Current Project</div>
                       <div className="text-headline-sm text-on-surface uppercase">
-                        {activeJob ? `${activeJob.company.toUpperCase().replace(' ', '_')} // REMOTE` : "FREELANCE_READY"}
+                        {activeJob ? `${activeJob.company} // Remote` : "Freelance Ready"}
                       </div>
                     </div>
                     <div className="glass-panel p-md rounded bg-surface-container-high/50">
-                      <div className="text-label-caps text-on-surface-variant mb-1">LOCATION_DATA</div>
+                      <div className="text-label-caps text-on-surface-variant mb-1">Location</div>
                       <div className="text-headline-sm text-on-surface uppercase">{profile.location}</div>
                     </div>
                     {profile.phone && (
                       <div className="glass-panel p-md rounded bg-surface-container-high/50">
-                        <div className="text-label-caps text-on-surface-variant mb-1">CONTACT_PHONE</div>
+                        <div className="text-label-caps text-on-surface-variant mb-1">Phone</div>
                         <div className="text-headline-sm text-on-surface uppercase">{profile.phone}</div>
                       </div>
                     )}
@@ -203,10 +194,6 @@ export default function ContactClient({ data }: ContactClientProps) {
                 </div>
               </div>
             </div>
-          </div>
-
-          <div className="mt-auto pt-xl text-center text-code-sm text-outline/30 uppercase tracking-widest font-jetbrains">
-            SYSTEM_END_OF_TRANSMISSION
           </div>
         </div>
       </motion.div>

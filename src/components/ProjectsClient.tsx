@@ -16,12 +16,11 @@ export default function ProjectsClient({ projects }: ProjectsClientProps) {
         animate={{ opacity: 1, y: 0 }}
         className="mb-xl"
       >
-        <h1 className="text-display-lg text-on-surface mb-xs uppercase">PROJECT_LOGS</h1>
+        <h1 className="text-display-lg text-on-surface mb-xs uppercase">Project Portfolio</h1>
         <div className="text-label-caps text-primary-fixed-dim border-l-2 border-primary-fixed-dim pl-md">
-          MISSION_CRITICAL SYSTEMS & INTERACTIVE PRODUCTIONS
+          Critical Systems & Interactive Productions
         </div>
       </motion.div>
-
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-xl">
         {projects.map((project: any, i: number) => (
           <motion.div

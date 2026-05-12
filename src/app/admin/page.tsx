@@ -71,12 +71,12 @@ export default function AdminPanel() {
         body: JSON.stringify(data)
       });
       if (res.ok) {
-        setStatus({ type: 'success', message: "SYSTEM_CONFIG_UPDATED // STABLE" });
+        setStatus({ type: 'success', message: "System configuration updated successfully." });
       } else {
         throw new Error("Save failed");
       }
     } catch (err) {
-      setStatus({ type: 'error', message: "ERROR: WRITE_ACCESS_DENIED" });
+      setStatus({ type: 'error', message: "Error: Write access denied." });
     } finally {
       setSaving(false);
       setTimeout(() => setStatus(null), 3000);
@@ -101,12 +101,12 @@ export default function AdminPanel() {
         } else {
           setData({ ...data, profile: { ...data.profile, avatar: result.path } });
         }
-        setStatus({ type: 'success', message: `${type.toUpperCase()}_UPLOADED_SUCCESSFULLY` });
+        setStatus({ type: 'success', message: `${type.charAt(0).toUpperCase() + type.slice(1)} uploaded successfully.` });
       } else {
         throw new Error(result.error);
       }
     } catch (err) {
-      setStatus({ type: 'error', message: "UPLOAD_FAILED" });
+      setStatus({ type: 'error', message: "Upload failed." });
     } finally {
       setSaving(false);
       setTimeout(() => setStatus(null), 3000);
@@ -116,7 +116,7 @@ export default function AdminPanel() {
   if (loading) return (
     <PageLayout>
       <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="text-label-caps text-primary-fixed-dim animate-pulse">INIT_SYSTEM_ADMIN...</div>
+        <div className="text-label-caps text-primary-fixed-dim animate-pulse">Initializing Admin...</div>
       </div>
     </PageLayout>
   );
@@ -131,10 +131,10 @@ export default function AdminPanel() {
           >
             <h1 className="text-display-lg text-on-surface uppercase flex items-center gap-md">
               <ShieldAlert className="w-12 h-12 text-primary-fixed-dim" />
-              ADMIN_COMMAND_CENTER
+              Admin Command Center
             </h1>
             <div className="text-label-caps text-primary-fixed-dim border-l-2 border-primary-fixed-dim pl-md mt-sm">
-              LOCAL_FILESYSTEM_WRITE_ACCESS: <span className="text-tertiary-fixed">ENABLED</span>
+              Local Filesystem Write Access: <span className="text-tertiary-fixed">Enabled</span>
             </div>
           </motion.div>
 
@@ -143,7 +143,7 @@ export default function AdminPanel() {
             disabled={saving}
             className="flex items-center gap-sm bg-primary-container text-on-primary-container px-xl py-lg rounded-sm tech-edge hover:bg-primary-fixed transition-all disabled:opacity-50"
           >
-            {saving ? "SAVING..." : "SAVE_ALL_CHANGES"}
+            {saving ? "Saving..." : "Save Changes"}
             <Save className="w-5 h-5" />
           </button>
         </div>
@@ -168,13 +168,13 @@ export default function AdminPanel() {
           {/* Sidebar Tabs */}
           <div className="lg:col-span-3 space-y-sm">
             {[
-              { id: "profile", label: "IDENTITY", icon: Briefcase },
-              { id: "contact", label: "CONTACT_CHANNELS", icon: AtSign },
-              { id: "evolution", label: "CAREER_LOG", icon: History },
-              { id: "projects", label: "PROJECTS", icon: Layers },
-              { id: "skills", label: "TECH_STACK", icon: Database },
-              { id: "manifesto", label: "PHILOSOPHY", icon: MessageSquare },
-              { id: "raw", label: "RAW_JSON", icon: Terminal },
+              { id: "profile", label: "Identity", icon: Briefcase },
+              { id: "contact", label: "Contact Channels", icon: AtSign },
+              { id: "evolution", label: "Career Log", icon: History },
+              { id: "projects", label: "Projects", icon: Layers },
+              { id: "skills", label: "Tech Stack", icon: Database },
+              { id: "manifesto", label: "Philosophy", icon: MessageSquare },
+              { id: "raw", label: "Raw JSON", icon: Terminal },
             ].map(tab => (
               <button
                 key={tab.id}
@@ -196,25 +196,25 @@ export default function AdminPanel() {
           <div className="lg:col-span-9 glass-panel p-xl rounded-2xl min-h-[60vh] border-primary-fixed-dim/20">
             {activeTab === "profile" && (
               <div className="space-y-xl">
-                <h2 className="text-headline-md text-on-surface uppercase border-b border-outline-variant/30 pb-sm">IDENTITY_CONFIG</h2>
+                <h2 className="text-headline-md text-on-surface uppercase border-b border-outline-variant/30 pb-sm">Identity Configuration</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-lg">
                   <Input 
-                    label="DISPLAY_NAME" 
+                    label="Display Name" 
                     value={data.profile.name} 
                     onChange={v => setData({...data, profile: {...data.profile, name: v}})}
                   />
                   <Input 
-                    label="CURRENT_ROLE" 
+                    label="Current Role" 
                     value={data.profile.role} 
                     onChange={v => setData({...data, profile: {...data.profile, role: v}})}
                   />
                   <Input 
-                    label="LOCATION_DATA" 
+                    label="Location" 
                     value={data.profile.location} 
                     onChange={v => setData({...data, profile: {...data.profile, location: v}})}
                   />
                   <div className="space-y-sm">
-                    <label className="block text-code-sm text-outline mb-xs uppercase">RESUME_ASSET (PDF)</label>
+                    <label className="block text-code-sm text-outline mb-xs uppercase">Resume Asset (PDF)</label>
                     <div className="flex gap-md">
                       <input 
                         type="file" 
@@ -228,14 +228,14 @@ export default function AdminPanel() {
                         className="flex-1 glass-panel px-md py-sm rounded flex items-center gap-sm text-label-caps text-xs hover:bg-primary-container/10 transition-all border border-outline-variant/30"
                       >
                         <FileText className="w-4 h-4 text-primary-fixed-dim" />
-                        {data.profile.resumePath || "UPLOAD_RESUME"}
+                        {data.profile.resumePath || "Upload Resume"}
                       </button>
                     </div>
                   </div>
                 </div>
 
                 <div className="space-y-sm">
-                  <label className="block text-code-sm text-outline mb-xs uppercase">AVATAR_UPLOAD</label>
+                  <label className="block text-code-sm text-outline mb-xs uppercase">Avatar Upload</label>
                   <div className="flex items-center gap-xl">
                     <img 
                       src={data.profile.avatar} 
@@ -255,15 +255,36 @@ export default function AdminPanel() {
                         className="w-full glass-panel px-md py-sm rounded flex items-center justify-center gap-sm text-label-caps text-xs hover:bg-primary-container/10 transition-all border border-outline-variant/30"
                       >
                         <Upload className="w-4 h-4 text-primary-fixed-dim" />
-                        SELECT_NEW_AVATAR
+                        Select New Avatar
                       </button>
-                      <div className="text-[10px] text-outline mt-xs font-jetbrains italic uppercase text-center">RECOMMENDED: 400x400 JPG/PNG</div>
+                      <div className="text-[10px] text-outline mt-xs font-jetbrains italic uppercase text-center">Recommended: 400x400 JPG/PNG</div>
                     </div>
                   </div>
                 </div>
 
+                <div className="pt-xl border-t border-outline-variant/30">
+                  <h3 className="text-label-caps text-primary-fixed-dim mb-lg">Home Hero Configuration</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-lg">
+                    <Input 
+                      label="Hero Headline" 
+                      value={data.hero.headline} 
+                      onChange={v => setData({...data, hero: {...data.hero, headline: v}})}
+                    />
+                    <Input 
+                      label="Hero Sub-headline" 
+                      value={data.hero.subheadline} 
+                      onChange={v => setData({...data, hero: {...data.hero, subheadline: v}})}
+                    />
+                    <Input 
+                      label="System Status Text" 
+                      value={data.hero.status} 
+                      onChange={v => setData({...data, hero: {...data.hero, status: v}})}
+                    />
+                  </div>
+                </div>
+
                 <div>
-                  <label className="block text-code-sm text-outline mb-xs uppercase">MISSION_SUMMARY</label>
+                  <label className="block text-code-sm text-outline mb-xs uppercase">Mission Summary</label>
                   <textarea 
                     value={data.profile.summary}
                     onChange={e => setData({...data, profile: {...data.profile, summary: e.target.value}})}
@@ -276,11 +297,11 @@ export default function AdminPanel() {
 
             {activeTab === "contact" && (
               <div className="space-y-xl">
-                <h2 className="text-headline-md text-on-surface uppercase border-b border-outline-variant/30 pb-sm">CONTACT_CHANNELS</h2>
+                <h2 className="text-headline-md text-on-surface uppercase border-b border-outline-variant/30 pb-sm">Contact Channels</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-lg">
                   <div className="space-y-sm">
                     <label className="flex items-center gap-sm text-code-sm text-outline uppercase">
-                      <AtSign className="w-4 h-4" /> PRIMARY_EMAIL
+                      <AtSign className="w-4 h-4" /> Primary Email
                     </label>
                     <input 
                       type="email" 
@@ -291,7 +312,7 @@ export default function AdminPanel() {
                   </div>
                   <div className="space-y-sm">
                     <label className="flex items-center gap-sm text-code-sm text-outline uppercase">
-                      <Phone className="w-4 h-4" /> CONTACT_PHONE
+                      <Phone className="w-4 h-4" /> Phone Number
                     </label>
                     <input 
                       type="text" 
@@ -302,17 +323,97 @@ export default function AdminPanel() {
                   </div>
                 </div>
 
-                <div className="space-y-lg pt-md">
+                <div className="pt-xl border-t border-outline-variant/30 space-y-xl">
+                  <div>
+                    <div className="flex justify-between items-center mb-md">
+                      <h3 className="text-label-caps text-primary-fixed-dim">Core Competencies</h3>
+                      <button 
+                        onClick={() => {
+                          const newComp = "New Competency";
+                          setData({...data, contactSpecs: {...data.contactSpecs, coreCompetencies: [...data.contactSpecs.coreCompetencies, newComp]}});
+                        }}
+                        className="text-[10px] font-label-caps hover:bg-primary-container/10 px-md py-xs rounded border border-outline-variant/30"
+                      >
+                        Add Item
+                      </button>
+                    </div>
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-md">
+                      {data.contactSpecs.coreCompetencies.map((comp: string, i: number) => (
+                        <div key={i} className="flex gap-sm group">
+                          <input 
+                            value={comp} 
+                            onChange={e => {
+                              const newComps = [...data.contactSpecs.coreCompetencies];
+                              newComps[i] = e.target.value;
+                              setData({...data, contactSpecs: {...data.contactSpecs, coreCompetencies: newComps}});
+                            }}
+                            className="flex-1 bg-surface-container-high border border-outline-variant/30 rounded px-md py-sm text-xs font-jetbrains"
+                          />
+                          <button 
+                            onClick={() => {
+                              const newComps = data.contactSpecs.coreCompetencies.filter((_: any, idx: number) => idx !== i);
+                              setData({...data, contactSpecs: {...data.contactSpecs, coreCompetencies: newComps}});
+                            }}
+                            className="text-error opacity-0 group-hover:opacity-100 p-xs"
+                          >
+                            <Trash2 className="w-3 h-3" />
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="flex justify-between items-center mb-md">
+                      <h3 className="text-label-caps text-primary-fixed-dim">Professional Specs</h3>
+                      <button 
+                        onClick={() => {
+                          const newSpec = "New Professional Spec";
+                          setData({...data, contactSpecs: {...data.contactSpecs, professionalSpecs: [...data.contactSpecs.professionalSpecs, newSpec]}});
+                        }}
+                        className="text-[10px] font-label-caps hover:bg-primary-container/10 px-md py-xs rounded border border-outline-variant/30"
+                      >
+                        Add Item
+                      </button>
+                    </div>
+                    <div className="space-y-sm">
+                      {data.contactSpecs.professionalSpecs.map((spec: string, i: number) => (
+                        <div key={i} className="flex gap-sm group">
+                          <input 
+                            value={spec} 
+                            onChange={e => {
+                              const newSpecs = [...data.contactSpecs.professionalSpecs];
+                              newSpecs[i] = e.target.value;
+                              setData({...data, contactSpecs: {...data.contactSpecs, professionalSpecs: newSpecs}});
+                            }}
+                            className="flex-1 bg-surface-container-high border border-outline-variant/30 rounded px-md py-sm text-xs font-jetbrains"
+                          />
+                          <button 
+                            onClick={() => {
+                              const newSpecs = data.contactSpecs.professionalSpecs.filter((_: any, idx: number) => idx !== i);
+                              setData({...data, contactSpecs: {...data.contactSpecs, professionalSpecs: newSpecs}});
+                            }}
+                            className="text-error opacity-0 group-hover:opacity-100 p-xs"
+                          >
+                            <Trash2 className="w-3 h-3" />
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-lg pt-md border-t border-outline-variant/30">
                   <div className="flex justify-between items-center">
-                    <h3 className="text-label-caps text-primary-fixed-dim">SOCIAL_LINKS</h3>
+                    <h3 className="text-label-caps text-primary-fixed-dim">Social Links</h3>
                     <button 
                       onClick={() => {
-                        const newSocial = { name: "NEW_SOCIAL", icon: "LinkIcon", href: "" };
+                        const newSocial = { name: "New Social", icon: "LinkIcon", href: "" };
                         setData({...data, profile: {...data.profile, socials: [...data.profile.socials, newSocial]}});
                       }}
                       className="text-[10px] font-label-caps hover:bg-primary-container/10 px-md py-xs rounded border border-outline-variant/30"
                     >
-                      ADD_LINK
+                      Add Link
                     </button>
                   </div>
                   <div className="space-y-md">
@@ -327,7 +428,7 @@ export default function AdminPanel() {
                               setData({...data, profile: {...data.profile, socials: newSocials}});
                             }}
                             className="bg-surface-container-high border border-outline-variant/30 rounded px-md py-sm text-xs font-jetbrains uppercase"
-                            placeholder="PLATFORM"
+                            placeholder="Platform"
                           />
                           <input 
                             value={social.href} 
@@ -337,7 +438,7 @@ export default function AdminPanel() {
                               setData({...data, profile: {...data.profile, socials: newSocials}});
                             }}
                             className="col-span-2 bg-surface-container-high border border-outline-variant/30 rounded px-md py-sm text-xs font-jetbrains"
-                            placeholder="URL_ENDPOINT"
+                            placeholder="URL Endpoint"
                           />
                         </div>
                         <button 
@@ -359,32 +460,32 @@ export default function AdminPanel() {
             {activeTab === "evolution" && (
               <div className="space-y-xl">
                 <div className="flex justify-between items-center border-b border-outline-variant/30 pb-sm">
-                  <h2 className="text-headline-md text-on-surface uppercase">CAREER_LOG</h2>
+                  <h2 className="text-headline-md text-on-surface uppercase">Career Log</h2>
                   <button 
                     onClick={() => {
-                      const newJob = { year: "2024 - PRESENT", role: "NEW_ROLE", company: "NEW_COMPANY", active: false, description: "", achievements: [] };
+                      const newJob = { year: "2024 - Present", role: "New Role", company: "New Company", active: false, description: "", achievements: [] };
                       setData({...data, careerTimeline: [newJob, ...data.careerTimeline]});
                     }}
                     className="flex items-center gap-xs text-[10px] font-label-caps text-primary-fixed-dim hover:bg-primary-fixed-dim/10 px-md py-sm rounded border border-primary-fixed-dim/30 transition-all"
                   >
-                    <Plus className="w-4 h-4" /> ADD_LOG
+                    <Plus className="w-4 h-4" /> Add Entry
                   </button>
                 </div>
                 <div className="space-y-lg">
                   {data.careerTimeline.map((job: any, i: number) => (
                     <div key={i} className="glass-panel p-lg rounded-xl border-l-2 border-l-primary-fixed-dim space-y-md group">
                       <div className="grid grid-cols-4 gap-lg items-end">
-                        <Input label="PERIOD" value={job.year} onChange={v => {
+                        <Input label="Period" value={job.year} onChange={v => {
                           const newLog = [...data.careerTimeline];
                           newLog[i].year = v;
                           setData({...data, careerTimeline: newLog});
                         }} />
-                        <Input label="ROLE" value={job.role} onChange={v => {
+                        <Input label="Role" value={job.role} onChange={v => {
                           const newLog = [...data.careerTimeline];
                           newLog[i].role = v;
                           setData({...data, careerTimeline: newLog});
                         }} />
-                        <Input label="COMPANY" value={job.company} onChange={v => {
+                        <Input label="Company" value={job.company} onChange={v => {
                           const newLog = [...data.careerTimeline];
                           newLog[i].company = v;
                           setData({...data, careerTimeline: newLog});
@@ -400,7 +501,7 @@ export default function AdminPanel() {
                             }}
                             className="w-5 h-5 rounded border-outline-variant accent-primary-fixed-dim"
                           />
-                          <span className="text-label-caps text-[10px]">ACTIVE</span>
+                          <span className="text-label-caps text-[10px]">Active</span>
                           <button 
                             onClick={() => {
                               const newLog = data.careerTimeline.filter((_: any, idx: number) => idx !== i);
@@ -414,7 +515,7 @@ export default function AdminPanel() {
                       </div>
                       
                       <div className="space-y-sm">
-                        <label className="block text-code-sm text-outline uppercase">ROLE_DESCRIPTION</label>
+                        <label className="block text-code-sm text-outline uppercase">Role Description</label>
                         <textarea 
                           value={job.description || ""}
                           onChange={e => {
@@ -424,8 +525,51 @@ export default function AdminPanel() {
                           }}
                           rows={2}
                           className="w-full bg-surface-container-high border border-outline-variant/30 rounded px-md py-sm text-on-surface focus:outline-none focus:border-primary-fixed-dim transition-all resize-none font-jetbrains text-xs"
-                          placeholder="BRIEF_OVERVIEW_OF_RESPONSIBILITIES"
+                          placeholder="Brief overview of responsibilities..."
                         />
+                      </div>
+
+                      <div className="space-y-sm">
+                        <div className="flex justify-between items-center">
+                          <label className="block text-code-sm text-primary-fixed-dim uppercase">Key Achievements</label>
+                          <button 
+                            onClick={() => {
+                              const newLog = [...data.careerTimeline];
+                              if (!newLog[i].achievements) newLog[i].achievements = [];
+                              newLog[i].achievements.push("New Achievement");
+                              setData({...data, careerTimeline: newLog});
+                            }}
+                            className="text-[8px] font-label-caps hover:bg-primary-container/10 px-md py-xs rounded border border-outline-variant/20"
+                          >
+                            Add Bullet Point
+                          </button>
+                        </div>
+                        <div className="space-y-xs">
+                          {job.achievements?.map((ach: string, ai: number) => (
+                            <div key={ai} className="flex gap-sm group/ach">
+                              <div className="mt-2.5 w-1 h-1 rounded-full bg-primary-fixed-dim shrink-0" />
+                              <input 
+                                value={ach} 
+                                onChange={e => {
+                                  const newLog = [...data.careerTimeline];
+                                  newLog[i].achievements[ai] = e.target.value;
+                                  setData({...data, careerTimeline: newLog});
+                                }}
+                                className="flex-1 bg-transparent border-b border-outline-variant/10 focus:border-primary-fixed-dim focus:outline-none py-1 text-xs font-jetbrains"
+                              />
+                              <button 
+                                onClick={() => {
+                                  const newLog = [...data.careerTimeline];
+                                  newLog[i].achievements = newLog[i].achievements.filter((_: any, idx: number) => idx !== ai);
+                                  setData({...data, careerTimeline: newLog});
+                                }}
+                                className="text-error opacity-0 group-hover/ach:opacity-100 p-xs"
+                              >
+                                <Trash2 className="w-3 h-3" />
+                              </button>
+                            </div>
+                          ))}
+                        </div>
                       </div>
                     </div>
                   ))}
@@ -436,15 +580,15 @@ export default function AdminPanel() {
             {activeTab === "projects" && (
               <div className="space-y-xl">
                 <div className="flex justify-between items-center border-b border-outline-variant/30 pb-sm">
-                  <h2 className="text-headline-md text-on-surface uppercase">PROJECT_REPOSITORY</h2>
+                  <h2 className="text-headline-md text-on-surface uppercase">Project Repository</h2>
                   <button 
                     onClick={() => {
-                      const newProj = { id: `new-${Date.now()}`, title: "NEW_PROJECT", category: "GENERAL", image: "", tags: [], metrics: [], challenges: [] };
+                      const newProj = { id: `new-${Date.now()}`, title: "New Project", category: "General", image: "", tags: [], metrics: [], challenges: [] };
                       setData({...data, projects: [newProj, ...data.projects]});
                     }}
                     className="flex items-center gap-xs text-[10px] font-label-caps text-primary-fixed-dim hover:bg-primary-fixed-dim/10 px-md py-sm rounded border border-primary-fixed-dim/30 transition-all"
                   >
-                    <Plus className="w-4 h-4" /> ADD_ENTRY
+                    <Plus className="w-4 h-4" /> Add Project
                   </button>
                 </div>
                 <div className="space-y-lg">
@@ -452,18 +596,18 @@ export default function AdminPanel() {
                     <div key={p.id} className="glass-panel p-lg rounded-xl border-l-2 border-l-primary-fixed-dim flex gap-xl relative group">
                       <div className="flex-1 space-y-md">
                         <div className="grid grid-cols-2 gap-md">
-                          <Input label="TITLE" value={p.title} onChange={v => {
+                          <Input label="Title" value={p.title} onChange={v => {
                             const newProjs = [...data.projects];
                             newProjs[i].title = v;
                             setData({...data, projects: newProjs});
                           }} />
-                          <Input label="CATEGORY" value={p.category} onChange={v => {
+                          <Input label="Category" value={p.category} onChange={v => {
                             const newProjs = [...data.projects];
                             newProjs[i].category = v;
                             setData({...data, projects: newProjs});
                           }} />
                         </div>
-                        <Input label="IMAGE_URL" value={p.image} onChange={v => {
+                        <Input label="Image URL" value={p.image} onChange={v => {
                           const newProjs = [...data.projects];
                           newProjs[i].image = v;
                           setData({...data, projects: newProjs});
@@ -486,7 +630,7 @@ export default function AdminPanel() {
 
             {activeTab === "raw" && (
               <div className="h-full flex flex-col">
-                <h2 className="text-headline-md text-on-surface uppercase border-b border-outline-variant/30 pb-sm mb-xl">RAW_SYSTEM_JSON</h2>
+                <h2 className="text-headline-md text-on-surface uppercase border-b border-outline-variant/30 pb-sm mb-xl">Raw System JSON</h2>
                 <textarea 
                   value={JSON.stringify(data, null, 2)}
                   onChange={e => {
@@ -504,24 +648,24 @@ export default function AdminPanel() {
               <div className="space-y-xl">
                 <div>
                   <div className="flex justify-between items-center border-b border-outline-variant/30 pb-sm mb-lg">
-                    <h2 className="text-headline-md text-on-surface uppercase">CORE_TECHNOLOGIES</h2>
+                    <h2 className="text-headline-md text-on-surface uppercase">Core Technologies</h2>
                     <button 
-                      onClick={() => setData({...data, coreTechnologies: [...data.coreTechnologies, { name: "NEW_TECH", icon: "Layers" }]})}
+                      onClick={() => setData({...data, coreTechnologies: [...data.coreTechnologies, { name: "New Tech", icon: "Layers" }]})}
                       className="text-[10px] font-label-caps hover:bg-primary-container/10 px-md py-xs rounded border border-outline-variant/30"
                     >
-                      ADD_TECH
+                      Add Tech
                     </button>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
                     {data.coreTechnologies.map((tech: any, i: number) => (
                       <div key={i} className="flex gap-md group items-end glass-panel p-md rounded border-primary-fixed-dim/20">
                         <div className="flex-1 space-y-md">
-                          <Input label="NAME" value={tech.name} onChange={v => {
+                          <Input label="Name" value={tech.name} onChange={v => {
                             const newTech = [...data.coreTechnologies];
                             newTech[i].name = v;
                             setData({...data, coreTechnologies: newTech});
                           }} />
-                          <Input label="ICON" value={tech.icon} onChange={v => {
+                          <Input label="Icon" value={tech.icon} onChange={v => {
                             const newTech = [...data.coreTechnologies];
                             newTech[i].icon = v;
                             setData({...data, coreTechnologies: newTech});
@@ -543,15 +687,15 @@ export default function AdminPanel() {
 
                 <div className="pt-xl">
                   <div className="flex justify-between items-center border-b border-outline-variant/30 pb-sm mb-lg">
-                    <h2 className="text-headline-md text-on-surface uppercase">BENTO_SKILLS</h2>
+                    <h2 className="text-headline-md text-on-surface uppercase">Bento Skills</h2>
                     <button 
                       onClick={() => {
-                        const newCat = { title: "NEW_CATEGORY", icon: "Database", skills: [], tags: [] };
+                        const newCat = { title: "New Category", icon: "Database", skills: [], tags: [] };
                         setData({...data, bentoSkills: [...data.bentoSkills, newCat]});
                       }}
                       className="text-[10px] font-label-caps hover:bg-primary-container/10 px-md py-xs rounded border border-outline-variant/30"
                     >
-                      ADD_CATEGORY
+                      Add Category
                     </button>
                   </div>
                   <div className="space-y-xl">
@@ -559,12 +703,12 @@ export default function AdminPanel() {
                       <div key={i} className="glass-panel p-xl rounded-xl border border-primary-fixed-dim/10 space-y-xl">
                         <div className="flex justify-between items-end gap-xl">
                           <div className="flex-1 grid grid-cols-2 gap-lg">
-                            <Input label="CATEGORY_TITLE" value={cat.title} onChange={v => {
+                            <Input label="Category Title" value={cat.title} onChange={v => {
                               const newBento = [...data.bentoSkills];
                               newBento[i].title = v;
                               setData({...data, bentoSkills: newBento});
                             }} />
-                            <Input label="ICON" value={cat.icon} onChange={v => {
+                            <Input label="Icon" value={cat.icon} onChange={v => {
                               const newBento = [...data.bentoSkills];
                               newBento[i].icon = v;
                               setData({...data, bentoSkills: newBento});
@@ -583,28 +727,28 @@ export default function AdminPanel() {
 
                         <div className="space-y-lg">
                           <div className="flex justify-between items-center">
-                            <h3 className="text-label-caps text-primary-fixed-dim">SKILL_ITEMS</h3>
+                            <h3 className="text-label-caps text-primary-fixed-dim">Skill Items</h3>
                             <button 
                               onClick={() => {
                                 const newBento = [...data.bentoSkills];
-                                newBento[i].skills.push({ name: "NEW_SKILL", desc: "" });
+                                newBento[i].skills.push({ name: "New Skill", desc: "" });
                                 setData({...data, bentoSkills: newBento});
                               }}
                               className="text-[8px] font-label-caps hover:bg-primary-container/10 px-md py-xs rounded border border-outline-variant/20"
                             >
-                              ADD_ITEM
+                              Add Item
                             </button>
                           </div>
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-lg">
                             {cat.skills.map((skill: any, si: number) => (
                               <div key={si} className="glass-panel p-lg rounded border-primary-fixed-dim/5 group relative">
-                                <Input label="SKILL_NAME" value={skill.name} onChange={v => {
+                                <Input label="Skill Name" value={skill.name} onChange={v => {
                                   const newBento = [...data.bentoSkills];
                                   newBento[i].skills[si].name = v;
                                   setData({...data, bentoSkills: newBento});
                                 }} />
                                 <div className="mt-md">
-                                  <label className="block text-[10px] text-outline mb-xs uppercase">DESCRIPTION</label>
+                                  <label className="block text-[10px] text-outline mb-xs uppercase">Description</label>
                                   <textarea 
                                     value={skill.desc}
                                     onChange={e => {
@@ -639,15 +783,15 @@ export default function AdminPanel() {
 
             {activeTab === "manifesto" && (
               <div className="space-y-xl">
-                <h2 className="text-headline-md text-on-surface uppercase border-b border-outline-variant/30 pb-sm">PHILOSOPHY_CONFIG</h2>
+                <h2 className="text-headline-md text-on-surface uppercase border-b border-outline-variant/30 pb-sm">Philosophy Configuration</h2>
                 <div className="space-y-lg">
                   <Input 
-                    label="HEADLINE" 
+                    label="Headline" 
                     value={data.manifesto.headline} 
                     onChange={v => setData({...data, manifesto: {...data.manifesto, headline: v}})}
                   />
                   <div>
-                    <label className="block text-code-sm text-outline mb-xs uppercase">INTRO_STATEMENT</label>
+                    <label className="block text-code-sm text-outline mb-xs uppercase">Intro Statement</label>
                     <textarea 
                       value={data.manifesto.intro}
                       onChange={e => setData({...data, manifesto: {...data.manifesto, intro: e.target.value}})}
@@ -659,15 +803,15 @@ export default function AdminPanel() {
 
                 <div className="pt-xl space-y-lg">
                   <div className="flex justify-between items-center">
-                    <h3 className="text-label-caps text-primary-fixed-dim uppercase">THE_TENETS</h3>
+                    <h3 className="text-label-caps text-primary-fixed-dim uppercase">The Tenets</h3>
                     <button 
                       onClick={() => {
-                        const newTenet = { id: `0${data.manifesto.tenets.length + 1}`, title: "NEW_TENET", content: "" };
+                        const newTenet = { id: `0${data.manifesto.tenets.length + 1}`, title: "New Tenet", content: "" };
                         setData({...data, manifesto: {...data.manifesto, tenets: [...data.manifesto.tenets, newTenet]}});
                       }}
                       className="text-[10px] font-label-caps hover:bg-primary-container/10 px-md py-xs rounded border border-outline-variant/30"
                     >
-                      ADD_TENET
+                      Add Tenet
                     </button>
                   </div>
                   <div className="space-y-md">
@@ -680,7 +824,7 @@ export default function AdminPanel() {
                             setData({...data, manifesto: {...data.manifesto, tenets: newTenets}});
                           }} />
                           <div className="flex-1">
-                            <Input label="TENET_TITLE" value={tenet.title} onChange={v => {
+                            <Input label="Tenet Title" value={tenet.title} onChange={v => {
                               const newTenets = [...data.manifesto.tenets];
                               newTenets[i].title = v;
                               setData({...data, manifesto: {...data.manifesto, tenets: newTenets}});
@@ -705,7 +849,7 @@ export default function AdminPanel() {
                           }}
                           rows={3}
                           className="w-full bg-surface-container-high border border-outline-variant/30 rounded px-md py-sm text-on-surface focus:outline-none focus:border-primary-fixed-dim transition-all resize-none font-jetbrains text-xs"
-                          placeholder="CORE_TECHNICAL_PRINCIPLE_CONTENT"
+                          placeholder="Core technical principle content..."
                         />
                       </div>
                     ))}

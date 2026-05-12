@@ -1,4 +1,30 @@
 {
+  "hero": {
+    "headline": "12 YEARS OF ARCHITECTING",
+    "subheadline": "INTERACTIVE WORLDS",
+    "status": "System Status: Optimal // 12 Years Experience"
+  },
+  "contactSpecs": {
+    "coreCompetencies": [
+      "Unity Engine",
+      "C#",
+      "DOTS / ECS",
+      "Shaders",
+      "Photon Fusion",
+      "Multiplayer",
+      "VR / AR",
+      "Graphics Pipeline",
+      "Tooling",
+      "Optimization"
+    ],
+    "professionalSpecs": [
+      "12+ Years Professional Experience",
+      "Expert in Unity & C# Architecture",
+      "Multiplayer Systems (Photon Fusion)",
+      "VR/AR Specialist (Oculus/Quest)",
+      "Performance Profiling & Refactoring"
+    ]
+  },
   "profile": {
     "name": "Victor Ciorici",
     "role": "Lead/Senior Unity Developer",
@@ -10,17 +36,17 @@
     "resumePath": "/resume.pdf",
     "socials": [
       {
-        "name": "LINKEDIN",
+        "name": "LinkedIn",
         "icon": "Briefcase",
         "href": "https://www.linkedin.com/in/victor-c-478a7849"
       },
       {
-        "name": "GITHUB",
+        "name": "GitHub",
         "icon": "Globe",
         "href": "https://github.com/VictorCiorici"
       },
       {
-        "name": "EMAIL",
+        "name": "Email",
         "icon": "MessageSquare",
         "href": "mailto:victor.ciorici@gmail.com"
       }
@@ -29,42 +55,42 @@
   "stats": [
     {
       "value": "30+",
-      "label": "SHIPPED TITLES"
+      "label": "Shipped Titles"
     },
     {
       "value": "60fps",
-      "label": "MINIMUM TARGET"
+      "label": "Performance Target"
     },
     {
       "value": "8",
-      "label": "PLATFORMS MASTERED"
+      "label": "Platforms Mastered"
     }
   ],
   "coreTechnologies": [
     {
-      "name": "UNITY_CORE",
+      "name": "Unity Core",
       "icon": "Layers"
     },
     {
-      "name": "DOTS_ECS",
+      "name": "Unity DOTS & ECS",
       "icon": "Cpu"
     },
     {
-      "name": "XR_TOOLKIT",
+      "name": "XR Toolkit",
       "icon": "Box"
     },
     {
-      "name": "C#_7.0+",
+      "name": "C# 7.0+",
       "icon": "Terminal"
     },
     {
-      "name": "BURST_COMPILER",
+      "name": "Burst Compiler",
       "icon": "Zap"
     }
   ],
   "bentoSkills": [
     {
-      "title": "ENGINE_MASTERY",
+      "title": "Engine Mastery",
       "icon": "Layers",
       "skills": [
         {
@@ -81,13 +107,13 @@
         }
       ],
       "tags": [
-        "CORE",
-        "RUNTIME",
+        "Core",
+        "Runtime",
         "DOTS"
       ]
     },
     {
-      "title": "GRAPHICS_PIPELINE",
+      "title": "Graphics Pipeline",
       "icon": "Palette",
       "skills": [
         {
@@ -104,13 +130,13 @@
         }
       ],
       "tags": [
-        "SHADERS",
+        "Shaders",
         "GPU",
-        "OPTIMIZATION"
+        "Optimization"
       ]
     },
     {
-      "title": "SYSTEM_ARCHITECTURE",
+      "title": "System Architecture",
       "icon": "Terminal",
       "skills": [
         {
@@ -127,13 +153,13 @@
         }
       ],
       "tags": [
-        "NETWORKING",
-        "VR_AR",
-        "TOOLS"
+        "Networking",
+        "VR/AR",
+        "Tools"
       ]
     },
     {
-      "title": "PLATFORMS_MASTERED",
+      "title": "Platforms Mastered",
       "icon": "Monitor",
       "skills": [
         {
@@ -155,8 +181,8 @@
       ],
       "tags": [
         "PC",
-        "MOBILE",
-        "WEBGL"
+        "Mobile",
+        "WebGL"
       ]
     }
   ],
@@ -165,8 +191,8 @@
       "year": "2025 - 2026",
       "role": "Senior Unity Developer",
       "company": "Limit Break",
-      "active": true,
-      "description": "Leading development of high-performance mobile systems using Unity ECS This is a verified test description. and DOTS.",
+      "active": false,
+      "description": "Leading development of high-performance mobile systems using Unity ECS and DOTS.",
       "achievements": [
         "Optimized memory usage by 40% for low-end mobile devices.",
         "Architected scalable multiplayer backend using Photon Fusion."
@@ -230,54 +256,90 @@
     }
   ],
   "manifesto": {
-    "headline": "ENGINEERING_MANIFESTO",
-    "intro": "A collection of core technical principles that guide every line of code I write. These aren't just rules—they are the architectural soul of high-performance interactive systems.",
+    "headline": "Engineering Manifesto",
+    "intro": "A collection of core technical principles that guide every line of code I write. These are the architectural foundation of high-performance interactive systems.",
     "tenets": [
       {
         "id": "01",
-        "title": "PERFORMANCE_BY_DEFAULT",
+        "title": "Performance by Default",
         "content": "Optimization isn't a post-production step; it's a foundational requirement. High frame rates and low latency are the prerequisites for immersion."
       },
       {
         "id": "02",
-        "title": "ARCHITECTURE_AS_ART",
+        "title": "Architecture as Art",
         "content": "Code should be as elegant as the visuals it renders. We build modular, scalable systems that survive the entropy of long-term development."
       },
       {
         "id": "03",
-        "title": "THE_DOTS_REVOLUTION",
+        "title": "The DOTS Revolution",
         "content": "Embracing Data-Oriented Design to push hardware to its limits. Moving away from object-oriented bottlenecks to unlock massive scale."
       },
       {
         "id": "04",
-        "title": "ITERATE_OR_DIE",
+        "title": "Iterate or Die",
         "content": "Rapid prototyping combined with rigorous testing. We build, break, and refine until the system is bulletproof."
       }
     ]
   },
   "projects": [
     {
+      "id": "new-1778571344899",
+      "title": "New Project",
+      "category": "General",
+      "image": "",
+      "tags": [],
+      "metrics": [],
+      "challenges": []
+    },
+    {
+      "id": "new-1778571344628",
+      "title": "New Project",
+      "category": "General",
+      "image": "",
+      "tags": [],
+      "metrics": [],
+      "challenges": []
+    },
+    {
+      "id": "new-1778571344426",
+      "title": "New Project",
+      "category": "General",
+      "image": "",
+      "tags": [],
+      "metrics": [],
+      "challenges": []
+    },
+    {
+      "id": "new-1778571344222",
+      "title": "New Project",
+      "category": "General",
+      "image": "",
+      "tags": [],
+      "metrics": [],
+      "challenges": []
+    },
+    {
       "id": "engine-core",
-      "title": "QUANTUM_STRIKE",
-      "category": "GAMEPLAY_ENGINE",
+      "title": "Quantum Strike",
+      "category": "Gameplay Engine",
       "image": "https://images.unsplash.com/photo-1614728263952-84ea256f9679?auto=format&fit=crop&q=80&w=1200",
       "tags": [
-        "UNITY",
+        "Unity",
         "ECS",
-        "NETWORKING"
+        "Networking"
       ],
       "metrics": [
         {
-          "label": "CONCURRENCY",
-          "value": "10K+ ENTITIES"
+          "label": "Concurrency",
+          "value": "10K+ Entities"
         },
         {
-          "label": "LATENCY",
-          "value": "<15MS"
+          "label": "Latency",
+          "value": "<15ms"
         },
         {
-          "label": "PLATFORMS",
-          "value": "PC/CONSOLE"
+          "label": "Platforms",
+          "value": "PC/Console"
         }
       ],
       "challenges": [
@@ -288,26 +350,26 @@
     },
     {
       "id": "render-pipeline",
-      "title": "VOID_RUNNER_VR",
-      "category": "IMMERSIVE_XR",
+      "title": "Void Runner VR",
+      "category": "Immersive XR",
       "image": "https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?auto=format&fit=crop&q=80&w=1200",
       "tags": [
         "VR",
         "HDRP",
-        "OPTIMIZATION"
+        "Optimization"
       ],
       "metrics": [
         {
-          "label": "FRAMERATE",
-          "value": "90FPS STABLE"
+          "label": "Framerate",
+          "value": "90fps Stable"
         },
         {
-          "label": "RESOLUTION",
-          "value": "4K PER EYE"
+          "label": "Resolution",
+          "value": "4K per eye"
         },
         {
-          "label": "COMFORT",
-          "value": "ELITE_RATING"
+          "label": "Comfort",
+          "value": "Elite Rating"
         }
       ],
       "challenges": [
@@ -318,25 +380,25 @@
     },
     {
       "id": "tooling-sys",
-      "title": "NEXUS_EDITOR",
-      "category": "DEVELOPER_TOOLS",
+      "title": "Nexus Editor",
+      "category": "Developer Tools",
       "image": "https://images.unsplash.com/photo-1587620962725-abab7fe55159?auto=format&fit=crop&q=80&w=1200",
       "tags": [
         "C#",
-        "EDITOR_UI",
-        "CI_CD"
+        "Editor UI",
+        "CI/CD"
       ],
       "metrics": [
         {
-          "label": "EFFICIENCY",
-          "value": "+40% SPEED"
+          "label": "Efficiency",
+          "value": "+40% Speed"
         },
         {
-          "label": "ADOPTION",
-          "value": "100+ DEVS"
+          "label": "Adoption",
+          "value": "100+ Devs"
         },
         {
-          "label": "UPTIME",
+          "label": "Uptime",
           "value": "99.9%"
         }
       ],

@@ -54,7 +54,7 @@ export default function ManifestoClient({ manifesto }: ManifestoClientProps) {
           whileInView={{ opacity: 1 }}
           className="mt-32 p-xl border border-outline-variant/30 rounded-xl bg-surface-container-low text-center"
         >
-          <div className="text-label-caps text-outline mb-4">COMMIT_HASH // STABLE_RELEASE</div>
+          <div className="text-label-caps text-outline mb-4">Version 1.0 // Stable Release</div>
           <div className="text-headline-sm text-on-surface uppercase tracking-widest">
             Built for performance. Architected for scale.
           </div>
