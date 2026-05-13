@@ -46,11 +46,11 @@ export default function ProjectsClient({ projects }: ProjectsClientProps) {
                   </span>
                 </div>
 
-                {/* Status Overlay for Non-Released */}
-                {project.status !== 'released' && (
+                {/* Status Overlay ONLY for Unreleased */}
+                {project.status === 'unreleased' && (
                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                     <div className="text-[10px] font-label-caps text-on-surface opacity-60 border border-on-surface/20 px-lg py-md rounded tech-edge backdrop-blur-sm">
-                      {project.status === 'unreleased' ? 'UNRELEASED_ASSET' : 'IN_DEVELOPMENT'}
+                      UNRELEASED PROJECT
                     </div>
                   </div>
                 )}

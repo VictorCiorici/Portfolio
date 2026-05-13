@@ -26,7 +26,7 @@ export default function ProjectDetailClient({ id }: ProjectDetailClientProps) {
           className="inline-flex items-center gap-sm text-label-caps text-outline hover:text-primary-fixed-dim transition-colors mb-xl no-underline group"
         >
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-          BACK_TO_PROJECT_LOGS
+          BACK TO PROJECT LOGS
         </Link>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-xl">
@@ -47,9 +47,9 @@ export default function ProjectDetailClient({ id }: ProjectDetailClientProps) {
                       ? "bg-tertiary-container/10 border-tertiary-fixed text-tertiary-fixed"
                       : "bg-surface-container-high border-outline text-outline"
                 }`}>
-                  {project.status === "released" ? "STATUS_RELEASED" : 
-                   project.status === "unreleased" ? "STATUS_UNRELEASED" : 
-                   "STATUS_IN_DEVELOPMENT"}
+                  {project.status === "released" ? "STATUS RELEASED" : 
+                   project.status === "unreleased" ? "STATUS UNRELEASED" : 
+                   "STATUS IN DEVELOPMENT"}
                 </div>
                 {project.tags.map(tag => (
                   <span key={tag} className="px-3 py-1 bg-surface-container-high border border-outline-variant/30 rounded-sm text-code-sm text-on-surface-variant font-medium whitespace-nowrap">
@@ -59,26 +59,31 @@ export default function ProjectDetailClient({ id }: ProjectDetailClientProps) {
               </div>
             </div>
 
-            <div className="glass-panel p-lg rounded-xl mb-xl relative overflow-hidden group">
+            <div className="glass-panel p-lg rounded-xl mb-xl relative overflow-hidden group aspect-video">
               <div 
-                className={`absolute inset-0 bg-cover bg-center opacity-40 transition-all duration-700 ${project.status === 'unreleased' ? 'grayscale group-hover:grayscale-0' : 'grayscale-0'}`}
+                className={`absolute inset-0 bg-cover bg-center transition-all duration-700 ${
+                  project.status === 'unreleased' 
+                    ? 'opacity-40 grayscale group-hover:grayscale-0' 
+                    : 'opacity-100 grayscale-0'
+                }`}
                 style={{ backgroundImage: `url(/Portfolio${project.image})` }}
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent" />
-              <div className="relative z-10 aspect-video flex items-center justify-center">
-                <div className="text-label-caps text-on-surface opacity-40 border border-on-surface/20 px-xl py-lg rounded tech-edge backdrop-blur-md">
-                  {project.status === 'released' ? 'RENDER_VIEWPORT_ACTIVE' : 
-                   project.status === 'unreleased' ? 'UNRELEASED_ASSET_LOCKED' : 
-                   'IN_DEVELOPMENT_ENVIRONMENT'}
+              
+              {/* Status Overlay only for Unreleased */}
+              {project.status === 'unreleased' && (
+                <div className="absolute inset-0 flex items-center justify-center z-10">
+                  <div className="text-label-caps text-on-surface opacity-40 border border-on-surface/20 px-xl py-lg rounded tech-edge backdrop-blur-md">
+                    UNRELEASED PROJECT
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
 
             <div className="space-y-xl">
               <div>
                 <h2 className="text-headline-sm text-on-surface mb-md flex items-center gap-sm">
                   <Cpu className="w-5 h-5 text-primary-fixed-dim" />
-                  TECHNICAL_CHALLENGES
+                  TECHNICAL CHALLENGES
                 </h2>
                 <div className="grid grid-cols-1 gap-md">
                   {project.challenges.map((challenge, i) => (
@@ -96,7 +101,7 @@ export default function ProjectDetailClient({ id }: ProjectDetailClientProps) {
                 <div>
                   <h2 className="text-headline-sm text-on-surface mb-md flex items-center gap-sm">
                     <ImageIcon className="w-5 h-5 text-primary-fixed-dim" />
-                    PROJECT_GALLERY
+                    PROJECT GALLERY
                   </h2>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-md">
                     {project.gallery.map((img, i) => (
@@ -104,7 +109,7 @@ export default function ProjectDetailClient({ id }: ProjectDetailClientProps) {
                         <img 
                           src={`/Portfolio${img}`} 
                           alt={`${project.title} Gallery ${i + 1}`}
-                          className="w-full aspect-video object-cover rounded-lg grayscale group-hover:grayscale-0 transition-all duration-500"
+                          className="w-full aspect-video object-cover rounded-lg transition-all duration-500 group-hover:scale-105"
                         />
                       </div>
                     ))}
@@ -121,7 +126,7 @@ export default function ProjectDetailClient({ id }: ProjectDetailClientProps) {
             className="lg:col-span-5 space-y-lg"
           >
             <div className="glass-panel p-lg rounded-xl">
-              <h2 className="text-label-caps text-on-tertiary-container mb-lg border-b border-outline-variant/30 pb-xs">SYSTEM_METRICS</h2>
+              <h2 className="text-label-caps text-on-tertiary-container mb-lg border-b border-outline-variant/30 pb-xs">SYSTEM METRICS</h2>
               <div className="space-y-lg">
                 {project.metrics.map(metric => (
                   <div key={metric.label}>
@@ -141,13 +146,13 @@ export default function ProjectDetailClient({ id }: ProjectDetailClientProps) {
             </div>
 
             <div className="glass-panel p-lg rounded-xl">
-              <h2 className="text-label-caps text-on-tertiary-container mb-lg border-b border-outline-variant/30 pb-xs">PRODUCTION_STACK</h2>
+              <h2 className="text-label-caps text-on-tertiary-container mb-lg border-b border-outline-variant/30 pb-xs">PRODUCTION STACK</h2>
               <div className="grid grid-cols-2 gap-md">
                 {[
-                  { icon: Zap, label: "BURST_COMPILER" },
-                  { icon: Box, label: "ECS_ENGINE" },
-                  { icon: Cpu, label: "SYSTEM_GRAPH" },
-                  { icon: CheckCircle2, label: "PRODUCTION_READY" }
+                  { icon: Zap, label: "BURST COMPILER" },
+                  { icon: Box, label: "ECS ENGINE" },
+                  { icon: Cpu, label: "SYSTEM GRAPH" },
+                  { icon: CheckCircle2, label: "PRODUCTION READY" }
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-sm p-sm bg-surface-container-high/50 rounded border border-outline-variant/20">
                     <item.icon className="w-4 h-4 text-primary-fixed-dim" />
@@ -158,7 +163,7 @@ export default function ProjectDetailClient({ id }: ProjectDetailClientProps) {
             </div>
 
             <div className="glass-panel p-lg rounded-xl border-primary-fixed-dim/20">
-              <h2 className="text-label-caps text-primary-fixed-dim mb-md">MISSION_OBJECTIVE</h2>
+              <h2 className="text-label-caps text-primary-fixed-dim mb-md">MISSION OBJECTIVE</h2>
               <p className="text-body-sm text-on-surface-variant leading-relaxed mb-lg">
                 Project status is verified as production-stable. Architecture adheres to high-performance data-oriented standards. Code is optimized for multi-threaded execution and minimal memory allocation.
               </p>
@@ -172,7 +177,7 @@ export default function ProjectDetailClient({ id }: ProjectDetailClientProps) {
                     className="w-full py-md bg-primary-container text-on-primary-container rounded-default flex items-center justify-center gap-sm text-label-caps hover:bg-primary-fixed-dim transition-all tech-edge tech-glow no-underline"
                   >
                     <Globe className="w-4 h-4" />
-                    LAUNCH_PROJECT
+                    OPEN PROJECT PAGE
                   </a>
                 )}
                 {project.videoUrl && (
@@ -183,7 +188,7 @@ export default function ProjectDetailClient({ id }: ProjectDetailClientProps) {
                     className="w-full py-md border border-outline text-on-surface rounded-default flex items-center justify-center gap-sm text-label-caps hover:bg-surface-container-high transition-all no-underline"
                   >
                     <Play className="w-4 h-4" />
-                    WATCH_FOOTAGE
+                    WATCH VIDEO
                   </a>
                 )}
               </div>

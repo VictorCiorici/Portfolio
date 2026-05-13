@@ -324,12 +324,14 @@
     {
       "id": "puzzle-panic",
       "title": "Puzzle Panic",
-      "category": "Mobile Survival RPG",
+      "category": "Casual Puzzle",
       "image": "/projects/puzzlle-panic.png",
       "tags": [
         "Mobile",
         "Optimization",
-        "RPG"
+        "UI",
+        "Events",
+        "Match 3"
       ],
       "metrics": [
         {
@@ -353,8 +355,8 @@
       "gallery": [
         "/projects/puzzlle-panic.png"
       ],
-      "projectUrl": "",
-      "videoUrl": "",
+      "projectUrl": "https://limitbreak.com/en",
+      "videoUrl": "https://www.linkedin.com/posts/hayato-sekiguchi_puzzle-panic-is-live-today-we-launched-activity-7450140872190627840-Maww?utm_source=share&utm_medium=member_desktop&rcm=ACoAAApNd5wB1zDaVPxcLKxcx33zQGf9Wqt5Scw",
       "status": "released"
     },
     {
@@ -389,19 +391,21 @@
       "gallery": [
         "/projects/zombie-slasher.png"
       ],
-      "projectUrl": "",
-      "videoUrl": "",
+      "projectUrl": "https://play.google.com/store/apps/details?id=com.zombie.slasher",
+      "videoUrl": "https://www.youtube.com/watch?v=UeGVlYS9yvA",
       "status": "released"
     },
     {
       "id": "diy-projects",
       "title": "DIY Projects - Art Puzzle Game",
-      "category": "Hyper-Casual Puzzle",
+      "category": "Casual Puzzle",
       "image": "/projects/diy-projects.jpg",
       "tags": [
-        "Hyper-Casual",
         "Systems",
-        "Mobile"
+        "Mobile",
+        "Match 3",
+        "Features",
+        "Optimization"
       ],
       "metrics": [
         {
@@ -415,14 +419,13 @@
       ],
       "challenges": [
         "Optimizing art asset pipelines to support a massive variety of puzzle configurations.",
-        "Refactoring legacy gameplay code to improve system modularity and iteration speed.",
-        "Implementing high-performance procedural animations for tactile puzzle interactions."
+        "Refactoring legacy gameplay code to improve system modularity and iteration speed."
       ],
       "gallery": [
         "/projects/diy-projects.png"
       ],
-      "projectUrl": "",
-      "videoUrl": "",
+      "projectUrl": "https://play.google.com/store/apps/details?id=com.playgendary.dip_android",
+      "videoUrl": "https://www.youtube.com/watch?v=wpEUaAvVDf8",
       "status": "released"
     },
     {
@@ -431,15 +434,13 @@
       "category": "Multiplayer MOBA",
       "image": "/projects/moba-strike.png",
       "tags": [
-        "Unity",
         "Photon Fusion",
-        "Multiplayer"
+        "Multiplayer",
+        "Concurrency",
+        "Networking",
+        "Performance"
       ],
       "metrics": [
-        {
-          "label": "Concurrency",
-          "value": "Scalable Backend"
-        },
         {
           "label": "Protocol",
           "value": "Photon Fusion"
@@ -447,6 +448,10 @@
         {
           "label": "Stage",
           "value": "MVP Verified"
+        },
+        {
+          "label": "",
+          "value": "0"
         }
       ],
       "challenges": [
@@ -461,7 +466,7 @@
       "videoUrl": "",
       "status": "unreleased",
       "isReleased": false
-    },    
+    },
     {
       "id": "space-maze-xr",
       "title": "Space Maze",
@@ -469,7 +474,9 @@
       "image": "/projects/space-maze.png",
       "tags": [
         "VR",
-        "Custom Shaders"
+        "Custom Shaders",
+        "Performance",
+        "Optimization"
       ],
       "metrics": [
         {
@@ -493,19 +500,19 @@
       "gallery": [
         "/projects/space-maze.png"
       ],
-      "projectUrl": "",
-      "videoUrl": "",
+      "projectUrl": "https://store.steampowered.com/app/908180/Space_Maze/",
+      "videoUrl": "https://www.youtube.com/watch?v=w8WmPasIy1Y",
       "status": "released"
     },
     {
-      "id": "cows-vs-vikings",
-      "title": "Cows Vs Vikings",
+      "id": "Moldova-Wine-VR",
+      "title": "Moldova Wine VR",
       "category": "Strategy / Defense",
-      "image": "/projects/cows-vs-vikings.jpg",
+      "image": "/projects/moldova-wine.png",
       "tags": [
-        "PC",
         "Mobile",
-        "Editor Tools"
+        "Editor Tools",
+        "VR"
       ],
       "metrics": [
         {
@@ -527,10 +534,48 @@
         "Architecting a flexible AI state machine for diverse unit behaviors."
       ],
       "gallery": [
-        "/projects/cows-vs-vikings.png"
+        "/projects/moldova-wine.png"
       ],
       "projectUrl": "",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=8we89A16CXk",
+      "status": "released"
+    },
+    {
+      "id": "cows-vs-vikings",
+      "title": "Cows Vs Vikings",
+      "category": "Strategy / Defense",
+      "image": "/projects/cows-vs-vikings.jpg",
+      "tags": [
+        "PC",
+        "WebGL",
+        "Editor Tools",
+        "Optimization",
+        "Audio"
+      ],
+      "metrics": [
+        {
+          "label": "Workflow",
+          "value": "Custom Editors"
+        },
+        {
+          "label": "Gen",
+          "value": "Procedural Levels"
+        },
+        {
+          "label": "Security",
+          "value": "Encrypted Saves"
+        }
+      ],
+      "challenges": [
+        "Developing a custom level editor and procedural generation systems from scratch.",
+        "Implementing a secure save data system with cross-platform synchronization.",
+        "Architecting a flexible AI state machine for diverse unit behaviors."
+      ],
+      "gallery": [
+        "/projects/cows-vs-vikings.jpg"
+      ],
+      "projectUrl": "https://store.steampowered.com/app/854860/Cows_VS_Vikings/",
+      "videoUrl": "https://www.youtube.com/watch?v=xlF7XuVrVT0",
       "status": "released"
     }
   ]
