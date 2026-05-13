@@ -35,17 +35,25 @@ export default function ProjectsClient({ projects }: ProjectsClientProps) {
               <div className="relative aspect-video overflow-hidden rounded-xl border border-outline-variant/30 glass-panel">
                 {/* Image with overlay */}
                 <div 
-                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                  className={`absolute inset-0 bg-cover bg-center transition-all duration-700 group-hover:scale-110 ${project.status === 'unreleased' ? 'grayscale group-hover:grayscale-0' : 'grayscale-0'}`}
                   style={{ backgroundImage: `url(/Portfolio${project.image})` }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
                 
-                {/* Category Tag */}
                 <div className="absolute top-4 left-4">
                   <span className="px-3 py-1 bg-primary-container text-on-primary-container text-[10px] font-label-caps rounded-sm tech-edge">
                     {project.category}
                   </span>
                 </div>
+
+                {/* Status Overlay for Non-Released */}
+                {project.status !== 'released' && (
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <div className="text-[10px] font-label-caps text-on-surface opacity-60 border border-on-surface/20 px-lg py-md rounded tech-edge backdrop-blur-sm">
+                      {project.status === 'unreleased' ? 'UNRELEASED_ASSET' : 'IN_DEVELOPMENT'}
+                    </div>
+                  </div>
+                )}
 
                 {/* Corner Accent */}
                 <div className="absolute bottom-0 right-0 p-lg opacity-0 group-hover:opacity-100 transition-all translate-y-4 group-hover:translate-y-0">

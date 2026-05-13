@@ -322,38 +322,44 @@
   },
   "projects": [
     {
-      "id": "moba-strike",
-      "title": "MOBA Strike",
-      "category": "Multiplayer MOBA",
-      "image": "/projects/moba-strike.png",
+      "id": "puzzle-panic",
+      "title": "Puzzle Panic",
+      "category": "Mobile Survival RPG",
+      "image": "/projects/puzzlle-panic.png",
       "tags": [
-        "Unity",
-        "Photon Fusion",
-        "Multiplayer"
+        "Mobile",
+        "Optimization",
+        "RPG"
       ],
       "metrics": [
         {
-          "label": "Concurrency",
-          "value": "Scalable Backend"
+          "label": "Retention",
+          "value": "High Traffic"
         },
         {
-          "label": "Protocol",
-          "value": "Photon Fusion"
+          "label": "Platforms",
+          "value": "iOS / Android"
         },
         {
-          "label": "Stage",
-          "value": "MVP Verified"
+          "label": "Perf",
+          "value": "Stable 60fps"
         }
       ],
       "challenges": [
-        "Implementing deterministic lockstep-style networking in a fast-paced competitive environment.",
-        "Designing a modular hero ability system with server-authoritative verification.",
-        "Optimizing networked physics for low-latency player interactions."
-      ]
+        "Developing scalable RPG attribute and inventory systems for high-traffic mobile play.",
+        "Profiling and refactoring core gameplay loops to ensure stability across low-end devices.",
+        "Integrating analytics and monetization SDKs without compromising performance."
+      ],
+      "gallery": [
+        "/projects/puzzlle-panic.png"
+      ],
+      "projectUrl": "",
+      "videoUrl": "",
+      "status": "released"
     },
     {
       "id": "zombie-slasher",
-      "title": "Zombie Slasher: RPG",
+      "title": "Zombie Slasher: Survival RPG",
       "category": "Mobile Survival RPG",
       "image": "/projects/zombie-slasher.png",
       "tags": [
@@ -379,13 +385,19 @@
         "Developing scalable RPG attribute and inventory systems for high-traffic mobile play.",
         "Profiling and refactoring core gameplay loops to ensure stability across low-end devices.",
         "Integrating analytics and monetization SDKs without compromising performance."
-      ]
+      ],
+      "gallery": [
+        "/projects/zombie-slasher.png"
+      ],
+      "projectUrl": "",
+      "videoUrl": "",
+      "status": "released"
     },
     {
       "id": "diy-projects",
-      "title": "DIY Projects: Art Puzzle",
+      "title": "DIY Projects - Art Puzzle Game",
       "category": "Hyper-Casual Puzzle",
-      "image": "/projects/diy-projects.png",
+      "image": "/projects/diy-projects.jpg",
       "tags": [
         "Hyper-Casual",
         "Systems",
@@ -397,28 +409,66 @@
           "value": "Millions of Users"
         },
         {
-          "label": "Animation",
-          "value": "Procedural"
-        },
-        {
           "label": "Pipeline",
-          "value": "Visual Asset Gen"
+          "value": "Match 3"
         }
       ],
       "challenges": [
         "Optimizing art asset pipelines to support a massive variety of puzzle configurations.",
         "Refactoring legacy gameplay code to improve system modularity and iteration speed.",
         "Implementing high-performance procedural animations for tactile puzzle interactions."
-      ]
+      ],
+      "gallery": [
+        "/projects/diy-projects.png"
+      ],
+      "projectUrl": "",
+      "videoUrl": "",
+      "status": "released"
     },
     {
+      "id": "moba-strike",
+      "title": "Multiplayer MOBA Prototype",
+      "category": "Multiplayer MOBA",
+      "image": "/projects/moba-strike.png",
+      "tags": [
+        "Unity",
+        "Photon Fusion",
+        "Multiplayer"
+      ],
+      "metrics": [
+        {
+          "label": "Concurrency",
+          "value": "Scalable Backend"
+        },
+        {
+          "label": "Protocol",
+          "value": "Photon Fusion"
+        },
+        {
+          "label": "Stage",
+          "value": "MVP Verified"
+        }
+      ],
+      "challenges": [
+        "Implementing deterministic lockstep-style networking in a fast-paced competitive environment.",
+        "Designing a modular hero ability system with server-authoritative verification.",
+        "Optimizing networked physics for low-latency player interactions."
+      ],
+      "gallery": [
+        "/projects/moba-strike.png"
+      ],
+      "projectUrl": "",
+      "videoUrl": "",
+      "status": "unreleased",
+      "isReleased": false
+    },    
+    {
       "id": "space-maze-xr",
-      "title": "Space Maze XR",
+      "title": "Space Maze",
       "category": "Immersive VR",
       "image": "/projects/space-maze.png",
       "tags": [
         "VR",
-        "XR",
         "Custom Shaders"
       ],
       "metrics": [
@@ -439,13 +489,19 @@
         "Achieving stable 90FPS on mobile VR hardware using custom optimized shaders.",
         "Designing intuitive VR interaction systems for complex space navigation.",
         "Implementing a custom rendering pipeline optimized for dual-eye rendering."
-      ]
+      ],
+      "gallery": [
+        "/projects/space-maze.png"
+      ],
+      "projectUrl": "",
+      "videoUrl": "",
+      "status": "released"
     },
     {
       "id": "cows-vs-vikings",
       "title": "Cows Vs Vikings",
       "category": "Strategy / Defense",
-      "image": "/projects/cows-vs-vikings.png",
+      "image": "/projects/cows-vs-vikings.jpg",
       "tags": [
         "PC",
         "Mobile",
@@ -469,7 +525,13 @@
         "Developing a custom level editor and procedural generation systems from scratch.",
         "Implementing a secure save data system with cross-platform synchronization.",
         "Architecting a flexible AI state machine for diverse unit behaviors."
-      ]
+      ],
+      "gallery": [
+        "/projects/cows-vs-vikings.png"
+      ],
+      "projectUrl": "",
+      "videoUrl": "",
+      "status": "released"
     }
   ]
 }

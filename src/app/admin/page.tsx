@@ -24,7 +24,10 @@ import {
   Zap,
   Tag,
   BarChart3,
-  Link as LinkIcon
+  Link as LinkIcon,
+  Image as ImageIcon,
+  Play,
+  Globe
 } from "lucide-react";
 import PageLayout from "@/components/PageLayout";
 
@@ -624,11 +627,29 @@ export default function AdminPanel() {
                             newProjs[i].title = v;
                             setData({...data, projects: newProjs});
                           }} />
-                          <Input label="Category" value={p.category} onChange={v => {
-                            const newProjs = [...data.projects];
-                            newProjs[i].category = v;
-                            setData({...data, projects: newProjs});
-                          }} />
+                          <div className="grid grid-cols-2 gap-md">
+                            <Input label="Category" value={p.category} onChange={v => {
+                              const newProjs = [...data.projects];
+                              newProjs[i].category = v;
+                              setData({...data, projects: newProjs});
+                            }} />
+                            <div className="flex-1 space-y-xs">
+                              <label className="block text-[10px] text-outline uppercase">Project Status</label>
+                              <select 
+                                value={p.status || "development"}
+                                onChange={e => {
+                                  const newProjs = [...data.projects];
+                                  newProjs[i].status = e.target.value;
+                                  setData({...data, projects: newProjs});
+                                }}
+                                className="w-full bg-surface-container-high border border-outline-variant/30 rounded px-md py-sm text-on-surface focus:outline-none focus:border-primary-fixed-dim transition-all font-jetbrains text-xs"
+                              >
+                                <option value="released">Released</option>
+                                <option value="development">In Development</option>
+                                <option value="unreleased">Unreleased</option>
+                              </select>
+                            </div>
+                          </div>
                           
                           <div className="space-y-sm">
                             <label className="flex items-center gap-sm text-code-sm text-outline uppercase">
@@ -688,6 +709,36 @@ export default function AdminPanel() {
                                 />
                               </div>
                             </div>
+                          </div>
+
+                          <div className="grid grid-cols-2 gap-md">
+                            <Input label="Live Project URL" value={p.projectUrl || ""} onChange={v => {
+                              const newProjs = [...data.projects];
+                              newProjs[i].projectUrl = v;
+                              setData({...data, projects: newProjs});
+                            }} />
+                            <Input label="Video Footage URL" value={p.videoUrl || ""} onChange={v => {
+                              const newProjs = [...data.projects];
+                              newProjs[i].videoUrl = v;
+                              setData({...data, projects: newProjs});
+                            }} />
+                          </div>
+
+                          <div className="space-y-sm">
+                            <label className="flex items-center gap-sm text-code-sm text-outline uppercase">
+                              <ImageIcon className="w-4 h-4" /> Gallery Images (Comma Separated)
+                            </label>
+                            <textarea 
+                              value={p.gallery?.join(", ") || ""} 
+                              onChange={e => {
+                                const newProjs = [...data.projects];
+                                newProjs[i].gallery = e.target.value.split(",").map(t => t.trim()).filter(Boolean);
+                                setData({...data, projects: newProjs});
+                              }}
+                              rows={2}
+                              className="w-full bg-surface-container-high border border-outline-variant/30 rounded px-md py-sm text-on-surface focus:outline-none focus:border-primary-fixed-dim transition-all font-jetbrains text-xs resize-none"
+                              placeholder="/projects/img1.png, /projects/img2.png..."
+                            />
                           </div>
                         </div>
                       </div>

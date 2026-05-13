@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import PageLayout from "@/components/PageLayout";
-import { ArrowLeft, CheckCircle2, Cpu, Zap, Box } from "lucide-react";
+import { ArrowLeft, CheckCircle2, Cpu, Zap, Box, Globe, Play, Image as ImageIcon } from "lucide-react";
 import { projects, type Project } from "@/data/portfolio";
 import { notFound } from "next/navigation";
 
@@ -39,7 +39,18 @@ export default function ProjectDetailClient({ id }: ProjectDetailClientProps) {
             <div className="mb-xl">
               <span className="text-label-caps text-primary-fixed-dim mb-xs block tracking-widest">{project.category}</span>
               <h1 className="text-display-sm sm:text-display-md text-on-surface uppercase mb-md">{project.title}</h1>
-              <div className="flex flex-wrap gap-sm">
+              <div className="flex flex-wrap items-center gap-sm">
+                <div className={`px-3 py-1 rounded-sm text-[10px] font-label-caps border ${
+                  project.status === "released" 
+                    ? "bg-primary-container/10 border-primary-fixed-dim text-primary-fixed-dim" 
+                    : project.status === "unreleased"
+                      ? "bg-tertiary-container/10 border-tertiary-fixed text-tertiary-fixed"
+                      : "bg-surface-container-high border-outline text-outline"
+                }`}>
+                  {project.status === "released" ? "STATUS_RELEASED" : 
+                   project.status === "unreleased" ? "STATUS_UNRELEASED" : 
+                   "STATUS_IN_DEVELOPMENT"}
+                </div>
                 {project.tags.map(tag => (
                   <span key={tag} className="px-3 py-1 bg-surface-container-high border border-outline-variant/30 rounded-sm text-code-sm text-on-surface-variant font-medium whitespace-nowrap">
                     {tag}
@@ -50,13 +61,15 @@ export default function ProjectDetailClient({ id }: ProjectDetailClientProps) {
 
             <div className="glass-panel p-lg rounded-xl mb-xl relative overflow-hidden group">
               <div 
-                className="absolute inset-0 bg-cover bg-center opacity-40 grayscale group-hover:grayscale-0 transition-all duration-700"
+                className={`absolute inset-0 bg-cover bg-center opacity-40 transition-all duration-700 ${project.status === 'unreleased' ? 'grayscale group-hover:grayscale-0' : 'grayscale-0'}`}
                 style={{ backgroundImage: `url(/Portfolio${project.image})` }}
               />
               <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent" />
               <div className="relative z-10 aspect-video flex items-center justify-center">
                 <div className="text-label-caps text-on-surface opacity-40 border border-on-surface/20 px-xl py-lg rounded tech-edge backdrop-blur-md">
-                  RENDER_VIEWPORT_ACTIVE
+                  {project.status === 'released' ? 'RENDER_VIEWPORT_ACTIVE' : 
+                   project.status === 'unreleased' ? 'UNRELEASED_ASSET_LOCKED' : 
+                   'IN_DEVELOPMENT_ENVIRONMENT'}
                 </div>
               </div>
             </div>
@@ -72,28 +85,32 @@ export default function ProjectDetailClient({ id }: ProjectDetailClientProps) {
                     <div key={i} className="flex gap-md p-md glass-panel rounded-lg border-l-2 border-l-primary-fixed-dim">
                       <div className="text-code-sm text-primary-fixed-dim font-bold">{String(i + 1).padStart(2, '0')}</div>
                       <p className="text-body-md text-on-surface-variant leading-relaxed">
-                        {challenge.split(/(\[.*?\]\(.*?\))/g).map((part, index) => {
-                          const match = part.match(/\[(.*?)\]\((.*?)\)/);
-                          if (match) {
-                            return (
-                              <a 
-                                key={index} 
-                                href={match[2]} 
-                                target="_blank" 
-                                rel="noopener noreferrer"
-                                className="text-primary-fixed-dim hover:underline underline-offset-4"
-                              >
-                                {match[1]}
-                              </a>
-                            );
-                          }
-                          return part;
-                        })}
+                        {challenge}
                       </p>
                     </div>
                   ))}
                 </div>
               </div>
+
+              {project.gallery && project.gallery.length > 0 && (
+                <div>
+                  <h2 className="text-headline-sm text-on-surface mb-md flex items-center gap-sm">
+                    <ImageIcon className="w-5 h-5 text-primary-fixed-dim" />
+                    PROJECT_GALLERY
+                  </h2>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-md">
+                    {project.gallery.map((img, i) => (
+                      <div key={i} className="glass-panel p-sm rounded-xl overflow-hidden group">
+                        <img 
+                          src={`/Portfolio${img}`} 
+                          alt={`${project.title} Gallery ${i + 1}`}
+                          className="w-full aspect-video object-cover rounded-lg grayscale group-hover:grayscale-0 transition-all duration-500"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </motion.div>
 
@@ -142,9 +159,34 @@ export default function ProjectDetailClient({ id }: ProjectDetailClientProps) {
 
             <div className="glass-panel p-lg rounded-xl border-primary-fixed-dim/20">
               <h2 className="text-label-caps text-primary-fixed-dim mb-md">MISSION_OBJECTIVE</h2>
-              <p className="text-body-sm text-on-surface-variant leading-relaxed">
+              <p className="text-body-sm text-on-surface-variant leading-relaxed mb-lg">
                 Project status is verified as production-stable. Architecture adheres to high-performance data-oriented standards. Code is optimized for multi-threaded execution and minimal memory allocation.
               </p>
+              
+              <div className="space-y-sm">
+                {project.projectUrl && (
+                  <a 
+                    href={project.projectUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full py-md bg-primary-container text-on-primary-container rounded-default flex items-center justify-center gap-sm text-label-caps hover:bg-primary-fixed-dim transition-all tech-edge tech-glow no-underline"
+                  >
+                    <Globe className="w-4 h-4" />
+                    LAUNCH_PROJECT
+                  </a>
+                )}
+                {project.videoUrl && (
+                  <a 
+                    href={project.videoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full py-md border border-outline text-on-surface rounded-default flex items-center justify-center gap-sm text-label-caps hover:bg-surface-container-high transition-all no-underline"
+                  >
+                    <Play className="w-4 h-4" />
+                    WATCH_FOOTAGE
+                  </a>
+                )}
+              </div>
             </div>
           </motion.div>
         </div>

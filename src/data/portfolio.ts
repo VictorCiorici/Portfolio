@@ -96,6 +96,10 @@ export interface Project {
   tags: string[];
   metrics: ProjectMetric[];
   challenges: string[];
+  gallery?: string[];
+  projectUrl?: string;
+  videoUrl?: string;
+  status?: "released" | "development" | "unreleased";
 }
 
 /** A single principle in the Engineering Manifesto. */
